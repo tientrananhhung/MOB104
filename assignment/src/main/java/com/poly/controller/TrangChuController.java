@@ -15,4 +15,9 @@ public class TrangChuController {
 		return "index";
 	}
 
+	@GetMapping("test")
+	public String testPage() {
+		return "test";
+	}
+
 }
