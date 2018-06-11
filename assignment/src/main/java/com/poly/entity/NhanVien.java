@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -14,7 +15,7 @@ import javax.persistence.OneToOne;
 public class NhanVien {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maNhanVien;
 	private String tenNhanVien;
 	private String email;
@@ -36,10 +37,9 @@ public class NhanVien {
 		super();
 	}
 
-	public NhanVien(int maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
+	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
 			String diaChi, String cmnd, float luongCoBan) {
 		super();
-		this.maNhanVien = maNhanVien;
 		this.tenNhanVien = tenNhanVien;
 		this.email = email;
 		this.anhDaiDien = anhDaiDien;
