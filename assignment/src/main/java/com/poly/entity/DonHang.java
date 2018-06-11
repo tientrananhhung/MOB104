@@ -26,7 +26,7 @@ public class DonHang {
 	private boolean cachThucTraPhi;
 	private float tienThuHo;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "maKhachHang")
 	private KhachHang khachHang;
 

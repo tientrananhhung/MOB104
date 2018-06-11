@@ -49,8 +49,8 @@ public class NhanVienController {
 		nv.setAnhDaiDien(null);
 		NhanVien nv1 = new NhanVien(nv.getTenNhanVien(), nv.getEmail(), nv.getAnhDaiDien(), nv.getSoDienThoai(),
 				nv.getDiaChi(), nv.getCmnd(), nv.getLuongCoBan(), nv.getMatKhau(), nv.getChucVu());
-		ChucVu cv = new ChucVu("CV02", "Shipper");
-		NhanVien nv2 = new NhanVien("thai", "thai", null, "thai", "thai", "thai", 1.0, "thai", cv);
+		ChucVu cv = new ChucVu("CV03", "Kế Toán");
+		NhanVien nv2 = new NhanVien("bin", "bin", null, "bin", "bin", "bin", 1.0, "bin", cv);
 		if (nhanVienService.themNhanVien(nv2)) {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
@@ -58,5 +58,14 @@ public class NhanVienController {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
 		}
+//		ChucVu cv = new ChucVu("CV02", "Shipper");
+//		NhanVien nv2 = new NhanVien(5, "thai", "thai@gmail.com", null, "thai", "thai", "thai", 2.0, "thai", cv);
+//		if(nhanVienService.suaNhanVien(nv2)) {
+//			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
+//			return "redirect:/quanlynhanvien";
+//		}else {
+//			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
+//			return "redirect:/quanlynhanvien";
+//		}
 	}
 }
