@@ -10,6 +10,5 @@
 <body>
 	<h2>Hello anh em, ahihi, ngại quá cơ</h2>
 	<a href="login">Đăng nhập</a>
-	<a href="test">Đăng nhập</a>
 </body>
 </html>
