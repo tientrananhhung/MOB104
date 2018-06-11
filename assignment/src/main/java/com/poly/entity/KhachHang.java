@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -12,7 +13,8 @@ import javax.persistence.OneToMany;
 public class KhachHang {
 	
 	@Id
-	private String maKhachHang;
+	@GeneratedValue
+	private int maKhachHang;
 	private String tenKhachHang;
 	private String diaChi;
 	private String anhDaiDien;
@@ -28,7 +30,7 @@ public class KhachHang {
 		super();
 	}
 
-	public KhachHang(String maKhachHang, String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai,
+	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai,
 			String email, String matKhau) {
 		super();
 		this.maKhachHang = maKhachHang;
@@ -40,7 +42,7 @@ public class KhachHang {
 		this.matKhau = matKhau;
 	}
 
-	public KhachHang(String maKhachHang, String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai,
+	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai,
 			String email, String matKhau, Set<DonHang> donHang) {
 		super();
 		this.maKhachHang = maKhachHang;
@@ -53,11 +55,11 @@ public class KhachHang {
 		this.donHang = donHang;
 	}
 
-	public String getMaKhachHang() {
+	public int getMaKhachHang() {
 		return maKhachHang;
 	}
 
-	public void setMaKhachHang(String maKhachHang) {
+	public void setMaKhachHang(int maKhachHang) {
 		this.maKhachHang = maKhachHang;
 	}
 

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -13,7 +14,8 @@ import javax.persistence.OneToOne;
 public class NhanVien {
 	
 	@Id
-	private String maNhanVien;
+	@GeneratedValue
+	private int maNhanVien;
 	private String tenNhanVien;
 	private String email;
 	private String anhDaiDien;
@@ -34,7 +36,7 @@ public class NhanVien {
 		super();
 	}
 
-	public NhanVien(String maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
+	public NhanVien(int maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
 			String diaChi, String cmnd, float luongCoBan) {
 		super();
 		this.maNhanVien = maNhanVien;
@@ -47,7 +49,7 @@ public class NhanVien {
 		this.luongCoBan = luongCoBan;
 	}
 
-	public NhanVien(String maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
+	public NhanVien(int maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
 			String diaChi, String cmnd, float luongCoBan, ChucVu chucVu, Set<TinhTrangDonHang> tinhTrangDonHang) {
 		super();
 		this.maNhanVien = maNhanVien;
@@ -62,11 +64,11 @@ public class NhanVien {
 		this.tinhTrangDonHang = tinhTrangDonHang;
 	}
 
-	public String getMaNhanVien() {
+	public int getMaNhanVien() {
 		return maNhanVien;
 	}
 
-	public void setMaNhanVien(String maNhanVien) {
+	public void setMaNhanVien(int maNhanVien) {
 		this.maNhanVien = maNhanVien;
 	}
 

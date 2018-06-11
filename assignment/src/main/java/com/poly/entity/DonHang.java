@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -13,7 +14,8 @@ import javax.persistence.OneToOne;
 public class DonHang {
 	
 	@Id
-	private String maDonHang;
+	@GeneratedValue
+	private int maDonHang;
 	private String tenMatHang;
 	private String tenNguoiNhan;
 	private String diaChiNguoiNhan;
@@ -35,7 +37,7 @@ public class DonHang {
 		super();
 	}
 
-	public DonHang(String maDonHang, String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan,
+	public DonHang(int maDonHang, String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan,
 			String sdtNguoiNhan, float trongLuong, float phiVanChuyen, boolean cachThucTraPhi, float tienThuHo,
 			KhachHang khachHang) {
 		super();
@@ -51,11 +53,11 @@ public class DonHang {
 		this.khachHang = khachHang;
 	}
 
-	public String getMaDonHang() {
+	public int getMaDonHang() {
 		return maDonHang;
 	}
 
-	public void setMaDonHang(String maDonHang) {
+	public void setMaDonHang(int maDonHang) {
 		this.maDonHang = maDonHang;
 	}
 
