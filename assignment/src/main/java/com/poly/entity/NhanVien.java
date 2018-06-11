@@ -52,6 +52,20 @@ public class NhanVien {
 	}
 
 	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
+			double luongCoBan, String matKhau, ChucVu chucVu) {
+		super();
+		this.tenNhanVien = tenNhanVien;
+		this.email = email;
+		this.anhDaiDien = anhDaiDien;
+		this.soDienThoai = soDienThoai;
+		this.diaChi = diaChi;
+		this.cmnd = cmnd;
+		this.luongCoBan = luongCoBan;
+		this.matKhau = matKhau;
+		this.chucVu = chucVu;
+	}
+
+	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
 			double luongCoBan, String matKhau, ChucVu chucVu, Set<TinhTrangDonHang> tinhTrangDonHang) {
 		super();
 		this.tenNhanVien = tenNhanVien;

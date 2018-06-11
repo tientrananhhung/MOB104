@@ -40,6 +40,11 @@
 									placeholder="Xin mời nhập địa chỉ nhân viên" />
 							</div>
 							<div class="form-group">
+								<f:label cssClass="control-label mb-1" path="cmnd">Chứng minh nhân dân</f:label>
+								<f:input path="cmnd" cssClass="form-control"
+									placeholder="Xin mời nhập chứng minh nhân dân" />
+							</div>
+							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="chucVu.maChucVu">Chức vụ</f:label>
 								<f:select path="chucVu.maChucVu">
 									<f:options items="${dsChucVu}" />
@@ -49,6 +54,11 @@
 								<f:label cssClass="control-label mb-1" path="luongCoBan">Lương cơ bản</f:label>
 								<f:input type="number" path="luongCoBan" cssClass="form-control"
 									placeholder="Xin mời nhập lương cơ bản của nhân viên" />
+							</div>
+							<div class="form-group">
+								<f:label cssClass="control-label mb-1" path="matKhau">Mật khẩu</f:label>
+								<f:input path="matKhau" cssClass="form-control"
+									placeholder="Xin mời nhập mật khẩu" />
 							</div>
 							<div>
 								<button class="btn btn-lg btn-info">

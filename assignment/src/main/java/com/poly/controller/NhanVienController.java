@@ -20,38 +20,41 @@ import com.poly.service.NhanVienService;
 @Transactional
 @RequestMapping("/quanlynhanvien")
 public class NhanVienController {
-	
+
 	@Autowired
 	NhanVienService nhanVienService;
-	
+
 	@GetMapping
 	public String quanLyNhanVien(ModelMap model) {
 		model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 		return "quanlynhanvien";
 	}
-	
+
 	@GetMapping("themnhanvien")
 	public String themNhanVien(ModelMap model) {
 		model.addAttribute("nhanvien", new NhanVien());
 		List<ChucVu> list = nhanVienService.danhSachChucVu();
 		if (!list.isEmpty()) {
-            HashMap<String, String> cateMap = new HashMap<String, String>();
-            for (ChucVu chucvu : list) {
-                cateMap.put(chucvu.getMaChucVu(), chucvu.getTenChucVu());
-            }
-            model.addAttribute("dsChucVu", cateMap);
-        }
+			HashMap<String, String> cateMap = new HashMap<String, String>();
+			for (ChucVu chucvu : list) {
+				cateMap.put(chucvu.getMaChucVu(), chucvu.getTenChucVu());
+			}
+			model.addAttribute("dsChucVu", cateMap);
+		}
 		return "themnhanvien";
 	}
-	
+
 	@PostMapping("themnhanvien")
 	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
 		nv.setAnhDaiDien(null);
-		nv.setCmnd("123456789");
-		if(nhanVienService.themNhanVien(nv)) {
+		NhanVien nv1 = new NhanVien(nv.getTenNhanVien(), nv.getEmail(), nv.getAnhDaiDien(), nv.getSoDienThoai(),
+				nv.getDiaChi(), nv.getCmnd(), nv.getLuongCoBan(), nv.getMatKhau(), nv.getChucVu());
+		ChucVu cv = new ChucVu("CV02", "Shipper");
+		NhanVien nv2 = new NhanVien("thai", "thai", null, "thai", "thai", "thai", 1.0, "thai", cv);
+		if (nhanVienService.themNhanVien(nv2)) {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
-		}else {
+		} else {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
 		}
