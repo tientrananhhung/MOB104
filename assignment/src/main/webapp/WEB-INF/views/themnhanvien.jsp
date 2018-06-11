@@ -26,7 +26,7 @@
 							</div>
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="email">Email</f:label>
-								<f:input path="email" cssClass="form-control"
+								<f:input type="email" path="email" cssClass="form-control"
 									placeholder="Xin mời nhập email nhân viên" />
 							</div>
 							<div class="form-group">
