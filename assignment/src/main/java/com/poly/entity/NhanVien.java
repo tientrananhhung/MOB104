@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 
 @Entity(name = "nhanvien")
 public class NhanVien {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maNhanVien;
@@ -23,7 +23,8 @@ public class NhanVien {
 	private String soDienThoai;
 	private String diaChi;
 	private String cmnd;
-	private float luongCoBan;
+	private double luongCoBan;
+	private String matKhau;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maChucVu")
@@ -37,8 +38,8 @@ public class NhanVien {
 		super();
 	}
 
-	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
-			String diaChi, String cmnd, float luongCoBan) {
+	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
+			double luongCoBan, String matKhau) {
 		super();
 		this.tenNhanVien = tenNhanVien;
 		this.email = email;
@@ -47,12 +48,12 @@ public class NhanVien {
 		this.diaChi = diaChi;
 		this.cmnd = cmnd;
 		this.luongCoBan = luongCoBan;
+		this.matKhau = matKhau;
 	}
 
-	public NhanVien(int maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
-			String diaChi, String cmnd, float luongCoBan, ChucVu chucVu, Set<TinhTrangDonHang> tinhTrangDonHang) {
+	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
+			double luongCoBan, String matKhau, ChucVu chucVu, Set<TinhTrangDonHang> tinhTrangDonHang) {
 		super();
-		this.maNhanVien = maNhanVien;
 		this.tenNhanVien = tenNhanVien;
 		this.email = email;
 		this.anhDaiDien = anhDaiDien;
@@ -60,6 +61,7 @@ public class NhanVien {
 		this.diaChi = diaChi;
 		this.cmnd = cmnd;
 		this.luongCoBan = luongCoBan;
+		this.matKhau = matKhau;
 		this.chucVu = chucVu;
 		this.tinhTrangDonHang = tinhTrangDonHang;
 	}
@@ -120,12 +122,20 @@ public class NhanVien {
 		this.cmnd = cmnd;
 	}
 
-	public float getLuongCoBan() {
+	public double getLuongCoBan() {
 		return luongCoBan;
 	}
 
-	public void setLuongCoBan(float luongCoBan) {
+	public void setLuongCoBan(double luongCoBan) {
 		this.luongCoBan = luongCoBan;
+	}
+
+	public String getMatKhau() {
+		return matKhau;
+	}
+
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
 	}
 
 	public ChucVu getChucVu() {
@@ -143,5 +153,4 @@ public class NhanVien {
 	public void setTinhTrangDonHang(Set<TinhTrangDonHang> tinhTrangDonHang) {
 		this.tinhTrangDonHang = tinhTrangDonHang;
 	}
-	
 }
