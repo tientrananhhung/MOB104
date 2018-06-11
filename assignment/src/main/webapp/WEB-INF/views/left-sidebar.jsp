@@ -11,13 +11,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/abc/images/favicon.png" />">
+        <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/images/favicon.png" />">
         <title>Ela - Bootstrap Admin Dashboard Template</title>
         <!-- Bootstrap Core CSS -->
-        <link href="<c:url value="/abc/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
         <!-- Custom CSS -->
-        <link href="<c:url value="/abc/css/helper.css" />" rel="stylesheet">
-        <link href="<c:url value="/abc/css/style.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/css/helper.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     </head>
     <body>
         <div class="left-sidebar">

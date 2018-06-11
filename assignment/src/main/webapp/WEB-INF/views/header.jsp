@@ -11,13 +11,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/abc/images/favicon.png" />">
+        <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/images/favicon.png" />">
         <title>Ela - Bootstrap Admin Dashboard Template</title>
         <!-- Bootstrap Core CSS -->
-        <link href="<c:url value="/abc/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
         <!-- Custom CSS -->
-        <link href="<c:url value="/abc/css/helper.css" />" rel="stylesheet">
-        <link href="<c:url value="/abc/css/style.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/css/helper.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     </head>
     <body>
         <div class="header"  style="background-color: #062c33">
@@ -26,10 +26,10 @@
                 <div class="navbar-header" style="background-color: #062c33">
                     <a class="navbar-brand" href="index.htm">
                         <!-- Logo icon -->
-                        <b><img src="abc/images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="resources/images/logo.png" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="abc/images/logo2.png" alt="homepage" class="dark-logo" width="140" height="60" /></span>
+                        <span><img src="resources/images/logo2.png" alt="homepage" class="dark-logo" width="140" height="60" /></span>
                     </a>
                 </div>
                 <!-- End Logo -->
