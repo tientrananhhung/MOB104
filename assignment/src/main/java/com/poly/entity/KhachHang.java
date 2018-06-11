@@ -5,15 +5,16 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity(name = "khachhang")
 public class KhachHang {
-	
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maKhachHang;
 	private String tenKhachHang;
 	private String diaChi;
@@ -34,6 +35,17 @@ public class KhachHang {
 			String email, String matKhau) {
 		super();
 		this.maKhachHang = maKhachHang;
+		this.tenKhachHang = tenKhachHang;
+		this.diaChi = diaChi;
+		this.anhDaiDien = anhDaiDien;
+		this.soDienThoai = soDienThoai;
+		this.email = email;
+		this.matKhau = matKhau;
+	}
+
+	public KhachHang(String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai, String email,
+			String matKhau) {
+		super();
 		this.tenKhachHang = tenKhachHang;
 		this.diaChi = diaChi;
 		this.anhDaiDien = anhDaiDien;
@@ -118,5 +130,5 @@ public class KhachHang {
 	public void setDonHang(Set<DonHang> donHang) {
 		this.donHang = donHang;
 	}
-	
+
 }

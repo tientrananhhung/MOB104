@@ -10,6 +10,9 @@
 <body>
 	<h2>Hello anh em, ahihi, ngại quá cơ</h2>
 	<a href="login">Đăng nhập</a>
+<<<<<<< HEAD
 	<a href="quanlynhanvien">Quản lý nhân viên</a>
+=======
+>>>>>>> 52b3e90e8f9e86ec6afaab70e13d4815de05b0d7
 </body>
 </html>
