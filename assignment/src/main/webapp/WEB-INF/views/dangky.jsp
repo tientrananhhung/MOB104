@@ -3,11 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Đăng nhập</title>
+<title>Đăng ký</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="icon" type="image/png"
 	href="<c:url value="resources/images/icons/favicon.ico" />" />
@@ -34,33 +33,62 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="<c:url value="resources/images/img-01.png" />" alt="IMG">
 				</div>
-				<f:form cssClass="login100-form validate-form" method="POST" modelAttribute="dangnhap" action="dangnhap" >
-					<span class="login100-form-title"> TRANG ĐĂNG NHẬP </span>
+				<f:form cssClass="login100-form validate-form" method="POST"
+					modelAttribute="dangky" action="dangky">
+
+					<span class="login100-form-title"> TRANG ĐĂNG KÝ KHÁCH HÀNG
+					</span>
+
 					<div class="wrap-input100 validate-input"
-						data-validate="Valid email is required: ex@abc.xyz">
-						<f:input path="email" cssClass="input100" type="email" placeholder="Tên đăng nhập"/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-envelope"
-							aria-hidden="true"></i>
+						data-validate="Vui lòng nhập tên khách hàng">
+						<f:input path="tenKhachHang" cssClass="input100" type="text"
+							placeholder="Tên khách hàng" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-address-book-o" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="wrap-input100 validate-input"
-						data-validate="Password is required">
-						<f:input path="matKhau" cssClass="input100" type="password" placeholder="Mật khẩu"/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-lock"
-							aria-hidden="true"></i>
+						data-validate="Vui lòng nhập email">
+						<f:input path="email" cssClass="input100" type="email"
+							placeholder="Email khách hàng" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Vui lòng nhập số điện thoại">
+						<f:input path="soDienThoai" cssClass="input100" type="text"
+							placeholder="Số điện thoại khách hàng" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i> </i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Vui lòng nhập địa chỉ">
+						<f:input path="diaChi" cssClass="input100" type="text"
+							placeholder="Địa chỉ khách hàng" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input"
+						data-validate="Vui lòng nhập mật khẩu">
+						<f:input path="matKhau" cssClass="input100" type="password"
+							placeholder="Mật Khẩu" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" >Đăng nhập</button>
+						<button class="login100-form-btn">Đăng Ký</button>
 					</div>
 
 					<div class="text-center p-t-12">
-						<span class="txt1"> Quên </span> <a class="txt2" href="#"> Mật
-							khẩu? </a>
+						<a class="txt2" href="#"> Đăng Nhập ? </a>
 					</div>
 
 					<div class="text-center p-t-136">
