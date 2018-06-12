@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
-import com.poly.entity.KhachHang;
+import com.poly.service.DiaChiKHService;
 import com.poly.service.DonHangService;
-import com.poly.service.KhachHangService;
 
 @Controller
 @Transactional
@@ -25,11 +25,13 @@ public class DonHangNVController {
 
 		@Autowired
 		DonHangService donhangService;
-		KhachHangService khachhangService;
+		@Autowired
+		DiaChiKHService diaChiKHService;
 		
 		@GetMapping
 		public String qlDonHang(ModelMap model) {
 			model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
+			System.out.print("dh" + donhangService.danhsachDonHang());
 			return "donhang";
 			
 		}
@@ -37,15 +39,19 @@ public class DonHangNVController {
 		@GetMapping("taodonhang")
 		public String taoDonHang(ModelMap model) {
 			model.addAttribute("donhang", new DonHang());
-			List<KhachHang> lst = donhangService.danhsachKhachHang();
-			if(!lst.isEmpty()) {
-				HashMap<Integer, String> map = new HashMap<Integer, String>();
-				for(KhachHang khachhang : lst) {
-					map.put(khachhang.getMaKhachHang(), khachhang.getTenKhachHang());
-				}
-				model.addAttribute("dsKhachHang", map);
-			}
+			layDCKhachHang(model);
 			return "themdonhang";
+		}
+		
+		public void layDCKhachHang(ModelMap model) {
+			List<DiaChiKhachHang> list = diaChiKHService.danhsachDCKhachHang();
+			if (!list.isEmpty()) {
+				HashMap<Integer, String> map = new HashMap<Integer, String>();
+				for (DiaChiKhachHang diachikh : list) {
+					map.put(diachikh.getMaDiaChi(), diachikh.getDiaChiGui());
+				}
+				model.addAttribute("dsDCKhachHang", map);
+			}
 		}
 		
 		@PostMapping("taodonhangNV")

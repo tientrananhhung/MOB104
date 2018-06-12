@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.poly.entity.DonHang;
-import com.poly.entity.KhachHang;
 import com.poly.impl.DonHangImpl;
 
 @Repository
@@ -45,18 +44,6 @@ public class DonHangDAO implements DonHangImpl {
 		String sql = "from donhang";
 		try {
 			List<DonHang> lst = ss.createQuery(sql).getResultList();
-			return lst;
-		} catch (Exception ex) {
-			return null;
-		}
-	}
-
-	@Override
-	public List<KhachHang> danhsachKhachHang() {
-		Session ss = sessionFactory.getCurrentSession();
-		String sql = "from khachhang";
-		try {
-			List<KhachHang> lst = ss.createQuery(sql).getResultList();
 			return lst;
 		} catch (Exception ex) {
 			return null;
