@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 
 @Entity(name = "donhang")
 public class DonHang {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maDonHang;
@@ -21,14 +21,15 @@ public class DonHang {
 	private String tenNguoiNhan;
 	private String diaChiNguoiNhan;
 	private String sdtNguoiNhan;
-	private float trongLuong;
-	private float phiVanChuyen;
+	private double trongLuong;
+	private double phiVanChuyen;
 	private boolean cachThucTraPhi;
 	private float tienThuHo;
+	private String ghiChu;
 
 	@OneToOne
-	@JoinColumn(name = "maKhachHang")
-	private KhachHang khachHang;
+	@JoinColumn(name = "maDiaChi")
+	private DiaChiKhachHang diaChiKhachHang;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maDonHang")
@@ -38,9 +39,25 @@ public class DonHang {
 		super();
 	}
 
-	public DonHang(int maDonHang, String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan,
-			String sdtNguoiNhan, float trongLuong, float phiVanChuyen, boolean cachThucTraPhi, float tienThuHo,
-			KhachHang khachHang) {
+	public DonHang(String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan, String sdtNguoiNhan,
+			double trongLuong, double phiVanChuyen, boolean cachThucTraPhi, float tienThuHo, String ghiChu,
+			DiaChiKhachHang diaChiKhachHang) {
+		super();
+		this.tenMatHang = tenMatHang;
+		this.tenNguoiNhan = tenNguoiNhan;
+		this.diaChiNguoiNhan = diaChiNguoiNhan;
+		this.sdtNguoiNhan = sdtNguoiNhan;
+		this.trongLuong = trongLuong;
+		this.phiVanChuyen = phiVanChuyen;
+		this.cachThucTraPhi = cachThucTraPhi;
+		this.tienThuHo = tienThuHo;
+		this.ghiChu = ghiChu;
+		this.diaChiKhachHang = diaChiKhachHang;
+	}
+
+	public DonHang(int maDonHang, String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan, String sdtNguoiNhan,
+			double trongLuong, double phiVanChuyen, boolean cachThucTraPhi, float tienThuHo, String ghiChu,
+			DiaChiKhachHang diaChiKhachHang) {
 		super();
 		this.maDonHang = maDonHang;
 		this.tenMatHang = tenMatHang;
@@ -51,7 +68,8 @@ public class DonHang {
 		this.phiVanChuyen = phiVanChuyen;
 		this.cachThucTraPhi = cachThucTraPhi;
 		this.tienThuHo = tienThuHo;
-		this.khachHang = khachHang;
+		this.ghiChu = ghiChu;
+		this.diaChiKhachHang = diaChiKhachHang;
 	}
 
 	public int getMaDonHang() {
@@ -94,19 +112,19 @@ public class DonHang {
 		this.sdtNguoiNhan = sdtNguoiNhan;
 	}
 
-	public float getTrongLuong() {
+	public double getTrongLuong() {
 		return trongLuong;
 	}
 
-	public void setTrongLuong(float trongLuong) {
+	public void setTrongLuong(double trongLuong) {
 		this.trongLuong = trongLuong;
 	}
 
-	public float getPhiVanChuyen() {
+	public double getPhiVanChuyen() {
 		return phiVanChuyen;
 	}
 
-	public void setPhiVanChuyen(float phiVanChuyen) {
+	public void setPhiVanChuyen(double phiVanChuyen) {
 		this.phiVanChuyen = phiVanChuyen;
 	}
 
@@ -126,12 +144,20 @@ public class DonHang {
 		this.tienThuHo = tienThuHo;
 	}
 
-	public KhachHang getKhachHang() {
-		return khachHang;
+	public String getGhiChu() {
+		return ghiChu;
 	}
 
-	public void setKhachHang(KhachHang khachHang) {
-		this.khachHang = khachHang;
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
+
+	public DiaChiKhachHang getDiaChiKhachHang() {
+		return diaChiKhachHang;
+	}
+
+	public void setDiaChiKhachHang(DiaChiKhachHang diaChiKhachHang) {
+		this.diaChiKhachHang = diaChiKhachHang;
 	}
 
 	public Set<TinhTrangDonHang> getTinhTrangDonHang() {

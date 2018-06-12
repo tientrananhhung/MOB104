@@ -17,7 +17,6 @@ public class KhachHang {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maKhachHang;
 	private String tenKhachHang;
-	private String diaChi;
 	private String anhDaiDien;
 	private String soDienThoai;
 	private String email;
@@ -26,40 +25,41 @@ public class KhachHang {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maKhachHang")
 	private Set<DonHang> donHang;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "maKhachHang")
+	private Set<DiaChiKhachHang> diaChiKhachHang;
 
 	public KhachHang() {
 		super();
 	}
 
-	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai,
+	public KhachHang(int maKhachHang, String tenKhachHang, String anhDaiDien, String soDienThoai,
 			String email, String matKhau) {
 		super();
 		this.maKhachHang = maKhachHang;
 		this.tenKhachHang = tenKhachHang;
-		this.diaChi = diaChi;
 		this.anhDaiDien = anhDaiDien;
 		this.soDienThoai = soDienThoai;
 		this.email = email;
 		this.matKhau = matKhau;
 	}
 
-	public KhachHang(String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai, String email,
+	public KhachHang(String tenKhachHang, String anhDaiDien, String soDienThoai, String email,
 			String matKhau) {
 		super();
 		this.tenKhachHang = tenKhachHang;
-		this.diaChi = diaChi;
 		this.anhDaiDien = anhDaiDien;
 		this.soDienThoai = soDienThoai;
 		this.email = email;
 		this.matKhau = matKhau;
 	}
 
-	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, String anhDaiDien, String soDienThoai,
+	public KhachHang(int maKhachHang, String tenKhachHang, String anhDaiDien, String soDienThoai,
 			String email, String matKhau, Set<DonHang> donHang) {
 		super();
 		this.maKhachHang = maKhachHang;
 		this.tenKhachHang = tenKhachHang;
-		this.diaChi = diaChi;
 		this.anhDaiDien = anhDaiDien;
 		this.soDienThoai = soDienThoai;
 		this.email = email;
@@ -81,14 +81,6 @@ public class KhachHang {
 
 	public void setTenKhachHang(String tenKhachHang) {
 		this.tenKhachHang = tenKhachHang;
-	}
-
-	public String getDiaChi() {
-		return diaChi;
-	}
-
-	public void setDiaChi(String diaChi) {
-		this.diaChi = diaChi;
 	}
 
 	public String getAnhDaiDien() {
