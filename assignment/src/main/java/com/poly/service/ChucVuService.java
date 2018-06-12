@@ -21,4 +21,28 @@ public class ChucVuService implements ChucVuImpl {
 		return list;
 	}
 
+	@Override
+	public boolean themChucVu(ChucVu chucVu) {
+		boolean check = chucVuDAO.themChucVu(chucVu);
+		return check;
+	}
+
+	@Override
+	public boolean suaChucVu(ChucVu chucVu) {
+		boolean check = chucVuDAO.suaChucVu(chucVu);
+		return check;
+	}
+
+	@Override
+	public boolean xoaChucVu(ChucVu chucVu) {
+		boolean check = chucVuDAO.xoaChucVu(chucVu);
+		return check;
+	}
+
+	@Override
+	public ChucVu timChucVu(String id) {
+		ChucVu chucVu = chucVuDAO.timChucVu(id);
+		return chucVu;
+	}
+
 }
