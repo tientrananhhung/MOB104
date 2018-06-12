@@ -31,6 +31,7 @@
                                                 <th>CMDN</th>
                                                 <th>Chức vụ</th>
                                                 <th>Lương CB</th>
+                                                <th>Mật khẩu</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -46,9 +47,10 @@
                                                 <td><c:out value="${item.cmnd}" /></td>
                                                 <td><c:out value="${item.chucVu.tenChucVu}" /></td>
                                                 <td><c:out value="${item.luongCoBan}" /></td>
+                                                <td><c:out value="${item.matKhau}" /></td>
                                                 <td>
-                                                    <a href="editNhanVien?maNhanVien=${item.maNhanVien}">edit<i class="fa fa-pencil"></i></a>
-                                                    <a href="xoaNhanVien?maNhanVien=${item.maNhanVien}">del<i class="fa fa-bitbucket-square"></i></a>
+                                                    <a href="quanlynhanvien/editnhanvien/${item.maNhanVien}">edit<i class="fa fa-pencil"></i></a>
+                                                    <a href="quanlynhanvien/xoanhanvien/${item.maNhanVien}">del<i class="fa fa-bitbucket-square"></i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

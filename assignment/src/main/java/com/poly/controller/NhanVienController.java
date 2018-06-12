@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.poly.entity.ChucVu;
 import com.poly.entity.NhanVien;
@@ -24,6 +26,7 @@ public class NhanVienController {
 
 	@Autowired
 	NhanVienService nhanVienService;
+	@Autowired
 	ChucVuService chucVuService;
 
 	@GetMapping
@@ -37,6 +40,31 @@ public class NhanVienController {
 		model.addAttribute("nhanvien", new NhanVien());
 		model.addAttribute("action","themnhanvien");
 		model.addAttribute("tenbutton","Thêm nhân viên");
+		layChucVu(model);
+		return "themnhanvien";
+	}
+
+	@PostMapping("themnhanvien")
+	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
+		nv.setAnhDaiDien(null);
+		if (nhanVienService.themNhanVien(nv)) {
+			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
+			return "redirect:/quanlynhanvien";
+		} else {
+			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
+			return "redirect:/quanlynhanvien";
+		}
+	}
+	@GetMapping("editnhanvien/{id}")
+	public String editNhanVien(@PathVariable("id") int id, ModelMap model) {
+        NhanVien nv = nhanVienService.layNhanVien(id);
+        layChucVu(model);
+        model.addAttribute("nhanvien", nv);
+        model.addAttribute("action","suanhanvien");
+		model.addAttribute("tenbutton","Sua nhân viên");
+        return "themnhanvien";
+	}
+	public void layChucVu(ModelMap model) {
 		List<ChucVu> list = chucVuService.layDSChucVu();
 		if (!list.isEmpty()) {
 			HashMap<String, String> cateMap = new HashMap<String, String>();
@@ -45,35 +73,27 @@ public class NhanVienController {
 			}
 			model.addAttribute("dsChucVu", cateMap);
 		}
-		return "themnhanvien";
 	}
-
-	@PostMapping("themnhanvien")
-	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
+	@PostMapping("editnhanvien/suanhanvien")
+	public String suaNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
 		nv.setAnhDaiDien(null);
-<<<<<<< HEAD
-		if (nhanVienService.themNhanVien(nv)) {
-=======
-		NhanVien nv1 = new NhanVien(nv.getTenNhanVien(), nv.getEmail(), nv.getAnhDaiDien(), nv.getSoDienThoai(),
-				nv.getDiaChi(), nv.getCmnd(), nv.getLuongCoBan(), nv.getMatKhau(), nv.getChucVu());
-		ChucVu cv = new ChucVu("CV03", "Káº¿ ToÃ¡n");
-		NhanVien nv2 = new NhanVien("bin", "bin", null, "bin", "bin", "bin", 1.0, "bin", cv);
-		if (nhanVienService.themNhanVien(nv2)) {
->>>>>>> 08c71af5dc0549b5c24210e810beb0821700c6fa
+		if (nhanVienService.suaNhanVien(nv)) {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
 		} else {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
 		}
-//		ChucVu cv = new ChucVu("CV02", "Shipper");
-//		NhanVien nv2 = new NhanVien(5, "thai", "thai@gmail.com", null, "thai", "thai", "thai", 2.0, "thai", cv);
-//		if(nhanVienService.suaNhanVien(nv2)) {
-//			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
-//			return "redirect:/quanlynhanvien";
-//		}else {
-//			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
-//			return "redirect:/quanlynhanvien";
-//		}
+	}
+	@GetMapping("xoanhanvien/{id}")
+	public String xoaNhanVien(@PathVariable("id") int id, ModelMap model) {
+		NhanVien nv = nhanVienService.layNhanVien(id);
+		if (nhanVienService.xoaNhanVien(nv)) {
+			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
+			return "redirect:/quanlynhanvien";
+		} else {
+			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
+			return "redirect:/quanlynhanvien";
+		}
 	}
 }

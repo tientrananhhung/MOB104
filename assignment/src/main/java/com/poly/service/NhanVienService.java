@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.poly.entity.ChucVu;
 import com.poly.entity.NhanVien;
 import com.poly.impl.NhanVienImpl;
 import com.poly.model.NhanVienDAO;
@@ -38,5 +37,11 @@ public class NhanVienService implements NhanVienImpl {
 	public List<NhanVien> danhSachNhanVien() {
 		List<NhanVien> list = nhanVienDAO.danhSachNhanVien();
 		return list;
+	}
+
+	@Override
+	public NhanVien layNhanVien(int id) {
+		NhanVien nv = nhanVienDAO.layNhanVien(id);
+		return nv;
 	}
 }
