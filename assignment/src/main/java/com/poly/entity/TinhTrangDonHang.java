@@ -2,18 +2,18 @@ package com.poly.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity(name = "tinhtrangdonhang")
 public class TinhTrangDonHang {
-	
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date thoiGian;
 
@@ -31,6 +31,14 @@ public class TinhTrangDonHang {
 
 	public TinhTrangDonHang() {
 		super();
+	}
+
+	public TinhTrangDonHang(Date thoiGian, TrangThai trangThai, NhanVien nhanVien, DonHang donHang) {
+		super();
+		this.thoiGian = thoiGian;
+		this.trangThai = trangThai;
+		this.nhanVien = nhanVien;
+		this.donHang = donHang;
 	}
 
 	public TinhTrangDonHang(int id, Date thoiGian, TrangThai trangThai, NhanVien nhanVien, DonHang donHang) {
