@@ -19,7 +19,7 @@ public class KhachHangDAO implements KhachHangImpl {
 	@Override
 	public KhachHang dangNhapKhachHang(String userName, String passWord) {
 		Session session = sessionFactory.getCurrentSession();
-		String sql = "from khachhang where email = '" + userName + "' and matKhau = '" + passWord + "'";
+		String sql = "from khachhang where soDienThoai = '"+userName+"' AND matKhau = '"+passWord+"' OR email = '" + userName + "'and matKhau = '" + passWord + "'";
 		try {
 			KhachHang khachHang = (KhachHang) session.createQuery(sql).getSingleResult();
 			return khachHang;

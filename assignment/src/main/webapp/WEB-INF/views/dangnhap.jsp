@@ -37,8 +37,8 @@
 				<f:form cssClass="login100-form validate-form" method="POST" modelAttribute="dangnhap" action="dangnhap" >
 					<span class="login100-form-title"> TRANG ĐĂNG NHẬP </span>
 					<div class="wrap-input100 validate-input"
-						data-validate="Valid email is required: ex@abc.xyz">
-						<f:input path="email" cssClass="input100" type="email" placeholder="Tên đăng nhập"/>
+						data-validate="Vui lòng nhập đúng email hoặc sdt">
+						<f:input path="soDienThoai" cssClass="input100" type="text" placeholder="Tên đăng nhập"/>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100"> <i class="fa fa-envelope"
 							aria-hidden="true"></i>
