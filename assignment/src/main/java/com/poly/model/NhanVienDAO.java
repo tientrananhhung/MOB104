@@ -61,16 +61,4 @@ public class NhanVienDAO implements NhanVienImpl {
 			return null;
 		}
 	}
-
-	@Override
-	public List<ChucVu> danhSachChucVu() {
-		Session session = sessionFactory.getCurrentSession();
-		String sql = "from chucvu";
-		try {
-			List<ChucVu> list = session.createQuery(sql).getResultList();
-			return list;
-		} catch (Exception e) {
-			return null;
-		}
-	}
 }
