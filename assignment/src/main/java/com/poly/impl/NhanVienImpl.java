@@ -1,8 +1,6 @@
 package com.poly.impl;
 
 import java.util.List;
-
-import com.poly.entity.ChucVu;
 import com.poly.entity.NhanVien;
 
 public interface NhanVienImpl {
@@ -13,4 +11,5 @@ public interface NhanVienImpl {
 	public boolean xoaNhanVien(NhanVien nhanVien);
 
 	public List<NhanVien> danhSachNhanVien();
+	public NhanVien layNhanVien(int id);
 }

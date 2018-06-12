@@ -7,9 +7,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.poly.entity.ChucVu;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.poly.entity.NhanVien;
 import com.poly.impl.NhanVienImpl;
+import com.poly.service.NhanVienService;
 
 @Repository
 public class NhanVienDAO implements NhanVienImpl {
@@ -61,4 +62,16 @@ public class NhanVienDAO implements NhanVienImpl {
 			return null;
 		}
 	}
+
+	@Override
+	public NhanVien layNhanVien(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			NhanVien nv = (NhanVien) session.get(NhanVien.class, id);
+			return nv;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

@@ -19,6 +19,7 @@
 					<div class="typo-headers">
 						<f:form action="${action}"
 							modelAttribute="nhanvien" method="POST">
+							<f:hidden path="maNhanVien"/>
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="tenNhanVien">Tên nhân viên</f:label>
 								<f:input path="tenNhanVien" cssClass="form-control"
