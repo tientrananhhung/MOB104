@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
-import com.poly.entity.KhachHang;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
 
@@ -37,13 +37,13 @@ public class DonHangNVController {
 		@GetMapping("taodonhang")
 		public String taoDonHang(ModelMap model) {
 			model.addAttribute("donhang", new DonHang());
-			List<KhachHang> lst = donhangService.danhsachKhachHang();
+			List<DiaChiKhachHang> lst = donhangService.danhsachDCKhachHang();
 			if(!lst.isEmpty()) {
 				HashMap<Integer, String> map = new HashMap<Integer, String>();
-				for(KhachHang khachhang : lst) {
-					map.put(khachhang.getMaKhachHang(), khachhang.getTenKhachHang());
+				for(DiaChiKhachHang dckhachhang : lst) {
+					map.put(dckhachhang.getMaDiaChi(), dckhachhang.getDiaChiGui());
 				}
-				model.addAttribute("dsKhachHang", map);
+				model.addAttribute("dsDCKhachHang", map);
 			}
 			return "themdonhang";
 		}

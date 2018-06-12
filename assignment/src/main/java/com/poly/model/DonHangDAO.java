@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
-import com.poly.entity.KhachHang;
 import com.poly.impl.DonHangImpl;
 
 @Repository
@@ -52,11 +52,11 @@ public class DonHangDAO implements DonHangImpl {
 	}
 
 	@Override
-	public List<KhachHang> danhsachKhachHang() {
+	public List<DiaChiKhachHang> danhsachDCKhachHang() {
 		Session ss = sessionFactory.getCurrentSession();
 		String sql = "from khachhang";
 		try {
-			List<KhachHang> lst = ss.createQuery(sql).getResultList();
+			List<DiaChiKhachHang> lst = ss.createQuery(sql).getResultList();
 			return lst;
 		} catch (Exception ex) {
 			return null;

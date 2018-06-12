@@ -25,17 +25,19 @@
                                                 <th>Tên người nhận</th>
                                                 <th>Số điện thoại người nhận</th>
                                                 <th>Địa chỉ người nhận</th>
+                                                <th>Địa chỉ gửi</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="a" items="${list}">
+                                        <c:forEach var="a" items="${dsDonHang}">
                                             <tr>
                                                 <td><c:out value="${a.maDonHang}"/></td>
                                                 <td><c:out value="${a.tenMatHang}"/></td>
                                                 <td><c:out value="${a.tenNguoiNhan}"/></td>
                                                 <td><c:out value="${a.sdtNguoiNhan}"/></td>
                                                 <td><c:out value="${a.diaChiNguoiNhan}"/></td>
+                                                <td><c:out value="${a.diaChiKhachHang.diaChiGui}"/></td>
                                                 <th><a href="Adddepart.htm" style="color: #004085">Edit</a> / <a href="" style="color: #004085">Del</a></th>
                                             </tr>
                                         </c:forEach>
