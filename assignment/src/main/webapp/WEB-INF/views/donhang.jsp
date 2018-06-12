@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Danh sách hóa đơn</h4>
-                                <a href="TiepNhanDH.htm"><button type="button" class="btn btn-success m-b-10 m-l-5" data-toggle="tooltip" data-placement="top" title="Create order">Tiếp nhận hóa đơn</button></a>
+                                <a href="quanlydonhang/taodonhang"><button type="button" class="btn btn-success m-b-10 m-l-5" data-toggle="tooltip" data-placement="top" title="Create order">Tiếp nhận hóa đơn</button></a>
                                 <div class="table-responsive m-t-40">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>

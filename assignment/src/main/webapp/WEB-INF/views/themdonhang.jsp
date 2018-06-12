@@ -74,13 +74,11 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-2 col-form-label" for="val-skill">Khách
-														hàng :</label>
+													<label class="col-lg-2 col-form-label" for="val-skill">Địa chỉ gửi :</label>
 													<div class="col-lg-9">
 														<f:select path="diaChiKhachHang.maDiaChi"
 															cssClass="form-control" name="val-skill">
-															<f:option items="${dsDCKhachHang}"
-																value="Chọn địa chỉ gửi" />
+															<f:options items="${dsDCKhachHang}"/>
 														</f:select>
 													</div>
 												</div>
@@ -108,7 +106,7 @@
 															cssClass="form-control" placeholder="..." />
 													</div>
 												</div>
-											</div>
+											</div><br/>
 											<hr style="background-color: #00a400">
 											<br />
 											<div class="form-actions">
@@ -138,8 +136,7 @@
 	</div>
 	<footer class="footer">
 		© 2018 All rights reserved. Template designed by <a
-			href="https://www.facebook.com/profile.php?id=100010754627040">Chu
-			Thái</a>
+			href="https://www.facebook.com/profile.php?id=100010754627040">Ấu Đoàn Poly</a>
 	</footer>
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
 	<!-- Bootstrap tether Core JavaScript -->

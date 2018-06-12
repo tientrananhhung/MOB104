@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
 import com.poly.impl.DonHangImpl;
 import com.poly.model.DonHangDAO;
@@ -31,12 +30,6 @@ public class DonHangService implements DonHangImpl {
 	@Override
 	public List<DonHang> danhsachDonHang() {
 		List<DonHang> lst = donhangDAO.danhsachDonHang();
-		return lst;
-	}
-
-	@Override
-	public List<DiaChiKhachHang> danhsachDCKhachHang() {
-		List<DiaChiKhachHang> lst = donhangDAO.danhsachDCKhachHang();
 		return lst;
 	}
 
