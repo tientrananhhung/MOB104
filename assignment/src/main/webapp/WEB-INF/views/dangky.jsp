@@ -67,14 +67,6 @@
 					</div>
 
 					<div class="wrap-input100 validate-input"
-						data-validate="Vui lòng nhập địa chỉ">
-						<f:input path="diaChi" cssClass="input100" type="text"
-							placeholder="Địa chỉ khách hàng" />
-						<span class="focus-input100"></span> <span class="symbol-input100">
-							<i class="fa fa-map-marker" aria-hidden="true"></i>
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input"
 						data-validate="Vui lòng nhập mật khẩu">
 						<f:input path="matKhau" cssClass="input100" type="password"
 							placeholder="Mật Khẩu" />

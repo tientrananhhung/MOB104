@@ -14,5 +14,6 @@
 	<a href="quanlynhanvien">Quản lý nhân viên</a>
 =======
 >>>>>>> 52b3e90e8f9e86ec6afaab70e13d4815de05b0d7
+<a href="taodonhang">Tạo đơn hàng</a>
 </body>
 </html>
