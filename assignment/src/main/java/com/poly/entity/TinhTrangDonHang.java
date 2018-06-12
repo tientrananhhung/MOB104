@@ -17,15 +17,15 @@ public class TinhTrangDonHang {
 	private int id;
 	private Date thoiGian;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "maTrangThai")
 	private TrangThai trangThai;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "maNhanVien")
 	private NhanVien nhanVien;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "maDonHang")
 	private DonHang donHang;
 

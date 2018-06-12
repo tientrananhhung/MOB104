@@ -1,5 +1,6 @@
 package com.poly.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,29 +27,16 @@ public class NhanVien {
 	private double luongCoBan;
 	private String matKhau;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "maChucVu")
 	private ChucVu chucVu;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maNhanVien")
-	private Set<TinhTrangDonHang> tinhTrangDonHang;
+	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
 	public NhanVien() {
 		super();
-	}
-
-	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
-			double luongCoBan, String matKhau) {
-		super();
-		this.tenNhanVien = tenNhanVien;
-		this.email = email;
-		this.anhDaiDien = anhDaiDien;
-		this.soDienThoai = soDienThoai;
-		this.diaChi = diaChi;
-		this.cmnd = cmnd;
-		this.luongCoBan = luongCoBan;
-		this.matKhau = matKhau;
 	}
 
 	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
@@ -65,9 +53,10 @@ public class NhanVien {
 		this.chucVu = chucVu;
 	}
 
-	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
-			double luongCoBan, String matKhau, ChucVu chucVu, Set<TinhTrangDonHang> tinhTrangDonHang) {
+	public NhanVien(int maNhanVien, String tenNhanVien, String email, String anhDaiDien, String soDienThoai,
+			String diaChi, String cmnd, double luongCoBan, String matKhau, ChucVu chucVu) {
 		super();
+		this.maNhanVien = maNhanVien;
 		this.tenNhanVien = tenNhanVien;
 		this.email = email;
 		this.anhDaiDien = anhDaiDien;
@@ -77,7 +66,6 @@ public class NhanVien {
 		this.luongCoBan = luongCoBan;
 		this.matKhau = matKhau;
 		this.chucVu = chucVu;
-		this.tinhTrangDonHang = tinhTrangDonHang;
 	}
 
 	public int getMaNhanVien() {
