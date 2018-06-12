@@ -50,9 +50,11 @@ public class TrangChuController {
 		return "dangnhap";
 	}
 	
+	
+	
 	@PostMapping("dangnhap")
 	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang) {
-		KhachHang kh = khachHangService.dangNhapKhachHang(khachHang.getEmail(), khachHang.getMatKhau());
+		KhachHang kh = khachHangService.dangNhapKhachHang(khachHang.getSoDienThoai(), khachHang.getMatKhau());
 		if(kh != null) {
 			return "index";
 		}else {
@@ -61,4 +63,9 @@ public class TrangChuController {
 		
 	}
 
+	@GetMapping("taodonhang")
+	public String taoDonHang(ModelMap model) {
+	//	model.addAttribute("dangnhap", new KhachHang());
+		return "taodonhang";
+	}
 }
