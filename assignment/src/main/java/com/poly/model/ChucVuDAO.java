@@ -20,8 +20,56 @@ public class ChucVuDAO implements ChucVuImpl {
 	public List<ChucVu> layDSChucVu() {
 		Session session = sessionFactory.getCurrentSession();
 		String sql = "from chucvu";
-		List<ChucVu> list = session.createQuery(sql).getResultList();
-		return list;
+		try {
+			List<ChucVu> list = session.createQuery(sql).getResultList();
+			return list;
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+
+	@Override
+	public boolean themChucVu(ChucVu chucVu) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.save(chucVu);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean suaChucVu(ChucVu chucVu) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.update(chucVu);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean xoaChucVu(ChucVu chucVu) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.remove(chucVu);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public ChucVu timChucVu(String id) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			ChucVu chucVu = session.load(ChucVu.class, id);
+			return chucVu;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }
