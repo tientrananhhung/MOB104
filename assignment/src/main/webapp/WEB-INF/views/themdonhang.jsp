@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,26 +23,28 @@
 							<div class="card-body" style="margin-left: 20px;">
 								<div class="col-lg-12">
 									<div class="form-validation">
-										<form class="form-valide" action="#" method="post">
+										<f:form cssClass="form-valide" action="taodonhangNV"
+											method="POST" modelAttribute="donhang">
 											<div class="row">
 												<div class="col-md-6">
-													<input type="text" class="form-control"
-														placeholder="Tên mặt hàng..">
+													<f:input path="tenMatHang" type="text"
+														cssClass="form-control" placeholder="Tên mặt hàng.." />
 												</div>
 												<div class="col-md-6">
-													<input type="text" class="form-control"
-														placeholder="Tên người nhận..">
+													<f:input path="tenNguoiNhan" type="text"
+														cssClass="form-control" placeholder="Tên người nhận.." />
 												</div>
 											</div>
 											<br />
 											<div class="row">
 												<div class="col-md-6">
-													<input type="number" class="form-control"
-														placeholder="Số điện thoại người nhận..">
+													<f:input path="sdtNguoiNhan" type="number"
+														cssClass="form-control"
+														placeholder="Số điện thoại người nhận.." />
 												</div>
 												<div class="col-md-6">
-													<input type="text" class="form-control"
-														placeholder="Địa chỉ người nhận..">
+													<f:input path="diaChiNguoiNhan" type="text"
+														cssClass="form-control" placeholder="Địa chỉ người nhận.." />
 												</div>
 											</div>
 											<br />
@@ -50,35 +53,33 @@
 													<label class="col-lg-2 col-form-label"
 														for="val-suggestions">Trọng lượng :</label>
 													<div class="col-lg-9">
-														<input type="number" class="form-control"
-															placeholder="Kilogam">
+														<f:input path="trongLuong" type="number"
+															cssClass="form-control" placeholder="Kilogam" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-2 col-form-label" for="val-currency">Phí
 														vận chuyển :</label>
 													<div class="col-lg-9">
-														<input type="number" class="form-control"
-															placeholder="VNĐ">
+														<f:input path="phiVanChuyen" type="number"
+															cssClass="form-control" placeholder="VNĐ" />
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-2 col-form-label" for="val-currency">Thu
 														hộ :</label>
 													<div class="col-lg-9">
-														<input type="number" class="form-control"
-															placeholder="VNĐ">
+														<f:input path="tienThuHo" type="number"
+															cssClass="form-control" placeholder="VNĐ" />
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-2 col-form-label" for="val-skill">Khách
-														hàng :</label>
+													<label class="col-lg-2 col-form-label" for="val-skill">Địa chỉ gửi :</label>
 													<div class="col-lg-9">
-														<select class="form-control" name="val-skill">
-															<option value="">Chọn khách hàng..</option>
-															<option value=""></option>
-															<option value=""></option>
-														</select>
+														<f:select path="diaChiKhachHang.maDiaChi"
+															cssClass="form-control" name="val-skill">
+															<f:options items="${dsDCKhachHang}"/>
+														</f:select>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -86,18 +87,26 @@
 														thức trả phí :</label>
 													<div class="demo-radio-button">
 														<div class="col-lg-12">
-															<input name="group1" type="radio" class="with-gap"
+															<input name="group1" type="radio" cssClass="with-gap"
 																id="radio_3" /> <label for="radio_3">Chuyển
 																khoản ngân hàng</label>
 														</div>
 														<div class="col-lg-12">
 															<input name="group1" type="radio" id="radio_4"
-																class="with-gap" /> <label for="radio_4">Nhận
+																cssClass="with-gap" /> <label for="radio_4">Nhận
 																hàng thanh toán</label>
 														</div>
 													</div>
 												</div>
-											</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label" for="val-currency">Ghi
+														chú :</label>
+													<div class="col-lg-9">
+														<f:input path="phiVanChuyen" type="text"
+															cssClass="form-control" placeholder="..." />
+													</div>
+												</div>
+											</div><br/>
 											<hr style="background-color: #00a400">
 											<br />
 											<div class="form-actions">
@@ -115,7 +124,7 @@
 												</div>
 											</div>
 											<br />
-										</form>
+										</f:form>
 									</div>
 								</div>
 							</div>
@@ -127,8 +136,7 @@
 	</div>
 	<footer class="footer">
 		© 2018 All rights reserved. Template designed by <a
-			href="https://www.facebook.com/profile.php?id=100010754627040">Chu
-			Thái</a>
+			href="https://www.facebook.com/profile.php?id=100010754627040">Ấu Đoàn Poly</a>
 	</footer>
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
 	<!-- Bootstrap tether Core JavaScript -->

@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Danh sách hóa đơn</h4>
-                                <a href="TiepNhanDH.htm"><button type="button" class="btn btn-success m-b-10 m-l-5" data-toggle="tooltip" data-placement="top" title="Create order">Tiếp nhận hóa đơn</button></a>
+                                <a href="quanlydonhang/taodonhang"><button type="button" class="btn btn-success m-b-10 m-l-5" data-toggle="tooltip" data-placement="top" title="Create order">Tiếp nhận hóa đơn</button></a>
                                 <div class="table-responsive m-t-40">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
@@ -25,17 +25,19 @@
                                                 <th>Tên người nhận</th>
                                                 <th>Số điện thoại người nhận</th>
                                                 <th>Địa chỉ người nhận</th>
+                                                <th>Địa chỉ gửi</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="a" items="${list}">
+                                        <c:forEach var="a" items="${dsDonHang}">
                                             <tr>
                                                 <td><c:out value="${a.maDonHang}"/></td>
                                                 <td><c:out value="${a.tenMatHang}"/></td>
                                                 <td><c:out value="${a.tenNguoiNhan}"/></td>
                                                 <td><c:out value="${a.sdtNguoiNhan}"/></td>
                                                 <td><c:out value="${a.diaChiNguoiNhan}"/></td>
+                                                <td><c:out value="${a.diaChiKhachHang.diaChiGui}"/></td>
                                                 <th><a href="Adddepart.htm" style="color: #004085">Edit</a> / <a href="" style="color: #004085">Del</a></th>
                                             </tr>
                                         </c:forEach>
