@@ -17,7 +17,7 @@
 				</div>
 				<div class="card-body">
 					<div class="typo-headers">
-						<f:form action="themnhanvien"
+						<f:form action="${action}"
 							modelAttribute="nhanvien" method="POST">
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="tenNhanVien">Tên nhân viên</f:label>
@@ -62,8 +62,7 @@
 							</div>
 							<div>
 								<button class="btn btn-lg btn-info">
-									<i class="fa fa-plus fa-lg"></i>&nbsp; <span>Thêm nhân
-										viên</span>
+									<i class="fa fa-plus fa-lg"></i>&nbsp; <span>${tenbutton }</span>
 								</button>
 							</div>
 						</f:form>

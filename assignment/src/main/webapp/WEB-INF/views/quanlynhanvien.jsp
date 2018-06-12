@@ -47,8 +47,8 @@
                                                 <td><c:out value="${item.chucVu.tenChucVu}" /></td>
                                                 <td><c:out value="${item.luongCoBan}" /></td>
                                                 <td>
-                                                    <a href="editNhanVien.htm?id=${item.maNhanVien}"><i class="fa fa-pencil"></i></a>
-                                                    <a href="removeNhanVien.htm?id=${item.maNhanVien}"><i class="fa fa-bitbucket-square"></i></a>
+                                                    <a href="editNhanVien?maNhanVien=${item.maNhanVien}">edit<i class="fa fa-pencil"></i></a>
+                                                    <a href="xoaNhanVien?maNhanVien=${item.maNhanVien}">del<i class="fa fa-bitbucket-square"></i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

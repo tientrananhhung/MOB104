@@ -13,6 +13,4 @@ public interface NhanVienImpl {
 	public boolean xoaNhanVien(NhanVien nhanVien);
 
 	public List<NhanVien> danhSachNhanVien();
-
-	public List<ChucVu> danhSachChucVu();
 }

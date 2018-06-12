@@ -39,10 +39,4 @@ public class NhanVienService implements NhanVienImpl {
 		List<NhanVien> list = nhanVienDAO.danhSachNhanVien();
 		return list;
 	}
-
-	@Override
-	public List<ChucVu> danhSachChucVu() {
-		List<ChucVu> list = nhanVienDAO.danhSachChucVu();
-		return list;
-	}
 }

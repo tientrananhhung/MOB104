@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.entity.ChucVu;
 import com.poly.entity.NhanVien;
+import com.poly.service.ChucVuService;
 import com.poly.service.NhanVienService;
 
 @Controller
@@ -23,6 +24,7 @@ public class NhanVienController {
 
 	@Autowired
 	NhanVienService nhanVienService;
+	ChucVuService chucVuService;
 
 	@GetMapping
 	public String quanLyNhanVien(ModelMap model) {
@@ -33,7 +35,9 @@ public class NhanVienController {
 	@GetMapping("themnhanvien")
 	public String themNhanVien(ModelMap model) {
 		model.addAttribute("nhanvien", new NhanVien());
-		List<ChucVu> list = nhanVienService.danhSachChucVu();
+		model.addAttribute("action","themnhanvien");
+		model.addAttribute("tenbutton","Thêm nhân viên");
+		List<ChucVu> list = chucVuService.layDSChucVu();
 		if (!list.isEmpty()) {
 			HashMap<String, String> cateMap = new HashMap<String, String>();
 			for (ChucVu chucvu : list) {
@@ -47,11 +51,15 @@ public class NhanVienController {
 	@PostMapping("themnhanvien")
 	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
 		nv.setAnhDaiDien(null);
+<<<<<<< HEAD
+		if (nhanVienService.themNhanVien(nv)) {
+=======
 		NhanVien nv1 = new NhanVien(nv.getTenNhanVien(), nv.getEmail(), nv.getAnhDaiDien(), nv.getSoDienThoai(),
 				nv.getDiaChi(), nv.getCmnd(), nv.getLuongCoBan(), nv.getMatKhau(), nv.getChucVu());
 		ChucVu cv = new ChucVu("CV03", "Káº¿ ToÃ¡n");
 		NhanVien nv2 = new NhanVien("bin", "bin", null, "bin", "bin", "bin", 1.0, "bin", cv);
 		if (nhanVienService.themNhanVien(nv2)) {
+>>>>>>> 08c71af5dc0549b5c24210e810beb0821700c6fa
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
 		} else {
