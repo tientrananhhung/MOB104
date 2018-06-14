@@ -6,12 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JSP Page</title>
+<link
+	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="<c:url value="resources/css/helper.css" />" rel="stylesheet">
+<link href="<c:url value="resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
 	<div id="main-wrapper">
-		<jsp:include page="include/header.jsp"></jsp:include><br /> <br />
+		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h3 class="text-primary">TẠO ĐƠN HÀNG</h3>
+				</div>
+				<div class="col-md-7 align-self-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
+								chủ</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Đơn hàng</a></li>
+						<li class="breadcrumb-item active">Tạo đơn hàng</li>
+					</ol>
+				</div>
+			</div>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
@@ -85,10 +104,11 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-2 col-form-label" for="val-skill">Cách trả phí :</label>
+													<label class="col-lg-2 col-form-label" for="val-skill">Cách
+														trả phí :</label>
 													<div class="col-lg-9">
-														<f:select path="cachThucTraPhi"
-															cssClass="form-control" name="val-skill">
+														<f:select path="cachThucTraPhi" cssClass="form-control"
+															name="val-skill">
 															<f:option value="0">Người gửi trả</f:option>
 															<f:option value="1">Người nhận trả</f:option>
 														</f:select>
@@ -112,10 +132,6 @@
 														<div style="float: left; margin-left: 80px">
 															<button style="width: 220px" type="submit"
 																class="btn btn-success">Submit</button>
-														</div>
-														<div style="float: right; margin-right: 80px">
-															<button style="width: 220px" type="button"
-																class="btn btn-inverse">Cancel</button>
 														</div>
 													</div>
 												</div>
