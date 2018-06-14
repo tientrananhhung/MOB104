@@ -16,6 +16,8 @@ import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
 import com.poly.entity.JSONChucVu;
 import com.poly.entity.JSONDonHang;
+import com.poly.entity.JSONNhanVien;
+import com.poly.entity.NhanVien;
 import com.poly.service.ChucVuService;
 import com.poly.service.DonHangService;
 import com.poly.service.NhanVienService;
@@ -63,8 +65,32 @@ public class API {
 			jsonDonHang.setCachThucTraPhi(dh.isCachThucTraPhi());
 			jsonDonHang.setTienThuHo(dh.getTienThuHo());
 			jsonDonHang.setGhiChu(dh.getGhiChu());
-			DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang(dh.getDiaChiKhachHang().getMaDiaChi(), dh.getDiaChiKhachHang().getDiaChiGui(), dh.getDiaChiKhachHang().getKhachHang());
+			DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang(dh.getDiaChiKhachHang().getMaDiaChi(),
+					dh.getDiaChiKhachHang().getDiaChiGui(), dh.getDiaChiKhachHang().getKhachHang());
 			dsDonHang.add(jsonDonHang);
+		}
+		return dsDonHang;
+	}
+
+	@GetMapping(path = "/dsNhanVien", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<JSONNhanVien> dsNhanVien() {
+		List<NhanVien> list = nhanVienService.danhSachNhanVien();
+		List<JSONNhanVien> dsDonHang = new ArrayList<>();
+		for (NhanVien nv : list) {
+			JSONNhanVien jsonNhanVien = new JSONNhanVien();
+			jsonNhanVien.setMaNhanVien(nv.getMaNhanVien());
+			jsonNhanVien.setTenNhanVien(nv.getTenNhanVien());
+			jsonNhanVien.setEmail(nv.getEmail());
+			jsonNhanVien.setAnhDaiDien(nv.getAnhDaiDien());
+			jsonNhanVien.setSoDienThoai(nv.getSoDienThoai());
+			jsonNhanVien.setDiaChi(nv.getDiaChi());
+			jsonNhanVien.setCmnd(nv.getCmnd());
+			jsonNhanVien.setLuongCoBan(nv.getLuongCoBan());
+			jsonNhanVien.setMatKhau(nv.getMatKhau());
+			ChucVu chucVu = new ChucVu(nv.getChucVu().getMaChucVu(), nv.getChucVu().getTenChucVu());
+			jsonNhanVien.setChucVu(chucVu);
+			dsDonHang.add(jsonNhanVien);
 		}
 		return dsDonHang;
 	}
