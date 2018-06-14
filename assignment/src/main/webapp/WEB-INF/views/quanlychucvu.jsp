@@ -11,9 +11,12 @@
 <link rel="icon" type="image/png" sizes="16x16"
 	href="<c:url value="resources/images/favicon.png" />">
 <!-- Nice Select Box -->
-<link rel="stylesheet" href="<c:url value="resources/css/nice-select.css" />">
+<link rel="stylesheet"
+	href="<c:url value="resources/css/nice-select.css" />">
 <!-- Bootstrap Core CSS -->
-<link href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
+<link
+	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="<c:url value="resources/css/helper.css" />" rel="stylesheet">
 <link href="<c:url value="resources/css/style.css" />" rel="stylesheet">
@@ -46,7 +49,7 @@
 							<div class="card-body">
 								<h4 class="card-title">Danh Sách Chức Vụ</h4>
 								<a href="chucvu/themchucvu" class="btn btn-success m-b-10 m-l-5"
-									style="margin-top: 20px;">Thêm</a>
+									style="margin-top: 20px;">Thêm mới chức vụ</a>
 								<div class="table-responsive m-t-40">
 									<table id="myTable" class="table table-bordered table-striped">
 										<thead>
@@ -61,9 +64,10 @@
 												<tr>
 													<td>${l.maChucVu}</td>
 													<td>${l.tenChucVu}</td>
-													<td>
-														<a href="" class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
-													</td>
+													<td><a href="chucvu/suachucvu/${l.maChucVu}" class="btn btn-warning m-b-10 m-l-5"><i
+															class="ti-pencil-alt"></i></a> <a href="chucvu/xoachucvu/${l.maChucVu}"
+														class="btn btn-danger m-b-10 m-l-5"><i
+															class="ti-trash"></i></a></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -98,17 +102,28 @@
 	<!--Custom JavaScript -->
 	<script src="<c:url value="resources/js/custom.min.js" />"></script>
 
-	<script src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/datatables/datatables-init.js" />"></script>
-	<script src="<c:url value="resources/js/lib/nice-select/jquery.nice-select.min.js" />"></script>
-	<script src="<c:url value="resources/js/lib/nice-select/fastclick.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/datatables-init.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/nice-select/jquery.nice-select.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/nice-select/fastclick.js" />"></script>
 	<script src="<c:url value="resources/js/lib/nice-select/prism.js" />"></script>
 </body>
 </html>

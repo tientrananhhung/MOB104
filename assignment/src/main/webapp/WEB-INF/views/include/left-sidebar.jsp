@@ -34,16 +34,16 @@
 					<li><a class="has-arrow  " href="index.htm"><i
 							class="fa fa-home"></i><span class="hide-menu">Trang chủ</span></a></li>
 					<li class="nav-label">Chức năng</li>
-					<li><a class="has-arrow  " href="quanlynhanvien"
+					<li><a class="has-arrow  " href="/assignment/quanlynhanvien"
 						aria-expanded="false"><i class="fa fa-address-card"></i><span
 							class="hide-menu">Quản lý nhân viên</span></a></li>
-					<li><a class="has-arrow  " href="quanlydonhang"
+					<li><a class="has-arrow  " href="/assignment/quanlydonhang"
 						aria-expanded="false"><i class="fa fa-building"></i></i><span
 							class="hide-menu">Quản lý hóa đơn</span></a></li>
-					<li><a class="has-arrow " href="chucvu/"
+					<li><a class="has-arrow " href="/assignment/chucvu"
 						aria-expanded="false"><i class="fa fa-graduation-cap"></i><span
 							class="hide-menu">Quản lý chức vụ</span></a></li>
-					<li><a class="has-arrow  " href="quanlythongke"
+					<li><a class="has-arrow  " href="/assignment/quanlythongke"
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">Thống kê</span></a></li>
 					<!--                            <li class="nav-label">Features</li>

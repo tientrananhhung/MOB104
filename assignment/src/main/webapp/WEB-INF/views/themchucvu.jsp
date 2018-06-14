@@ -7,12 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="<c:url value="resources/images/favicon.png" />">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="<c:url value="resources/images/favicon.png" />">
 <title>Thêm Chức Vụ - Giao Hàng Chậm</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 
 <!-- Bootstrap Core CSS -->
-<link href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
+<link
+	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="<c:url value="resources/css/helper.css" />" rel="stylesheet">
 <link href="<c:url value="resources/css/style.css" />" rel="stylesheet">
@@ -42,10 +45,41 @@
 					</ol>
 				</div>
 			</div>
-			<!-- End Bread crumb -->
-			<!-- Container fluid  -->
-				
-			<!-- End Container fluid  -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Thêm chức vụ</strong>
+							</div>
+							<br />
+							<hr />
+							<div class="card-body">
+								<div class="typo-headers">
+									<f:form action="chucvu/${action}" modelAttribute="chucVu"
+										method="POST">
+										<div class="form-group">
+											<f:label cssClass="control-label mb-1" path="maChucVu">Mã chức vụ</f:label>
+											<f:input path="maChucVu" cssClass="form-control"
+												placeholder="Xin mời nhập mã chức vụ" />
+										</div>
+										<div class="form-group">
+											<f:label cssClass="control-label mb-1" path="tenChucVu">Tên chức vụ</f:label>
+											<f:input path="tenChucVu" cssClass="form-control"
+												placeholder="Xin mời nhập tên chức vụ" />
+										</div>
+										<div>
+											<button class="btn btn-success m-b-10 m-l-5">
+												<i class="fa fa-plus fa-lg"></i>&nbsp; <span>${tenbutton}</span>
+											</button>
+										</div>
+									</f:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
