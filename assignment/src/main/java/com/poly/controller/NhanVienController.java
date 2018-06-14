@@ -3,6 +3,8 @@ package com.poly.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +41,7 @@ public class NhanVienController {
 	public String themNhanVien(ModelMap model) {
 		model.addAttribute("nhanvien", new NhanVien());
 		model.addAttribute("action","themnhanvien");
-		model.addAttribute("tenbutton","Thêm nhân viên");
+		model.addAttribute("tenbutton","ThÃªm nhÃ¢n viÃªn");
 		layChucVu(model);
 		return "themnhanvien";
 	}
@@ -61,7 +63,7 @@ public class NhanVienController {
         layChucVu(model);
         model.addAttribute("nhanvien", nv);
         model.addAttribute("action","suanhanvien");
-		model.addAttribute("tenbutton","Sua nhân viên");
+		model.addAttribute("tenbutton","Sua nhÃ¢n viÃªn");
         return "themnhanvien";
 	}
 	public void layChucVu(ModelMap model) {
