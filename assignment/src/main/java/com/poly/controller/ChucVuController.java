@@ -15,7 +15,7 @@ import com.poly.service.ChucVuService;
 
 @Controller
 @Transactional
-@RequestMapping("/chucvu")
+@RequestMapping("/chucvu/")
 public class ChucVuController {
 
 	@Autowired
@@ -23,7 +23,7 @@ public class ChucVuController {
 
 	@GetMapping
 	public String hienThiChucVu() {
-		return "chucvu";
+		return "quanlychucvu";
 	}
 
 	@GetMapping("themchucvu")
