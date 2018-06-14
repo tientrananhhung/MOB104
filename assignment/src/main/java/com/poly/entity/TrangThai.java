@@ -15,7 +15,7 @@ public class TrangThai {
 	private String maTrangThai;
 	private String trangThai;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "maTrangThai")
 	private Set<TinhTrangDonHang> tinhTrangDonHang;
 

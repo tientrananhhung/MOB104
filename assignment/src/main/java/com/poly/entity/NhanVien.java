@@ -31,7 +31,7 @@ public class NhanVien {
 	@JoinColumn(name = "maChucVu")
 	private ChucVu chucVu;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "maNhanVien")
 	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
