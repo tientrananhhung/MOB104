@@ -33,4 +33,10 @@ public class DonHangService implements DonHangImpl {
 		return lst;
 	}
 
+	@Override
+	public DonHang getDonHang(int id) {
+		DonHang donhang = donhangDAO.getDonHang(id);
+		return donhang;
+	}
+
 }

@@ -50,4 +50,15 @@ public class DonHangDAO implements DonHangImpl {
 		}
 	}
 
+	@Override
+	public DonHang getDonHang(int id) {
+		Session ss = sessionFactory.getCurrentSession();
+		try {
+			DonHang donhang = (DonHang) ss.get(DonHang.class, id);
+			return donhang;
+		}catch (Exception e) {
+			return null;
+		}
+	}
+
 }

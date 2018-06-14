@@ -38,7 +38,8 @@
                                                 <td><c:out value="${a.sdtNguoiNhan}"/></td>
                                                 <td><c:out value="${a.diaChiNguoiNhan}"/></td>
                                                 <td><c:out value="${a.diaChiKhachHang.diaChiGui}"/></td>
-                                                <th><a href="Adddepart.htm" style="color: #004085">Edit</a> / <a href="" style="color: #004085">Del</a></th>
+                                                <th><a href="quanlydonhang/editdonhang/${a.maDonHang}"><i
+													class="fa fa-pencil">Edit</i></a></th>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
