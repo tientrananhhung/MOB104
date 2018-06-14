@@ -65,7 +65,7 @@ public class ChucVuDAO implements ChucVuImpl {
 	public ChucVu timChucVu(String id) {
 		Session session = sessionFactory.getCurrentSession();
 		try {
-			ChucVu chucVu = session.load(ChucVu.class, id);
+			ChucVu chucVu = session.get(ChucVu.class, id);
 			return chucVu;
 		} catch (Exception e) {
 			return null;

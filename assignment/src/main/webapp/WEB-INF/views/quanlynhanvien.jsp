@@ -9,9 +9,9 @@
 </head>
 <body>
 	<div id="main-wrapper">
-		<jsp:include page="header.jsp"></jsp:include><br />
+		<jsp:include page="include/header.jsp"></jsp:include><br />
 		<br />
-		<jsp:include page="left-sidebar.jsp"></jsp:include>
+		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
 			<div class="container-fluid">
 				<div class="card">

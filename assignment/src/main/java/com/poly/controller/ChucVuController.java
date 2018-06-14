@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.poly.entity.ChucVu;
 import com.poly.service.ChucVuService;
@@ -22,14 +23,17 @@ public class ChucVuController {
 	ChucVuService chucVuService;
 
 	@GetMapping
-	public String hienThiChucVu() {
-		return "quanlychucvu";
+	public ModelAndView hienThiChucVu() {
+		ModelAndView model = new ModelAndView("quanlychucvu");
+		model.addObject("dsChucVu", chucVuService.layDSChucVu());
+		return model;
 	}
 
 	@GetMapping("themchucvu")
-	public String themChucVu(ModelMap model) {
-		model.addAttribute("chucVu", new ChucVu());
-		return "themchucvu";
+	public ModelAndView themChucVu() {
+		ModelAndView model = new ModelAndView("themchucvu");
+		model.addObject("chucVu", new ChucVu());
+		return model;
 	}
 
 	@PostMapping("themchucvu")
