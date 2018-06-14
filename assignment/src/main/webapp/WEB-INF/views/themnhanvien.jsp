@@ -75,7 +75,7 @@
 										</div>
 										
 										<div>
-											<button class="btn btn-lg btn-info">
+											<button class="btn btn-success m-b-10 m-l-5">
 												<i class="fa fa-plus fa-lg"></i>&nbsp; <span>${tenbutton }</span>
 											</button>
 										</div>

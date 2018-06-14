@@ -16,7 +16,7 @@ import com.poly.service.ChucVuService;
 
 @Controller
 @Transactional
-@RequestMapping("/chucvu/")
+@RequestMapping("/chucvu")
 public class ChucVuController {
 
 	@Autowired
@@ -33,6 +33,8 @@ public class ChucVuController {
 	public ModelAndView themChucVu() {
 		ModelAndView model = new ModelAndView("themchucvu");
 		model.addObject("chucVu", new ChucVu());
+		model.addObject("action","themchucvu");
+		model.addObject("tenbutton","Thêm chức vụ");
 		return model;
 	}
 
@@ -51,7 +53,9 @@ public class ChucVuController {
 	public String suaChucVu(ModelMap model, @PathVariable("id") String id) {
 		ChucVu chucVu = chucVuService.timChucVu(id);
 		model.addAttribute("chucVu", chucVu);
-		return "suachucvu";
+		model.addAttribute("action", "suachucvu");
+		model.addAttribute("tenbutton", "Sửa chức vụ");
+		return "themchucvu";
 	}
 
 	@PostMapping("suachucvu")
