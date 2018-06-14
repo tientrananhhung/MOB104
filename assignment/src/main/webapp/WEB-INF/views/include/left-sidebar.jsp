@@ -5,45 +5,48 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/images/favicon.png" />">
-        <title>Ela - Bootstrap Admin Dashboard Template</title>
-        <!-- Bootstrap Core CSS -->
-        <link href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="<c:url value="/resources/css/helper.css" />" rel="stylesheet">
-        <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-    </head>
-    <body>
-        <div class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
-                        <li class="nav-label">Home</li>
-                        <li> <a class="has-arrow  " href="index.htm" ><i class="fa fa-home"></i><span class="hide-menu">Trang chủ</span></a>
-                        </li>
-                        <li class="nav-label">Apps</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-address-card"></i><span class="hide-menu">Quản lý nhân viên</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="NhanVien.htm">Danh sách nhân viên</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-building"></i></i><span class="hide-menu">Quản lý hóa đơn</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="DanhSachDonHang.htm">Danh sách hóa đơn</a></li>
-                            </ul>
-                        </li>
-                            <li> <a class="has-arrow  " href="thongKe.htm" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Thống kê</span></a>
-                            </li>
-                        <!--                            <li class="nav-label">Features</li>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSP Page</title>
+<link rel="icon" type="image/png" sizes="16x16"
+	href="<c:url value="/resources/images/favicon.png" />">
+<title></title>
+<!-- Bootstrap Core CSS -->
+<link
+	href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="<c:url value="/resources/css/helper.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+</head>
+<body>
+	<div class="left-sidebar">
+		<!-- Sidebar scroll-->
+		<div class="scroll-sidebar">
+			<!-- Sidebar navigation-->
+			<nav class="sidebar-nav">
+				<ul id="sidebarnav">
+					<li class="nav-devider"></li>
+					<li><a class="has-arrow  " href="index.htm"><i
+							class="fa fa-home"></i><span class="hide-menu">Trang chủ</span></a></li>
+					<li class="nav-label">Chức năng</li>
+					<li><a class="has-arrow  " href="quanlynhanvien"
+						aria-expanded="false"><i class="fa fa-address-card"></i><span
+							class="hide-menu">Quản lý nhân viên</span></a></li>
+					<li><a class="has-arrow  " href="quanlydonhang"
+						aria-expanded="false"><i class="fa fa-building"></i></i><span
+							class="hide-menu">Quản lý hóa đơn</span></a></li>
+					<li><a class="has-arrow " href="chucvu/"
+						aria-expanded="false"><i class="fa fa-graduation-cap"></i><span
+							class="hide-menu">Quản lý chức vụ</span></a></li>
+					<li><a class="has-arrow  " href="quanlythongke"
+						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
+							class="hide-menu">Thống kê</span></a></li>
+					<!--                            <li class="nav-label">Features</li>
                                                     <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Bootstrap UI <span class="label label-rouded label-warning pull-right">6</span></span></a>
                                                         <ul aria-expanded="false" class="collapse">
                                                             <li><a href="ui-alert.html">Alert</a></li>
@@ -131,11 +134,11 @@
                                                             <li><a href="#">item 1.4</a></li>
                                                         </ul>
                                                     </li>-->
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </div>
-    </body>
+				</ul>
+			</nav>
+			<!-- End Sidebar navigation -->
+		</div>
+		<!-- End Sidebar scroll-->
+	</div>
+</body>
 </html>
