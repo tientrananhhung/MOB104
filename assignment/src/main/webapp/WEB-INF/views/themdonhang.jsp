@@ -87,12 +87,12 @@
 														thức trả phí :</label>
 													<div class="demo-radio-button">
 														<div class="col-lg-12">
-															<input name="group1" type="radio" cssClass="with-gap"
+															<f:input path="cachThucTraPhi" name="group1" type="radio" cssClass="with-gap"
 																id="radio_3" /> <label for="radio_3">Chuyển
 																khoản ngân hàng</label>
 														</div>
 														<div class="col-lg-12">
-															<input name="group1" type="radio" id="radio_4"
+															<f:input path="cachThucTraPhi" name="group1" type="radio" id="radio_4"
 																cssClass="with-gap" /> <label for="radio_4">Nhận
 																hàng thanh toán</label>
 														</div>
