@@ -18,7 +18,7 @@
 				<div class="card-body">
 					<div class="typo-headers">
 						<f:form action="taodonhang"
-							modelAttribute="donhang" method="POST">
+							modelAttribute="donhang" method="post">
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="tenMatHang">Tên Mặt Hàng</f:label>
 								<f:input path="tenMatHang" type="text" cssClass="form-control"
@@ -40,6 +40,12 @@
 									placeholder="Xin mời nhập địa chỉ nhân viên" />
 							</div>
 							<div class="form-group">
+								<f:label cssClass="control-label mb-1" path="diaChiKhachHang.maDiaChi">Địa chỉ người gửi</f:label>
+								<f:select path="diaChiKhachHang.maDiaChi">
+									<f:options items="${diachi}"/>
+								</f:select>
+							</div>
+							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="trongLuong">Trọng Lượng</f:label>
 								<f:input path="trongLuong" cssClass="form-control"
 									placeholder="Xin mời nhập chứng minh nhân dân" />
@@ -47,8 +53,10 @@
 							
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="cachThucTraPhi">Cách thức</f:label>
-								<f:input type="number" path="cachThucTraPhi" cssClass="form-control"
-									placeholder="Xin mời nhập lương cơ bản của nhân viên" />
+								<f:select path="cachThucTraPhi">
+									<f:option value="0" label="Người gửi trả" />
+									<f:option value="1" label="Người nhận trả" />
+								</f:select>
 							</div>
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="tienThuHo">Thu Hộ</f:label>

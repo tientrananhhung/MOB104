@@ -10,8 +10,7 @@
 </head>
 <body>
 	<div id="main-wrapper">
-		<jsp:include page="include/header.jsp"></jsp:include><br />
-		<br />
+		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
 			<div class="container-fluid">
@@ -21,8 +20,8 @@
 							<div class="card-header">
 								<strong class="card-title">Thêm nhân viên</strong>
 							</div>
-							<br/>
-							<hr/>
+							<br />
+							<hr />
 							<div class="card-body">
 								<div class="typo-headers">
 									<f:form action="${action}" modelAttribute="nhanvien"
@@ -70,6 +69,11 @@
 											<f:input path="matKhau" cssClass="form-control"
 												placeholder="Xin mời nhập mật khẩu" />
 										</div>
+										<div class="form-group">
+											<f:label cssClass="control-label mb-1" path="anhDaiDien">Mật khẩu</f:label>
+											<f:input path="anhDaiDien" cssClass="form-control" type="file"/>
+										</div>
+										
 										<div>
 											<button class="btn btn-lg btn-info">
 												<i class="fa fa-plus fa-lg"></i>&nbsp; <span>${tenbutton }</span>

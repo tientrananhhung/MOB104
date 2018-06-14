@@ -1,5 +1,10 @@
 package com.poly.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.poly.entity.ChucVu;
+import com.poly.entity.DiaChiKhachHang;
+import com.poly.entity.DonHang;
 import com.poly.entity.KhachHang;
+import com.poly.service.DiaChiKhachHangService;
+import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
 
 @Controller
@@ -20,7 +30,13 @@ public class TrangChuController {
 	
 	@Autowired
 	KhachHangService khachHangService;
-
+	 
+	@Autowired
+	DiaChiKhachHangService diaChiService;
+	
+	@Autowired
+	DonHangService donHangService;
+	
 	@GetMapping
 	public String trangChu() {
 		return "index";
@@ -53,19 +69,41 @@ public class TrangChuController {
 	
 	
 	@PostMapping("dangnhap")
-	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang) {
+	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang,HttpServletRequest rq) {
 		KhachHang kh = khachHangService.dangNhapKhachHang(khachHang.getSoDienThoai(), khachHang.getMatKhau());
 		if(kh != null) {
+			rq.getSession().setAttribute("login", "true");
+			rq.getSession().setAttribute("thongtindangnhap", kh.getMaKhachHang());
 			return "index";
+			
 		}else {
 			return "dangnhap";
 		}
 		
 	}
 
+	@PostMapping("taodonhang")
+	public String guiDangNhap(@ModelAttribute("donhang") DonHang donhang) {
+		if (donHangService.taoDonHang(donhang)) {
+			return "redirect:/quanlynhanvien";
+		} else {
+			return "taodonhang";
+		}
+		
+	}
+	
 	@GetMapping("taodonhang")
-	public String taoDonHang(ModelMap model) {
-	//	model.addAttribute("dangnhap", new KhachHang());
+	public String taoDonHang(ModelMap model,HttpServletRequest rq) {
+		model.addAttribute("donhang", new DonHang());
+		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString()));
+		if (!list.isEmpty()) {
+			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
+			for (DiaChiKhachHang diachi : list) {
+				cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+			}
+			model.addAttribute("diachi", cateMap);
+		}
+
 		return "taodonhang";
 	}
 }
