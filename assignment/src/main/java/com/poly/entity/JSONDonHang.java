@@ -2,20 +2,7 @@ package com.poly.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-@Entity(name = "donhang")
-public class DonHang {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class JSONDonHang {
 	private int maDonHang;
 	private String tenMatHang;
 	private String tenNguoiNhan;
@@ -26,51 +13,8 @@ public class DonHang {
 	private boolean cachThucTraPhi;
 	private float tienThuHo;
 	private String ghiChu;
-
-	@OneToOne
-	@JoinColumn(name = "maDiaChi")
 	private DiaChiKhachHang diaChiKhachHang;
-
-	@OneToMany(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "maDonHang")
 	private Set<TinhTrangDonHang> tinhTrangDonHang;
-
-	public DonHang() {
-		super();
-	}
-
-	public DonHang(String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan, String sdtNguoiNhan,
-			double trongLuong, double phiVanChuyen, boolean cachThucTraPhi, float tienThuHo, String ghiChu,
-			DiaChiKhachHang diaChiKhachHang) {
-		super();
-		this.tenMatHang = tenMatHang;
-		this.tenNguoiNhan = tenNguoiNhan;
-		this.diaChiNguoiNhan = diaChiNguoiNhan;
-		this.sdtNguoiNhan = sdtNguoiNhan;
-		this.trongLuong = trongLuong;
-		this.phiVanChuyen = phiVanChuyen;
-		this.cachThucTraPhi = cachThucTraPhi;
-		this.tienThuHo = tienThuHo;
-		this.ghiChu = ghiChu;
-		this.diaChiKhachHang = diaChiKhachHang;
-	}
-
-	public DonHang(int maDonHang, String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan, String sdtNguoiNhan,
-			double trongLuong, double phiVanChuyen, boolean cachThucTraPhi, float tienThuHo, String ghiChu,
-			DiaChiKhachHang diaChiKhachHang) {
-		super();
-		this.maDonHang = maDonHang;
-		this.tenMatHang = tenMatHang;
-		this.tenNguoiNhan = tenNguoiNhan;
-		this.diaChiNguoiNhan = diaChiNguoiNhan;
-		this.sdtNguoiNhan = sdtNguoiNhan;
-		this.trongLuong = trongLuong;
-		this.phiVanChuyen = phiVanChuyen;
-		this.cachThucTraPhi = cachThucTraPhi;
-		this.tienThuHo = tienThuHo;
-		this.ghiChu = ghiChu;
-		this.diaChiKhachHang = diaChiKhachHang;
-	}
 
 	public int getMaDonHang() {
 		return maDonHang;

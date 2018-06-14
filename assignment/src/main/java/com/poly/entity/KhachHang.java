@@ -22,11 +22,11 @@ public class KhachHang {
 	private String email;
 	private String matKhau;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "maKhachHang")
 	private Set<DonHang> donHang;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "maKhachHang")
 	private Set<DiaChiKhachHang> diaChiKhachHang;
 

@@ -16,7 +16,7 @@ import com.poly.service.ChucVuService;
 
 @Controller
 @Transactional
-@RequestMapping("/chucvu/")
+@RequestMapping("/chucvu")
 public class ChucVuController {
 
 	@Autowired
@@ -29,14 +29,14 @@ public class ChucVuController {
 		return model;
 	}
 
-	@GetMapping("themchucvu")
+	@GetMapping("/themchucvu")
 	public ModelAndView themChucVu() {
 		ModelAndView model = new ModelAndView("themchucvu");
 		model.addObject("chucVu", new ChucVu());
 		return model;
 	}
 
-	@PostMapping("themchucvu")
+	@PostMapping("/themchucvu")
 	public String guiChucVu(@ModelAttribute("chucVu") ChucVu chucVu, ModelMap model) {
 		if (chucVuService.themChucVu(chucVu)) {
 			model.addAttribute("dsChucVu", chucVuService.layDSChucVu());
@@ -47,14 +47,14 @@ public class ChucVuController {
 		}
 	}
 
-	@GetMapping("suachucvu/{id}")
+	@GetMapping("/suachucvu/{id}")
 	public String suaChucVu(ModelMap model, @PathVariable("id") String id) {
 		ChucVu chucVu = chucVuService.timChucVu(id);
 		model.addAttribute("chucVu", chucVu);
 		return "suachucvu";
 	}
 
-	@PostMapping("suachucvu")
+	@PostMapping("/suachucvu")
 	public String guiSuaChucu(@ModelAttribute("chucVu") ChucVu chucVu, ModelMap model) {
 		if (chucVuService.suaChucVu(chucVu)) {
 			model.addAttribute("dsChucVu", chucVuService.layDSChucVu());
@@ -65,7 +65,7 @@ public class ChucVuController {
 		}
 	}
 
-	@GetMapping("xoachucvu/{id}")
+	@GetMapping("/xoachucvu/{id}")
 	public String xoaChucVu(@PathVariable("id") String id, ModelMap model) {
 		ChucVu chucVu = chucVuService.timChucVu(id);
 		if (chucVuService.xoaChucVu(chucVu)) {
