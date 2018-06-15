@@ -1,7 +1,9 @@
 package com.poly.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -18,6 +20,7 @@ import com.poly.entity.JSONChucVu;
 import com.poly.entity.JSONDonHang;
 import com.poly.entity.JSONNhanVien;
 import com.poly.entity.NhanVien;
+import com.poly.entity.TinhTrangDonHang;
 import com.poly.service.ChucVuService;
 import com.poly.service.DonHangService;
 import com.poly.service.NhanVienService;
@@ -67,6 +70,8 @@ public class API {
 			jsonDonHang.setGhiChu(dh.getGhiChu());
 			DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang(dh.getDiaChiKhachHang().getMaDiaChi(),
 					dh.getDiaChiKhachHang().getDiaChiGui(), dh.getDiaChiKhachHang().getKhachHang());
+			jsonDonHang.setDiaChiKhachHang(diaChiKhachHang);
+			jsonDonHang.setTinhTrangDonHang(dh.getTinhTrangDonHang());
 			dsDonHang.add(jsonDonHang);
 		}
 		return dsDonHang;
