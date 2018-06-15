@@ -5,9 +5,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-            if (session == null) {
+            if (session != null) {
+                if (session.getAttribute("login") == null) {
                     response.sendRedirect("/assignment/dangnhap");
-              
+                }
             }
         %>
 <head>
@@ -45,11 +46,6 @@
 								<f:input path="sdtNguoiNhan" cssClass="form-control"
 									placeholder="Xin mời nhập địa chỉ nhân viên" />
 							</div>
-							
-							<div class="form-group">
-							<a class="control-label mb-1">Tên người gửi</a>
-							<input class="form-control" value="${khachhang.tenKhachHang}">
-							</div>
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="diaChiKhachHang.maDiaChi">Địa chỉ người gửi</f:label>
 								<f:select path="diaChiKhachHang.maDiaChi">
@@ -57,35 +53,27 @@
 								</f:select>
 							</div>
 							<div class="form-group">
-								<a class="control-label mb-1">SDT người gửi</a>
-							<input class="form-control" value="${khachhang.soDienThoai}">
-							</div>
-							<div class="form-group">
 								<f:label  cssClass="control-label mb-1" path="trongLuong">Trọng Lượng</f:label>
-								<f:input id="trongluong" type="number" path="trongLuong" cssClass="form-control" placeholder="Xin mời nhập chứng minh nhân dân"/>
+								<f:input id="trongluong"  path="trongLuong" cssClass="form-control" placeholder="Xin mời nhập chứng minh nhân dân"/>
 							</div>
 							
 							<div class="form-group">
 								<f:label  cssClass="control-label mb-1" path="phiVanChuyen">Phí vận chuyển</f:label>
-								<f:input id="phivanchuyen" type="number" path="phiVanChuyen" cssClass="form-control" readonly="true"/>
+								<f:input id="phivanchuyen" path="phiVanChuyen" cssClass="form-control" readonly="true"/>
 							</div>
 							
 							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="cachThucTraPhi">Cách thức</f:label>
-								<f:select path="cachThucTraPhi" id="cachthuc">
+								<f:select path="cachThucTraPhi">
 									<f:option value="0" label="Người gửi trả" />
 									<f:option value="1" label="Người nhận trả" />
 								</f:select>
 							</div>
 							<div class="form-group">
-								<a class="control-label mb-1">Tổng thanh toán người nhận:</a>
-							<input class="form-control" id="thuho">
-							</div>
-							<div class="form-group">
 								<f:label cssClass="control-label mb-1" path="tienThuHo">Thu Hộ</f:label>
-								<f:input type="number" readonly="true" path="tienThuHo" id="tongthanhtoan" cssClass="form-control" />
+								<f:input path="tienThuHo" cssClass="form-control"
+									placeholder="Xin mời nhập mật khẩu" />
 							</div>
-							
 							<div>
 								<button class="btn btn-lg btn-info">
 									<i class="fa fa-plus fa-lg"></i>&nbsp; <span>Thêm đơn hàng</span>
@@ -103,27 +91,9 @@
 	
 	$("#trongluong").bind("change paste keyup", function() {
 	       $("#phivanchuyen").val($(this).val()*40000);
-	       if($("#cachthuc").val() == 0){
-	    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()));
-	       } else {
-	    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()) + parseFloat($("#phivanchuyen").val()));
-	       }
 	 });
-	  $("#thuho").bind("change paste keyup", function() {
-		  if($("#cachthuc").val() == 0){
-	    	   $("#tongthanhtoan").val(parseFloat($(this).val()));
-	       } else {
-	    	   $("#tongthanhtoan").val(parseFloat($(this).val()) + parseFloat($("#phivanchuyen").val()));
-	       }
-	  });
-		  $("#cachthuc").bind("change paste keyup", function() {
-			  if($("#cachthuc").val() == 0){
-		    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()));
-		       } else {
-		    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()) + parseFloat($("#phivanchuyen").val()));
-		       }
-	 });
-	  </script>   
+	</script>
+	     
    
 </body>
 </html>
