@@ -1,5 +1,7 @@
 package com.poly.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,9 +21,13 @@ import com.poly.entity.ChucVu;
 import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
 import com.poly.entity.KhachHang;
+import com.poly.entity.NhanVien;
+import com.poly.entity.TinhTrangDonHang;
+import com.poly.entity.TrangThai;
 import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
+import com.poly.service.TinhTrangDonHangService;
 
 @Controller
 @Transactional
@@ -36,6 +42,9 @@ public class TrangChuController {
 	
 	@Autowired
 	DonHangService donHangService;
+	
+	@Autowired
+	TinhTrangDonHangService tinhTrangDonHangService;
 	
 	@GetMapping
 	public String trangChu() {
@@ -84,12 +93,13 @@ public class TrangChuController {
 
 	@PostMapping("taodonhang")
 	public String guiDangNhap(@ModelAttribute("donhang") DonHang donhang) {
-		if (donHangService.taoDonHang(donhang)) {
+		try {
+			int id = donHangService.taoDonHang(donhang);
+			tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang( new Date(),new TrangThai("daTao", ""),new NhanVien(1),new DonHang(id)));
 			return "redirect:/quanlynhanvien";
-		} else {
+		} catch (Exception e) {
 			return "taodonhang";
 		}
-		
 	}
 	
 	@GetMapping("taodonhang")

@@ -15,12 +15,8 @@ public class DonHangService implements DonHangImpl {
 	@Autowired
 	DonHangDAO donhangDAO;
 
-	@Override
-	public boolean taoDonHang(DonHang donhang) {
-		boolean ck = donhangDAO.taoDonHang(donhang);
-		return ck;
-	}
 
+	
 	@Override
 	public boolean suaDonHang(DonHang donhang) {
 		boolean ck = donhangDAO.suaDonHang(donhang);
@@ -37,6 +33,12 @@ public class DonHangService implements DonHangImpl {
 	public DonHang getDonHang(int id) {
 		DonHang donhang = donhangDAO.getDonHang(id);
 		return donhang;
+	}
+
+	@Override
+	public int taoDonHang(DonHang donhang) {
+		int id = donhangDAO.taoDonHang(donhang);
+		return id;
 	}
 
 }

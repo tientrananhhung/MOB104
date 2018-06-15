@@ -39,6 +39,15 @@ public class DonHang {
 		super();
 	}
 
+	
+	
+	public DonHang(int maDonHang) {
+		super();
+		this.maDonHang = maDonHang;
+	}
+
+
+
 	public DonHang(String tenMatHang, String tenNguoiNhan, String diaChiNguoiNhan, String sdtNguoiNhan,
 			double trongLuong, double phiVanChuyen, boolean cachThucTraPhi, float tienThuHo, String ghiChu,
 			DiaChiKhachHang diaChiKhachHang) {

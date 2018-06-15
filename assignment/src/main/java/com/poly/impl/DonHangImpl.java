@@ -6,7 +6,7 @@ import com.poly.entity.DonHang;
 
 public interface DonHangImpl {
 	
-	public boolean taoDonHang(DonHang donhang);
+	public int taoDonHang(DonHang donhang);
 	
 	public boolean suaDonHang(DonHang donhang);
 	
