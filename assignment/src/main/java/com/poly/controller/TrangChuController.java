@@ -105,7 +105,9 @@ public class TrangChuController {
 	@GetMapping("taodonhang")
 	public String taoDonHang(ModelMap model,HttpServletRequest rq) {
 		model.addAttribute("donhang", new DonHang());
-		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString()));
+		int maKH = Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString());
+		model.addAttribute("khachhang",khachHangService.layKhachHang(maKH));
+		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
 		if (!list.isEmpty()) {
 			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
 			for (DiaChiKhachHang diachi : list) {

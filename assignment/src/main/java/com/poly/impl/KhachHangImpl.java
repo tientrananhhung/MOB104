@@ -10,4 +10,6 @@ public interface KhachHangImpl {
 	public boolean quenMatKhauKhachHang(String email);
 
 	public boolean doiMatKhauKhachHang(int id, String passWord);
+	
+	public KhachHang layKhachHang(int id);
 }

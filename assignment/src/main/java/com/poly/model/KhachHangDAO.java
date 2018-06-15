@@ -52,4 +52,15 @@ public class KhachHangDAO implements KhachHangImpl {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public KhachHang layKhachHang(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			KhachHang kh = (KhachHang) session.get(KhachHang.class, id);
+			return kh;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

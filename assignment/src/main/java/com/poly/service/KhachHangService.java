@@ -37,4 +37,10 @@ public class KhachHangService implements KhachHangImpl {
 		return false;
 	}
 
+	@Override
+	public KhachHang layKhachHang(int id) {
+		KhachHang kh = khDao.layKhachHang(id);
+		return kh;
+	}
+
 }
