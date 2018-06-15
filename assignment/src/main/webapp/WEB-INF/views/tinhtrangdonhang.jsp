@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh sách đơn hàng</title>
+<title>Tình trạng đơn hàng</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="icon" type="image/png" sizes="16x16"
 	href="<c:url value="resources/images/favicon.png" />">
@@ -33,7 +33,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
 								Chủ</a></li>
-						<li class="breadcrumb-item active">Đơn hàng</li>
+						<li class="breadcrumb-item active">Tình trạng đơn hàng</li>
 					</ol>
 				</div>
 			</div>
@@ -42,11 +42,11 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Danh sách hóa đơn</h4>
-								<a href="quanlydonhang/taodonhang"><button type="button"
-										class="btn btn-success m-b-10 m-l-5" data-toggle="tooltip"
-										data-placement="top" title="Create order">Tiếp nhận
-										hóa đơn</button></a>
+								<h4 class="card-title">Tình trạng đơn hàng</h4>
+								<a href="trangthaidonhang/taoTinhTrangDonHang"><button
+										type="button" class="btn btn-success m-b-10 m-l-5"
+										data-toggle="tooltip" data-placement="top"
+										title="Create state order">Tạo tình trạng đơn</button></a>
 								<div class="table-responsive m-t-40">
 									<table id="example23"
 										class="display nowrap table table-hover table-striped table-bordered"
@@ -54,24 +54,20 @@
 										<thead>
 											<tr>
 												<th>Mã đơn hàng</th>
-												<th>Tên mặt hàng</th>
-												<th>Tên người nhận</th>
-												<th>Số điện thoại người nhận</th>
-												<th>Địa chỉ người nhận</th>
-												<th>Địa chỉ gửi</th>
+												<th>Nhân viên</th>
+												<th>Trạng thái đơn</th>
+												<th>Thời gian</th>
 												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="a" items="${dsDonHang}">
+											<c:forEach var="a" items="${dsTinhTrang}">
 												<tr>
-													<td><c:out value="${a.maDonHang}" /></td>
-													<td><c:out value="${a.tenMatHang}" /></td>
-													<td><c:out value="${a.tenNguoiNhan}" /></td>
-													<td><c:out value="${a.sdtNguoiNhan}" /></td>
-													<td><c:out value="${a.diaChiNguoiNhan}" /></td>
-													<td><c:out value="${a.diaChiKhachHang.diaChiGui}" /></td>
-													<th><a href="quanlydonhang/editdonhang/${a.maDonHang}"
+													<td><c:out value="${a.donHang.maDonHang}" /></td>
+													<td><c:out value="${a.nhanVien.tenNhanVien}" /></td>
+													<td><c:out value="${a.trangThai.trangThai}" /></td>
+													<td><c:out value="${a.thoiGian}" /></td>
+													<th><a href="tinhtrangdonhang/editdtinhtrang/${a.id}"
 														class="btn btn-warning m-b-10 m-l-5"><i
 															class="ti-pencil-alt"></i></i></a></th>
 												</tr>
@@ -118,46 +114,46 @@
 				</div>
 			</div>
 		</div>
-		</div>
-		<footer class="footer">
-			© 2018 All rights reserved. Template designed by <a
-				href="https://www.facebook.com/profile.php?id=100010754627040">Chu
-				Thái</a>
-		</footer>
-		<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
-		<!-- Bootstrap tether Core JavaScript -->
-		<script
-			src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js"/>"></script>
-		<!-- slimscrollbar scrollbar JavaScript -->
-		<script src="<c:url value="resources/js/jquery.slimscroll.js"/>"></script>
-		<!--Menu sidebar -->
-		<script src="<c:url value="resources/js/sidebarmenu.js"/>"></script>
-		<!--stickey kit -->
-		<script
-			src="<c:url value="resources/js/lib/sticky-kit-master/dist/sticky-kit.min.js"/>"></script>
-		<!--Custom JavaScript -->
-		<script src="<c:url value="resources/js/custom.min.js"/>"></script>
+	</div>
+	<footer class="footer">
+		© 2018 All rights reserved. Template designed by <a
+			href="https://www.facebook.com/profile.php?id=100010754627040">Chu
+			Thái</a>
+	</footer>
+	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script
+		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js"/>"></script>
+	<!-- slimscrollbar scrollbar JavaScript -->
+	<script src="<c:url value="resources/js/jquery.slimscroll.js"/>"></script>
+	<!--Menu sidebar -->
+	<script src="<c:url value="resources/js/sidebarmenu.js"/>"></script>
+	<!--stickey kit -->
+	<script
+		src="<c:url value="resources/js/lib/sticky-kit-master/dist/sticky-kit.min.js"/>"></script>
+	<!--Custom JavaScript -->
+	<script src="<c:url value="resources/js/custom.min.js"/>"></script>
 
 
-		<script
-			src="<c:url value="resources/js/lib/datatables/datatables.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"/>"></script>
-		<script
-			src="<c:url value="resources/js/lib/datatables/datatables-init.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/datatables.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"/>"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/datatables-init.js"/>"></script>
 </body>
 </html>
