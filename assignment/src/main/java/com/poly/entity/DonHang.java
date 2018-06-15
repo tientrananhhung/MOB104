@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,11 +28,11 @@ public class DonHang {
 	private float tienThuHo;
 	private String ghiChu;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDiaChi")
 	private DiaChiKhachHang diaChiKhachHang;
 
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDonHang")
 	private Set<TinhTrangDonHang> tinhTrangDonHang;
 
