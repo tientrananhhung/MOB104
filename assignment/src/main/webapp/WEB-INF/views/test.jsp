@@ -113,6 +113,8 @@
 		        			'</tr>'
 		        		);
 			        });
+		        	$('#myTable').draw();
+		        	$('#myTable').DataTable();
 		        }else{
 		        	$('thead').append(
 		        		'<tr>'+
@@ -128,6 +130,8 @@
 		        			'</tr>'
 		        		);
 			        });
+		        	$('#myTable').draw();
+		        	$('#myTable').DataTable();
 		        }
 		        
 		      })
