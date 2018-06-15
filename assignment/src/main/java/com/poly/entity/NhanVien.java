@@ -38,6 +38,15 @@ public class NhanVien {
 	public NhanVien() {
 		super();
 	}
+	
+	
+
+	public NhanVien(int maNhanVien) {
+		super();
+		this.maNhanVien = maNhanVien;
+	}
+
+
 
 	public NhanVien(String tenNhanVien, String email, String anhDaiDien, String soDienThoai, String diaChi, String cmnd,
 			double luongCoBan, String matKhau, ChucVu chucVu) {
