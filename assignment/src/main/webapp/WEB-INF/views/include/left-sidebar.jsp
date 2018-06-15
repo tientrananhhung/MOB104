@@ -37,9 +37,16 @@
 					<li><a class="has-arrow  " href="/assignment/quanlynhanvien"
 						aria-expanded="false"><i class="fa fa-address-card"></i><span
 							class="hide-menu">Quản lý nhân viên</span></a></li>
-					<li><a class="has-arrow  " href="/assignment/quanlydonhang"
-						aria-expanded="false"><i class="fa fa-building"></i></i><span
-							class="hide-menu">Quản lý hóa đơn</span></a></li>
+					<li><a class="has-arrow  " href="#" aria-expanded="false"><i
+							class="fa fa-building"></i></i><span class="hide-menu">Quản lý
+								đơn hàng</span></a>
+						<ul aria-expanded="false" class="collapse">
+							<li><a href="/assignment/quanlydonhang">Danh sách đơn
+									hàng</a></li>
+						</ul>
+						<ul aria-expanded="false" class="collapse">
+							<li><a href="/assignment/trangthaidonhang">Trạng thái đơn hàng</a></li>
+						</ul></li>
 					<li><a class="has-arrow " href="/assignment/chucvu"
 						aria-expanded="false"><i class="fa fa-graduation-cap"></i><span
 							class="hide-menu">Quản lý chức vụ</span></a></li>

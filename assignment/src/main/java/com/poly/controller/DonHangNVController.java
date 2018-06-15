@@ -33,9 +33,7 @@ public class DonHangNVController {
 		@GetMapping
 		public String qlDonHang(ModelMap model) {
 			model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
-			System.out.print("dh" + donhangService.danhsachDonHang());
 			return "donhang";
-			
 		}
 		
 		@GetMapping("taodonhang")
