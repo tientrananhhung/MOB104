@@ -73,10 +73,11 @@
 						</div>
 					</div>
 					<div>
-						<button type="button"
+						<button id="hienthibang" type="button"
 							class="btn btn-success btn-flat m-b-10 m-l-5">Success</button>
 					</div>
 				</div>
+				<div class="hienthi"></div>
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
@@ -88,118 +89,12 @@
 										cellspacing="0" width="100%">
 										<thead>
 											<tr>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Age</th>
-												<th>Start date</th>
-												<th>Salary</th>
+												<th></th>
 											</tr>
 										</thead>
-										<tfoot>
-											<tr>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Age</th>
-												<th>Start date</th>
-												<th>Salary</th>
-											</tr>
-										</tfoot>
 										<tbody>
 											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td>61</td>
-												<td>2011/04/25</td>
-												<td>$320,800</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">Thống kê đơn hàng</h4>
-								<div class="table-responsive m-t-40">
-									<table id="example23"
-										class="display nowrap table table-hover table-striped table-bordered"
-										cellspacing="0" width="100%">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Age</th>
-												<th>Start date</th>
-												<th>Salary</th>
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Age</th>
-												<th>Start date</th>
-												<th>Salary</th>
-											</tr>
-										</tfoot>
-										<tbody>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td>61</td>
-												<td>2011/04/25</td>
-												<td>$320,800</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">Thống kê nhân viên</h4>
-								<div class="table-responsive m-t-40">
-									<table id="example23"
-										class="display nowrap table table-hover table-striped table-bordered"
-										cellspacing="0" width="100%">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Age</th>
-												<th>Start date</th>
-												<th>Salary</th>
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Office</th>
-												<th>Age</th>
-												<th>Start date</th>
-												<th>Salary</th>
-											</tr>
-										</tfoot>
-										<tbody>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td>61</td>
-												<td>2011/04/25</td>
-												<td>$320,800</td>
+												<td></td>
 											</tr>
 										</tbody>
 									</table>
@@ -259,6 +154,27 @@
 			var ck = $(this).val();
 			if(ck == 'nv'){
 				$('#val-date-choose').empty();
+				$('.hienthi').empty();
+				$('.hienthi')
+						.append(
+								'<div class="row">'
+										+ '<div class="col-12">'
+										+ '<div class="card">'
+										+ '<div class="card-body">'
+										+ '<h4 class="card-title">Thống kê doanh thu</h4>'
+										+ '<div class="table-responsive m-t-40">'
+										+ '<table id="example23"'
+										+ 'class="display nowrap table table-hover table-striped table-bordered"'
+										+ 'cellspacing="0" width="100%">'
+										+ '<thead>' + '<tr>'
+										+ '<th></th>' + '</tr>'
+										+ '</thead>'
+										+ '<tbody>' + '<tr>'
+										+ '<td></td>' + '</tr>'
+										+ '</tbody>'
+										+ '</table>' + '</div>'
+										+ '</div>' + '</div>'
+										+ '</div>' + '</div>');
 			}else if(ck == 'dh'){
 				$('#val-date-choose').empty();
 				$('#val-date-choose').append(
@@ -271,6 +187,68 @@
 					'<input type="date" class="form-control" placeholder="dd/mm/yyyy">'+
 					'</div>'
 				);
+				$.ajax({
+			        url: '/assignment/api/dsDonHang',
+			        type: 'GET',
+			      })
+			      .done(function(data) {
+			        console.log(data);
+			        
+			      })
+			      .fail(function() {
+			        console.log("error");
+			      })
+			      .always(function() {
+			        console.log("complete");
+			      });
+			}else if(ck == 'dt'){
+				$('#val-date-choose').empty();
+				$('#val-date-choose').append(
+					'<label class="col-form-label" for="val-skill">Từ ngày</label>'+
+					'<div class="col-lg-4">'+
+					'<input type="date" class="form-control" placeholder="dd/mm/yyyy">'+
+					'</div>'+
+					'<label class="col-form-label" for="val-skill">Đến ngày</label>'+
+					'<div class="col-lg-4">'+
+					'<input type="date" class="form-control" placeholder="dd/mm/yyyy">'+
+					'</div>'
+				);
+			}else{
+				$('#val-date-choose').empty();
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).on('change', '#val-skill', function(event) {
+			var ck = $(this).val();
+			if(ck == 'nv'){
+				$('#').empty();
+			}else if(ck == 'dh'){
+				$('#val-date-choose').empty();
+				$('#val-date-choose').append(
+					'<label class="col-form-label" for="val-skill">Từ ngày</label>'+
+					'<div class="col-lg-4">'+
+					'<input type="date" class="form-control" placeholder="dd/mm/yyyy">'+
+					'</div>'+
+					'<label class="col-form-label" for="val-skill">Đến ngày</label>'+
+					'<div class="col-lg-4">'+
+					'<input type="date" class="form-control" placeholder="dd/mm/yyyy">'+
+					'</div>'
+				);
+				$.ajax({
+			        url: '/assignment/api/dsDonHang',
+			        type: 'GET',
+			      })
+			      .done(function(data) {
+			        console.log(data);
+			        
+			      })
+			      .fail(function() {
+			        console.log("error");
+			      })
+			      .always(function() {
+			        console.log("complete");
+			      });
 			}else if(ck == 'dt'){
 				$('#val-date-choose').empty();
 				$('#val-date-choose').append(
