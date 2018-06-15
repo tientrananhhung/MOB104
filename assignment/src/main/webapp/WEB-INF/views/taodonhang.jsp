@@ -53,15 +53,13 @@
 								</f:select>
 							</div>
 							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="trongLuong">Trọng Lượng</f:label>
-								<f:input path="trongLuong" cssClass="form-control"
-									placeholder="Xin mời nhập chứng minh nhân dân" />
+								<f:label  cssClass="control-label mb-1" path="trongLuong">Trọng Lượng</f:label>
+								<f:input id="trongluong"  path="trongLuong" cssClass="form-control" placeholder="Xin mời nhập chứng minh nhân dân"/>
 							</div>
 							
 							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="phiVanChuyen">Phí vận chuyển</f:label>
-								<f:input path="phiVanChuyen" cssClass="form-control"
-									placeholder="Xin mời nhập chứng minh nhân dân" />
+								<f:label  cssClass="control-label mb-1" path="phiVanChuyen">Phí vận chuyển</f:label>
+								<f:input id="phivanchuyen" path="phiVanChuyen" cssClass="form-control" readonly="true"/>
 							</div>
 							
 							<div class="form-group">
@@ -87,5 +85,15 @@
 			</div>
 		</div>
 	</div>
+	
+	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
+	<script>
+	
+	$("#trongluong").bind("change paste keyup", function() {
+	       $("#phivanchuyen").val($(this).val()*40000);
+	 });
+	</script>
+	     
+   
 </body>
 </html>
