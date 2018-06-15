@@ -7,24 +7,24 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
-import com.poly.impl.DiaChiKHImpl;
+import com.poly.entity.TrangThai;
+import com.poly.impl.TrangThaiImpl;
 
 @Repository
-public class DiaChiKHDAO implements DiaChiKHImpl {
+public class TrangThaiDAO implements TrangThaiImpl {
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
-	public List<DiaChiKhachHang> danhsachDCKhachHang() {
+	public List<TrangThai> danhsachTrangThai() {
 		Session ss = sessionFactory.getCurrentSession();
-		String sql = "from diachikhachhang";
+		String sql = "from trangthai";
 		try {
-			List<DiaChiKhachHang> lst = ss.createQuery(sql).getResultList();
+			List<TrangThai> lst = ss.createQuery(sql).getResultList();
 			return lst;
-		} catch (Exception ex) {
+		}catch(Exception ex) {
 			return null;
 		}
 	}

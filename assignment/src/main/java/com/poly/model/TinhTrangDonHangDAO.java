@@ -8,19 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.poly.entity.DonHang;
-import com.poly.impl.DonHangImpl;
+import com.poly.entity.TinhTrangDonHang;
+import com.poly.impl.TrangThaiDonHangImpl;
 
 @Repository
-public class DonHangDAO implements DonHangImpl {
+public class TinhTrangDonHangDAO implements TrangThaiDonHangImpl {
 
 	@Autowired
 	SessionFactory sessionFactory;
-
+	
 	@Override
-	public boolean taoDonHang(DonHang donhang) {
+	public boolean taoTinhTrangDon(TinhTrangDonHang tinhtrang) {
 		Session ss = sessionFactory.getCurrentSession();
 		try {
-			ss.save(donhang);
+			ss.save(tinhtrang);
 			return true;
 		} catch (Exception ex) {
 			return false;
@@ -28,10 +29,10 @@ public class DonHangDAO implements DonHangImpl {
 	}
 
 	@Override
-	public boolean suaDonHang(DonHang donhang) {
+	public boolean suaTinhTrang(TinhTrangDonHang tinhtrang) {
 		Session ss = sessionFactory.getCurrentSession();
 		try {
-			ss.update(donhang);
+			ss.update(tinhtrang);
 			return true;
 		} catch (Exception ex) {
 			return false;
@@ -39,11 +40,11 @@ public class DonHangDAO implements DonHangImpl {
 	}
 
 	@Override
-	public List<DonHang> danhsachDonHang() {
+	public List<TinhTrangDonHang> danhsachTinhTrang() {
 		Session ss = sessionFactory.getCurrentSession();
-		String sql = "from donhang";
+		String sql = "from tinhtrangdonhang";
 		try {
-			List<DonHang> lst = ss.createQuery(sql).getResultList();
+			List<TinhTrangDonHang> lst = ss.createQuery(sql).getResultList();
 			return lst;
 		} catch (Exception ex) {
 			return null;
@@ -51,11 +52,11 @@ public class DonHangDAO implements DonHangImpl {
 	}
 
 	@Override
-	public DonHang getDonHang(int id) {
+	public TinhTrangDonHang getTinhTrang(int id) {
 		Session ss = sessionFactory.getCurrentSession();
 		try {
-			DonHang donhang = (DonHang) ss.get(DonHang.class, id);
-			return donhang;
+			TinhTrangDonHang tinhtrang = (TinhTrangDonHang) ss.get(TinhTrangDonHang.class, id);
+			return tinhtrang;
 		}catch (Exception e) {
 			return null;
 		}

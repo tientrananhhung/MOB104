@@ -5,13 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
+<title>Tạo đơn hàng</title>
+<link
+	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="<c:url value="resources/css/helper.css" />" rel="stylesheet">
+<link href="<c:url value="resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
 	<div id="main-wrapper">
-		<jsp:include page="include/header.jsp"></jsp:include><br /> <br />
+		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h3 class="text-primary">TẠO ĐƠN HÀNG</h3>
+				</div>
+				<div class="col-md-7 align-self-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
+								chủ</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Đơn hàng</a></li>
+						<li class="breadcrumb-item active">Tạo đơn hàng</li>
+					</ol>
+				</div>
+			</div>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
@@ -23,8 +42,9 @@
 							<div class="card-body" style="margin-left: 20px;">
 								<div class="col-lg-12">
 									<div class="form-validation">
-										<f:form cssClass="form-valide" action="taodonhangNV"
+										<f:form cssClass="form-valide" action="${action}"
 											method="POST" modelAttribute="donhang">
+											<f:hidden path="maDonHang" />
 											<div class="row">
 												<div class="col-md-6">
 													<f:input path="tenMatHang" type="text"
@@ -74,39 +94,36 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-2 col-form-label" for="val-skill">Địa chỉ gửi :</label>
+													<label class="col-lg-2 col-form-label" for="val-skill">Địa
+														chỉ gửi :</label>
 													<div class="col-lg-9">
 														<f:select path="diaChiKhachHang.maDiaChi"
 															cssClass="form-control" name="val-skill">
-															<f:options items="${dsDCKhachHang}"/>
+															<f:options items="${dsDCKhachHang}" />
 														</f:select>
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-3 col-form-label" for="val-currency">Cách
-														thức trả phí :</label>
-													<div class="demo-radio-button">
-														<div class="col-lg-12">
-															<f:input path="cachThucTraPhi" name="group1" type="radio" cssClass="with-gap"
-																id="radio_3" /> <label for="radio_3">Chuyển
-																khoản ngân hàng</label>
-														</div>
-														<div class="col-lg-12">
-															<f:input path="cachThucTraPhi" name="group1" type="radio" id="radio_4"
-																cssClass="with-gap" /> <label for="radio_4">Nhận
-																hàng thanh toán</label>
-														</div>
+													<label class="col-lg-2 col-form-label" for="val-skill">Cách
+														trả phí :</label>
+													<div class="col-lg-9">
+														<f:select path="cachThucTraPhi" cssClass="form-control"
+															name="val-skill">
+															<f:option value="0">Người gửi trả</f:option>
+															<f:option value="1">Người nhận trả</f:option>
+														</f:select>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-2 col-form-label" for="val-currency">Ghi
 														chú :</label>
 													<div class="col-lg-9">
-														<f:input path="phiVanChuyen" type="text"
+														<f:textarea path="ghiChu" type="text"
 															cssClass="form-control" placeholder="..." />
 													</div>
 												</div>
-											</div><br/>
+											</div>
+											<br />
 											<hr style="background-color: #00a400">
 											<br />
 											<div class="form-actions">
@@ -115,10 +132,6 @@
 														<div style="float: left; margin-left: 80px">
 															<button style="width: 220px" type="submit"
 																class="btn btn-success">Submit</button>
-														</div>
-														<div style="float: right; margin-right: 80px">
-															<button style="width: 220px" type="button"
-																class="btn btn-inverse">Cancel</button>
 														</div>
 													</div>
 												</div>
@@ -136,7 +149,8 @@
 	</div>
 	<footer class="footer">
 		© 2018 All rights reserved. Template designed by <a
-			href="https://www.facebook.com/profile.php?id=100010754627040">Ấu Đoàn Poly</a>
+			href="https://www.facebook.com/profile.php?id=100010754627040">Ấu
+			Đoàn Poly</a>
 	</footer>
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
 	<!-- Bootstrap tether Core JavaScript -->

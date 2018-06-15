@@ -11,5 +11,7 @@ public interface DonHangImpl {
 	public boolean suaDonHang(DonHang donhang);
 	
 	public List<DonHang> danhsachDonHang();
+	
+	public DonHang getDonHang(int id);
 
 }
