@@ -85,6 +85,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
 	<script>
 	
