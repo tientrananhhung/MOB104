@@ -142,6 +142,20 @@
 		        console.log("complete");
 		      });
 		});
+		
+		$(document).ready(function() {
+			$.ajax({
+                url: '/assignment/api/dsDonHang',
+                type: 'GET',
+            })
+            .done(function(data) {
+                console.log(data);
+            })
+            .fail(function() {
+            })
+            .always(function() {
+            });
+        });
 	</script>
 </body>
 </html>

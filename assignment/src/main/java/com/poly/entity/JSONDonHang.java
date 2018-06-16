@@ -1,5 +1,6 @@
 package com.poly.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class JSONDonHang {
@@ -14,7 +15,7 @@ public class JSONDonHang {
 	private float tienThuHo;
 	private String ghiChu;
 	private DiaChiKhachHang diaChiKhachHang;
-	private Set<TinhTrangDonHang> tinhTrangDonHang;
+	private Set<JSONTinhTrangDonHang> jsonTinhTrangDonHang = new HashSet<JSONTinhTrangDonHang>(0);
 
 	public int getMaDonHang() {
 		return maDonHang;
@@ -104,12 +105,12 @@ public class JSONDonHang {
 		this.diaChiKhachHang = diaChiKhachHang;
 	}
 
-	public Set<TinhTrangDonHang> getTinhTrangDonHang() {
-		return tinhTrangDonHang;
+	public Set<JSONTinhTrangDonHang> getJsonTinhTrangDonHang() {
+		return jsonTinhTrangDonHang;
 	}
 
-	public void setTinhTrangDonHang(Set<TinhTrangDonHang> tinhTrangDonHang) {
-		this.tinhTrangDonHang = tinhTrangDonHang;
+	public void setJsonTinhTrangDonHang(Set<JSONTinhTrangDonHang> jsonTinhTrangDonHang) {
+		this.jsonTinhTrangDonHang = jsonTinhTrangDonHang;
 	}
 
 }

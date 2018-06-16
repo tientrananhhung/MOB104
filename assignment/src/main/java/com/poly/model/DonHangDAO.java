@@ -56,9 +56,22 @@ public class DonHangDAO implements DonHangImpl {
 		try {
 			DonHang donhang = (DonHang) ss.get(DonHang.class, id);
 			return donhang;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@Override
+	public List<DonHang> layDonHangId(int id) {
+		Session ss = sessionFactory.getCurrentSession();
+		List<DonHang> list = null;
+		String sql = "from tinhtrangdonhang where maDonHang = '" + id + "'";
+		try {
+			list = ss.createQuery(sql).getResultList();
+		} catch (Exception e) {
+			list = null;
+		}
+		return list;
 	}
 
 }
