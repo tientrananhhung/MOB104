@@ -26,7 +26,8 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
 								chủ</a></li>
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Đơn hàng</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Đơn
+								hàng</a></li>
 						<li class="breadcrumb-item active">Tạo đơn hàng</li>
 					</ol>
 				</div>
@@ -99,7 +100,7 @@
 													<div class="col-lg-9">
 														<f:select path="diaChiKhachHang.maDiaChi"
 															cssClass="form-control" name="val-skill">
-															<f:options items="${dsDCKhachHang}" />
+															<f:options items="${diachi}" />
 														</f:select>
 													</div>
 												</div>
