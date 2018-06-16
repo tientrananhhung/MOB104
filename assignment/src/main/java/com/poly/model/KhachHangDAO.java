@@ -1,5 +1,7 @@
 package com.poly.model;
 
+import java.util.List;
+
 import javax.print.PrintException;
 
 import org.hibernate.Session;
@@ -7,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.KhachHang;
 import com.poly.impl.KhachHangImpl;
 
@@ -60,6 +63,18 @@ public class KhachHangDAO implements KhachHangImpl {
 			KhachHang kh = (KhachHang) session.get(KhachHang.class, id);
 			return kh;
 		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<KhachHang> layDSKhachHang() {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "from khachhang";
+		try {
+			List<KhachHang> list = session.createQuery(sql).getResultList();
+			return list;
+		} catch (Exception ex) {
 			return null;
 		}
 	}
