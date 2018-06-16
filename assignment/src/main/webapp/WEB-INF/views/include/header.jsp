@@ -29,7 +29,7 @@
                         <b><img src="resources/images/logo.png" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="resources/images/logo2.png" alt="homepage" class="dark-logo" width="140" height="60" /></span>
+                        <span><img src="resources/images/Untitled-2.png" alt="homepage" class="dark-logo" width="140" height="60" /></span>
                     </a>
                 </div>
                 <!-- End Logo -->

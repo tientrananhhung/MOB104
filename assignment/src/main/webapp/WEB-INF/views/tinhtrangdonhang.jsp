@@ -67,9 +67,9 @@
 													<td><c:out value="${a.nhanVien.tenNhanVien}" /></td>
 													<td><c:out value="${a.trangThai.trangThai}" /></td>
 													<td><c:out value="${a.thoiGian}" /></td>
-													<th><a href="tinhtrangdonhang/editdtinhtrang/${a.id}"
+													<th><center><a href="trangthaidonhang/editdtinhtrang/${a.id}"
 														class="btn btn-warning m-b-10 m-l-5"><i
-															class="ti-pencil-alt"></i></i></a></th>
+															class="ti-pencil-alt"></i></i></a></center></th>
 												</tr>
 											</c:forEach>
 										</tbody>

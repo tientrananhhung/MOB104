@@ -63,7 +63,7 @@ public class NhanVienController {
         layChucVu(model);
         model.addAttribute("nhanvien", nv);
         model.addAttribute("action","suanhanvien");
-		model.addAttribute("tenbutton","Sua nhân viên");
+		model.addAttribute("tenbutton","Sửa nhân viên");
         return "themnhanvien";
 	}
 	public void layChucVu(ModelMap model) {
