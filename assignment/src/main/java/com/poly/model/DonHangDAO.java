@@ -17,13 +17,13 @@ public class DonHangDAO implements DonHangImpl {
 	SessionFactory sessionFactory;
 
 	@Override
-	public boolean taoDonHang(DonHang donhang) {
+	public int taoDonHang(DonHang donhang) {
 		Session ss = sessionFactory.getCurrentSession();
 		try {
-			ss.save(donhang);
-			return true;
+			int id =  (int) ss.save(donhang);
+			return id;
 		} catch (Exception ex) {
-			return false;
+			return 0;
 		}
 	}
 

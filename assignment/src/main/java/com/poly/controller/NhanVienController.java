@@ -48,7 +48,7 @@ public class NhanVienController {
 
 	@PostMapping("themnhanvien")
 	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
-		nv.setAnhDaiDien(null);
+		nv.setAnhDaiDien("anhthe1.jpg");
 		if (nhanVienService.themNhanVien(nv)) {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
@@ -63,7 +63,7 @@ public class NhanVienController {
         layChucVu(model);
         model.addAttribute("nhanvien", nv);
         model.addAttribute("action","suanhanvien");
-		model.addAttribute("tenbutton","Sua nhân viên");
+		model.addAttribute("tenbutton","Sửa nhân viên");
         return "themnhanvien";
 	}
 	public void layChucVu(ModelMap model) {

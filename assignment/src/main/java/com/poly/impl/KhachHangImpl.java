@@ -1,5 +1,7 @@
 package com.poly.impl;
 
+import java.util.List;
+
 import com.poly.entity.KhachHang;
 
 public interface KhachHangImpl {
@@ -10,4 +12,8 @@ public interface KhachHangImpl {
 	public boolean quenMatKhauKhachHang(String email);
 
 	public boolean doiMatKhauKhachHang(int id, String passWord);
+	
+	public KhachHang layKhachHang(int id);
+	
+	public List<KhachHang> layDSKhachHang();
 }

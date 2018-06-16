@@ -42,8 +42,9 @@
 							<!--/row-->
 							<div class="card-body">
 								<div class="typo-headers">
-									<f:form action="${action}" modelAttribute="tinhtrang"
+									<f:form action="${action}" modelAttribute="tinhtrangDH"
 										method="POST">
+										<f:hidden path="id" />
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="donHang.maDonHang">Mã đơn hàng</f:label>
 											<f:select path="donHang.maDonHang" cssClass="form-control">
@@ -64,8 +65,7 @@
 										</div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="thoiGian">Thời gian</f:label>
-											<f:input path="thoiGian" cssClass="form-control"
-												placeholder="Xin mời chọn thời gian" type="Date" />
+											<f:input path="thoiGian" cssClass="form-control" type="Date" />
 										</div><br/>
 										<hr style="background-color: #00a400">
 										<div class="form-actions">

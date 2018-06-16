@@ -46,8 +46,8 @@ public class TinhTrangDonHangController {
 	
 	@GetMapping("taoTinhTrangDonHang")
 	public String taoTinhTrangDH(ModelMap model) {
-		model.addAttribute("tinhtrang", new TinhTrangDonHang());
-        model.addAttribute("action","taotinhtrangDH");
+		model.addAttribute("tinhtrangDH", new TinhTrangDonHang());
+        model.addAttribute("action","taotinhtrangdon");
         layDonHang(model);
         layTrangThai(model);
         layNhanVien(model);
@@ -60,17 +60,17 @@ public class TinhTrangDonHangController {
         layDonHang(model);
         layTrangThai(model);
         layNhanVien(model);
-        model.addAttribute("tinhtrang", tinhtrang);
-        model.addAttribute("action","taotinhtrangDH");
+        model.addAttribute("tinhtrangDH", tinhtrang);
+        model.addAttribute("action","taotinhtrangdon");
         return "taotinhtrangdon";
 	}
 	
-	@PostMapping("taotinhtrangDH")
-	public String taoTinhTrangDonHang(ModelMap model, @ModelAttribute(value = "tinhtrang") TinhTrangDonHang tinhTrang) {
-		if(tinhTrangDonHangService.taoTinhTrangDon(tinhTrang)) {
+	@PostMapping("taotinhtrangdon")
+	public String guiTinhTrang(ModelMap model, @ModelAttribute(value = "tinhtrangDH") TinhTrangDonHang tinhTrangDH) {
+		if (tinhTrangDonHangService.taoTinhTrangDon(tinhTrangDH)) {
 			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
 			return "redirect:/trangthaidonhang";
-		}else {
+		} else {
 			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
 			return "redirect:/trangthaidonhang";
 		}

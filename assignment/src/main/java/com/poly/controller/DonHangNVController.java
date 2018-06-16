@@ -1,8 +1,10 @@
 package com.poly.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
+import com.poly.entity.KhachHang;
 import com.poly.entity.NhanVien;
+import com.poly.entity.TinhTrangDonHang;
+import com.poly.entity.TrangThai;
 import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
+import com.poly.service.KhachHangService;
+import com.poly.service.TinhTrangDonHangService;
 
 @Controller
 @Transactional
@@ -29,6 +36,10 @@ public class DonHangNVController {
 		DonHangService donhangService;
 		@Autowired
 		DiaChiKhachHangService chiKhachHangService;
+		@Autowired
+		TinhTrangDonHangService tinhTrangDonHangService;
+		@Autowired
+		KhachHangService khachHangService;
 		
 		@GetMapping
 		public String qlDonHang(ModelMap model) {
@@ -36,11 +47,26 @@ public class DonHangNVController {
 			return "donhang";
 		}
 		
+//		@GetMapping("taodonhang")
+//		public String taoDonHang(ModelMap model) {
+//			model.addAttribute("donhang", new DonHang());
+//	        model.addAttribute("action","taodonhangNV");
+//			layDCKhachHang(model);
+//			return "themdonhang";
+//		}
+		
 		@GetMapping("taodonhang")
-		public String taoDonHang(ModelMap model) {
+		public String taoDonHang(ModelMap model,HttpServletRequest rq) {
 			model.addAttribute("donhang", new DonHang());
-	        model.addAttribute("action","taodonhangNV");
-			layDCKhachHang(model);
+			List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
+			if (!list.isEmpty()) {
+				HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
+				for (DiaChiKhachHang diachi : list) {
+					cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+				}
+				model.addAttribute("diachi", cateMap);
+			}
+
 			return "themdonhang";
 		}
 		
@@ -64,16 +90,38 @@ public class DonHangNVController {
 			}
 		}
 		
-		@PostMapping("taodonhangNV")
-		public String taoDonHangNV(ModelMap model, @ModelAttribute(value = "donhang") DonHang donHang) {
-			if(donhangService.taoDonHang(donHang)) {
-				model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
-				return "redirect:/quanlydonhang";
-			}else {
-				model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
-				return "redirect:/quanlydonhang";
+//		public void layKhachHang(ModelMap model) {
+//			List<KhachHang> list = khachHangService.layDSKhachHang();
+//			if (!list.isEmpty()) {
+//				HashMap<Integer, String> map = new HashMap<Integer, String>();
+//				for (KhachHang kh : list) {
+//					map.put(kh.getMaKhachHang(), kh.getTenKhachHang());
+//				}
+//				model.addAttribute("dsKhachHang", map);
+//			}
+//		}
+		
+		@PostMapping("taodonhang")
+		public String guiDangNhap(@ModelAttribute("donhang") DonHang donhang) {
+			try {
+				int id = donhangService.taoDonHang(donhang);
+				tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang( new Date(),new TrangThai("daTao", ""),new NhanVien(1),new DonHang(id)));
+				return "redirect:/quanlynhanvien";
+			} catch (Exception e) {
+				return "themdonhang";
 			}
 		}
+		
+//		@PostMapping("taodonhangNV")
+//		public String taoDonHangNV(ModelMap model, @ModelAttribute(value = "donhang") DonHang donHang) {
+//			if(donhangService.taoDonHang(donHang)) {
+//				model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
+//				return "redirect:/quanlydonhang";
+//			}else {
+//				model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
+//				return "redirect:/quanlydonhang";
+//			}
+//		}
 		
 		@PostMapping("editdonhang/suadonhang")
 		public String suaDonHang(ModelMap model, @ModelAttribute(value = "donhang") DonHang donhang) {
