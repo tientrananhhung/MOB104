@@ -48,7 +48,7 @@ public class NhanVienController {
 
 	@PostMapping("themnhanvien")
 	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
-		nv.setAnhDaiDien(null);
+		nv.setAnhDaiDien("anhthe1.jpg");
 		if (nhanVienService.themNhanVien(nv)) {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
