@@ -1,13 +1,15 @@
 package com.poly.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "chucvu")
 public class ChucVu {
@@ -16,9 +18,10 @@ public class ChucVu {
 	private String maChucVu;
 	private String tenChucVu;
 
-	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maChucVu")
-	private Set<NhanVien> nhanvien;
+	@JsonIgnore
+	private Set<NhanVien> nhanvien = new HashSet<NhanVien>(0);
 
 	public ChucVu() {
 		super();

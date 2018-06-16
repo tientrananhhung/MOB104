@@ -3,6 +3,7 @@ package com.poly.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,11 +18,11 @@ public class TinhTrangDonHang {
 	private int id;
 	private Date thoiGian;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "maTrangThai")
 	private TrangThai trangThai;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "maNhanVien")
 	private NhanVien nhanVien;
 
