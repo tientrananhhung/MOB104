@@ -51,7 +51,9 @@
 								<a href="chucvu/themchucvu" class="btn btn-success m-b-10 m-l-5"
 									style="margin-top: 20px;">Thêm mới chức vụ</a>
 								<div class="table-responsive m-t-40">
-									<table id="myTable" class="table table-bordered table-striped">
+									<table id="example23"
+										class="display nowrap table table-hover table-striped table-bordered"
+										cellspacing="0" width="100%">
 										<thead>
 											<tr>
 												<th>Mã chức vụ</th>
@@ -64,10 +66,10 @@
 												<tr>
 													<td>${l.maChucVu}</td>
 													<td>${l.tenChucVu}</td>
-													<td><a href="chucvu/suachucvu/${l.maChucVu}" class="btn btn-warning m-b-10 m-l-5"><i
-															class="ti-pencil-alt"></i></a> <a href="chucvu/xoachucvu/${l.maChucVu}"
-														class="btn btn-danger m-b-10 m-l-5"><i
-															class="ti-trash"></i></a></td>
+													<td>
+														<a href="chucvu/suachucvu/${l.maChucVu}" class="btn btn-warning m-b-10 m-l-5"><i class="ti-pencil-alt"></i></a> 
+														<a href="chucvu/xoachucvu/${l.maChucVu}" class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
