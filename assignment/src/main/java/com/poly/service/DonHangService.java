@@ -41,4 +41,10 @@ public class DonHangService implements DonHangImpl {
 		return list;
 	}
 
+	@Override
+	public int taoDonHang(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
