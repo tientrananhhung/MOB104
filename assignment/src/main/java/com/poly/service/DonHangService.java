@@ -36,9 +36,15 @@ public class DonHangService implements DonHangImpl {
 	}
 
 	@Override
+	public List<DonHang> layDonHangId(int id) {
+		List<DonHang> list = donhangDAO.layDonHangId(id);
+		return list;
+	}
+
+	@Override
 	public int taoDonHang(DonHang donhang) {
-		int id = donhangDAO.taoDonHang(donhang);
-		return id;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

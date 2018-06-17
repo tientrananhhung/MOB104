@@ -78,11 +78,11 @@
 								</f:select>
 							</div>
 							<div class="form-group">
-								<a class="control-label mb-1">Tổng thanh toán người nhận:</a>
+								<a class="control-label mb-1">Thu Hộ</a>
 							<input class="form-control" id="thuho">
 							</div>
 							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="tienThuHo">Thu Hộ</f:label>
+								<f:label cssClass="control-label mb-1" path="tienThuHo">Tổng thanh toán:</f:label>
 								<f:input type="number" readonly="true" path="tienThuHo" id="tongthanhtoan" cssClass="form-control" />
 							</div>
 							

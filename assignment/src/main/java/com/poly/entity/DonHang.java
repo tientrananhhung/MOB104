@@ -1,5 +1,6 @@
 package com.poly.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -34,7 +35,7 @@ public class DonHang {
 
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDonHang")
-	private Set<TinhTrangDonHang> tinhTrangDonHang;
+	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
 	public DonHang() {
 		super();

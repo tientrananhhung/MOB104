@@ -1,5 +1,6 @@
 package com.poly.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "trangthai")
 public class TrangThai {
 
@@ -15,9 +18,10 @@ public class TrangThai {
 	private String maTrangThai;
 	private String trangThai;
 
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maTrangThai")
-	private Set<TinhTrangDonHang> tinhTrangDonHang;
+	@JsonIgnore
+	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
 	public TrangThai() {
 		super();
