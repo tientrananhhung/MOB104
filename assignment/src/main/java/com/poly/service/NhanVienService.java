@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.poly.entity.KhachHang;
 import com.poly.entity.NhanVien;
 import com.poly.impl.NhanVienImpl;
 import com.poly.model.NhanVienDAO;
@@ -42,6 +43,12 @@ public class NhanVienService implements NhanVienImpl {
 	@Override
 	public NhanVien layNhanVien(int id) {
 		NhanVien nv = nhanVienDAO.layNhanVien(id);
+		return nv;
+	}
+
+	@Override
+	public NhanVien dangNhapNV(String userName, String passWord) {
+		NhanVien nv = nhanVienDAO.dangNhapNV(userName, passWord);
 		return nv;
 	}
 }

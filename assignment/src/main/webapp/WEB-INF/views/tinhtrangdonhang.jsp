@@ -43,10 +43,6 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">Tình trạng đơn hàng</h4>
-								<a href="trangthaidonhang/taoTinhTrangDonHang"><button
-										type="button" class="btn btn-success m-b-10 m-l-5"
-										data-toggle="tooltip" data-placement="top"
-										title="Create state order">Tạo tình trạng đơn</button></a>
 								<div class="table-responsive m-t-40">
 									<table id="example23"
 										class="display nowrap table table-hover table-striped table-bordered"

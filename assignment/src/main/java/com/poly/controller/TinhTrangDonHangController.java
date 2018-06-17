@@ -1,8 +1,10 @@
 package com.poly.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,16 +46,6 @@ public class TinhTrangDonHangController {
 		return "tinhtrangdonhang";
 	}
 	
-	@GetMapping("taoTinhTrangDonHang")
-	public String taoTinhTrangDH(ModelMap model) {
-		model.addAttribute("tinhtrangDH", new TinhTrangDonHang());
-        model.addAttribute("action","taotinhtrangdon");
-        layDonHang(model);
-        layTrangThai(model);
-        layNhanVien(model);
-		return "taotinhtrangdon";
-	}
-	
 	@GetMapping("editdtinhtrang/{id}")
 	public String editTinhTrang(@PathVariable("id") int id, ModelMap model) {
         TinhTrangDonHang tinhtrang = tinhTrangDonHangService.getTinhTrang(id);
@@ -61,13 +53,14 @@ public class TinhTrangDonHangController {
         layTrangThai(model);
         layNhanVien(model);
         model.addAttribute("tinhtrangDH", tinhtrang);
-        model.addAttribute("action","taotinhtrangdon");
+        model.addAttribute("action","taotinhtrangDH");
         return "taotinhtrangdon";
 	}
 	
-	@PostMapping("taotinhtrangdon")
+	@PostMapping("editdtinhtrang/taotinhtrangDH")
 	public String guiTinhTrang(ModelMap model, @ModelAttribute(value = "tinhtrangDH") TinhTrangDonHang tinhTrangDH) {
-		if (tinhTrangDonHangService.taoTinhTrangDon(tinhTrangDH)) {
+		tinhTrangDH.setThoiGian(new Date());
+		if (tinhTrangDonHangService.suaTinhTrang(tinhTrangDH)) {
 			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
 			return "redirect:/trangthaidonhang";
 		} else {

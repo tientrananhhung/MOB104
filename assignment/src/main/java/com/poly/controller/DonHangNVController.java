@@ -25,6 +25,7 @@ import com.poly.entity.TrangThai;
 import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
+import com.poly.service.NhanVienService;
 import com.poly.service.TinhTrangDonHangService;
 
 @Controller
@@ -38,6 +39,8 @@ public class DonHangNVController {
 		DiaChiKhachHangService chiKhachHangService;
 		@Autowired
 		TinhTrangDonHangService tinhTrangDonHangService;
+		@Autowired
+		NhanVienService nhanVienService;
 		@Autowired
 		KhachHangService khachHangService;
 		
@@ -56,9 +59,12 @@ public class DonHangNVController {
 //		}
 		
 		@GetMapping("taodonhang")
-		public String taoDonHang(ModelMap model,HttpServletRequest rq) {
+		public String taoDonHang(ModelMap model, HttpServletRequest rq) {
 			model.addAttribute("donhang", new DonHang());
+			int maKH = Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString());
+			model.addAttribute("khachhang",khachHangService.layKhachHang(maKH));
 			List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
+			model.addAttribute("action","taodonhang");
 			if (!list.isEmpty()) {
 				HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
 				for (DiaChiKhachHang diachi : list) {
@@ -86,7 +92,7 @@ public class DonHangNVController {
 				for (DiaChiKhachHang diachikh : list) {
 					map.put(diachikh.getMaDiaChi(), diachikh.getDiaChiGui());
 				}
-				model.addAttribute("dsDCKhachHang", map);
+				model.addAttribute("diachi", map);
 			}
 		}
 		
@@ -102,11 +108,11 @@ public class DonHangNVController {
 //		}
 		
 		@PostMapping("taodonhang")
-		public String guiDangNhap(@ModelAttribute("donhang") DonHang donhang) {
+		public String taoDonHangNV(@ModelAttribute("donhang") DonHang donhang) {
 			try {
-				int id = donhangService.taoDonHang(donhang);
-				tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang( new Date(),new TrangThai("daTao", ""),new NhanVien(1),new DonHang(id)));
-				return "redirect:/quanlynhanvien";
+				int idDH = donhangService.taoDonHang(donhang);
+				tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang( new Date(),new TrangThai("daTao", ""),new NhanVien(1),new DonHang(idDH)));
+				return "redirect:/quanlydonhang";
 			} catch (Exception e) {
 				return "themdonhang";
 			}
@@ -133,4 +139,5 @@ public class DonHangNVController {
 				return "redirect:/quanlydonhang";
 			}
 		}
+
 }
