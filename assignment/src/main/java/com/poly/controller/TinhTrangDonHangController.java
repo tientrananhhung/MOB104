@@ -46,6 +46,16 @@ public class TinhTrangDonHangController {
 		return "tinhtrangdonhang";
 	}
 	
+	@GetMapping("taotinhtrangdon")
+	public String themTinhTrang(ModelMap model) {
+		model.addAttribute("tinhtrang", new TinhTrangDonHang());
+		model.addAttribute("action","taotinhtrangDH");
+		layDonHang(model);
+		layNhanVien(model);
+		layTrangThai(model);
+		return "taotinhtrangdon";
+	}
+	
 	@GetMapping("editdtinhtrang/{id}")
 	public String editTinhTrang(@PathVariable("id") int id, ModelMap model) {
         TinhTrangDonHang tinhtrang = tinhTrangDonHangService.getTinhTrang(id);
