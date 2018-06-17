@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.poly.entity.ChucVu;
 import com.poly.entity.DiaChiKhachHang;
@@ -118,4 +119,12 @@ public class TrangChuController {
 
 		return "taodonhang";
 	}
+	
+	@GetMapping("danhsachdonhang")
+	public ModelAndView hienThiDonHang() {
+		ModelAndView model = new ModelAndView("danhsachdonhang");
+		model.addObject("dsChucVu", donHangService.danhsachDonHang());
+		return model;
+	}
+	
 }

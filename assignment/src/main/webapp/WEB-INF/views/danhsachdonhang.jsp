@@ -4,96 +4,87 @@
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<%
-            if (session != null) {
-                if (session.getAttribute("login") == null) {
-                    response.sendRedirect("/assignment/dangnhap");
-                }
-            }
-        %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Thêm nhân viên</title>
 </head>
 <body>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
-					<strong class="card-title">Thêm nhân viên</strong>
+	<div id="main-wrapper">
+		<jsp:include page="include/header.jsp"></jsp:include>
+		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
+		<div class="page-wrapper">
+			<!-- Bread crumb -->
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h3 class="text-primary">QUẢN LÝ CHỨC VỤ</h3>
 				</div>
-				<div class="card-body">
-					<div class="typo-headers">
-						<f:form action="taodonhang"
-							modelAttribute="donhang" method="post">
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="tenMatHang">Tên Mặt Hàng</f:label>
-								<f:input path="tenMatHang" type="text" cssClass="form-control"
-									placeholder="Xin mời nhập tên nhân viên" />
+				<div class="col-md-7 align-self-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
+								Chủ</a></li>
+						<li class="breadcrumb-item active">Chức Vụ</li>
+					</ol>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<!-- Start Page Content -->
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">Danh Sách Đơn Hàng</h4>
+								<a href="chucvu/themchucvu" class="btn btn-success m-b-10 m-l-5"
+									style="margin-top: 20px;">Thêm mới đơn hàng</a>
+								<div class="table-responsive m-t-40">
+									<table id="myTable" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>Mã đơn hàng</th>
+												<th>Tên mặt hàng</th>
+												<th>Tên người nhận</th>
+												<th>Địa chỉ người nhận</th>
+												<th>SDT người nhận</th>
+												<th>Trọng lượng</th>
+												<th>Phí vận chuyển</th>
+												<th>Cách thức trả phí</th>
+												<th>Tiền thu hộ</th>
+												<th>Ghi Chú</th>
+												<th>Chức năng</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="item" items="${dsChucVu}">
+												<tr>
+													<td><c:out value="${item.maDonHang}" /></td>
+													<td><c:out value="${item.tenMatHang}" /></td>
+													<td><c:out value="${item.tenNguoiNhan}" /></td>
+													<td><c:out value="${item.diaChiNguoiNhan}" /></td>
+													<td><c:out value="${item.sdtNguoiNhan}" /></td>
+													<td><c:out value="${item.trongLuong}" /></td>
+													<td><c:out value="${item.phiVanChuyen}" /></td>
+													<td><c:out value="${item.cachThucTraPhi}" /></td>
+													<td><c:out value="${item.tienThuHo}" /></td>
+													<td><c:out value="${item.ghiChu}" /></td>
+													<td>
+														<a href="chucvu/suachucvu/${item.maDonHang}" class="btn btn-warning m-b-10 m-l-5"><i class="ti-pencil-alt"></i></a> 
+														<a href="chucvu/xoachucvu/${item.maDonHang}" class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="tenNguoiNhan">Tên Người Nhận</f:label>
-								<f:input type="text" path="tenNguoiNhan" cssClass="form-control"
-									placeholder="Xin mời nhập email nhân viên" />
-							</div>
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="diaChiNguoiNhan">Địa Chỉ Người Nhận:</f:label>
-								<f:input path="diaChiNguoiNhan" cssClass="form-control"
-									placeholder="Xin mời nhập số điện thoại nhân viên" />
-							</div>
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="sdtNguoiNhan">SDT người nhận</f:label>
-								<f:input path="sdtNguoiNhan" cssClass="form-control"
-									placeholder="Xin mời nhập địa chỉ nhân viên" />
-							</div>
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="diaChiKhachHang.maDiaChi">Địa chỉ người gửi</f:label>
-								<f:select path="diaChiKhachHang.maDiaChi">
-									<f:options items="${diachi}"/>
-								</f:select>
-							</div>
-							<div class="form-group">
-								<f:label  cssClass="control-label mb-1" path="trongLuong">Trọng Lượng</f:label>
-								<f:input id="trongluong"  path="trongLuong" cssClass="form-control" placeholder="Xin mời nhập chứng minh nhân dân"/>
-							</div>
-							
-							<div class="form-group">
-								<f:label  cssClass="control-label mb-1" path="phiVanChuyen">Phí vận chuyển</f:label>
-								<f:input id="phivanchuyen" path="phiVanChuyen" cssClass="form-control" readonly="true"/>
-							</div>
-							
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="cachThucTraPhi">Cách thức</f:label>
-								<f:select path="cachThucTraPhi">
-									<f:option value="0" label="Người gửi trả" />
-									<f:option value="1" label="Người nhận trả" />
-								</f:select>
-							</div>
-							<div class="form-group">
-								<f:label cssClass="control-label mb-1" path="tienThuHo">Thu Hộ</f:label>
-								<f:input path="tienThuHo" cssClass="form-control"
-									placeholder="Xin mời nhập mật khẩu" />
-							</div>
-							<div>
-								<button class="btn btn-lg btn-info">
-									<i class="fa fa-plus fa-lg"></i>&nbsp; <span>Thêm đơn hàng</span>
-								</button>
-							</div>
-						</f:form>
+							<!-- end card-body -->
+						</div>
+						<!-- end card -->
 					</div>
 				</div>
 			</div>
+			<!-- end container-fluid -->
 		</div>
+		<!-- end page-wrapper -->
 	</div>
-	
-	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
-	<script>
-	
-	$("#trongluong").bind("change paste keyup", function() {
-	       $("#phivanchuyen").val($(this).val()*40000);
-	 });
-	</script>
-	     
-   
+
 </body>
 </html>
