@@ -28,16 +28,16 @@
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     </head>
     <body>
-        <div class="header"  style="background-color: #062c33">
+        <div class="header"  style="background-color: white;">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
-                <div class="navbar-header" style="background-color: #062c33">
+                <div class="navbar-header" style="background-color: white">
                     <a class="navbar-brand" href="index.htm">
                         <!-- Logo icon -->
-                        <b><img src="resources/images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="resources/images/turtle-2550719_960_720.png" alt="homepage" class="dark-logo" height="50" width="80" style="margin-left: 10px" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="resources/images/Untitled-2.png" alt="homepage" class="dark-logo" width="140" height="60" /></span>
+                        <span><img src="resources/images/Untitled-3.png" alt="homepage" class="dark-logo" width="150" height="50" /></span>
                     </a>
                 </div>
                 <!-- End Logo -->
