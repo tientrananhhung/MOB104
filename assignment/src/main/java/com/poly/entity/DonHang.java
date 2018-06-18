@@ -33,7 +33,7 @@ public class DonHang {
 	@JoinColumn(name = "maDiaChi")
 	private DiaChiKhachHang diaChiKhachHang;
 
-	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "maDonHang", updatable=false)
 	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
