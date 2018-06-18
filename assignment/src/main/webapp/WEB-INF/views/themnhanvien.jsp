@@ -7,12 +7,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Thêm nhân viên</title>
+<link
+	href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="<c:url value="/resources/css/helper.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
 	<div id="main-wrapper">
 		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h3 class="text-primary">THÊM NHÂN VIÊN</h3>
+				</div>
+				<div class="col-md-7 align-self-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
+								chủ</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Nhân viên</a></li>
+						<li class="breadcrumb-item active">Thêm nhân viên</li>
+					</ol>
+				</div>
+			</div>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
@@ -71,9 +91,10 @@
 										</div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="anhDaiDien">Mật khẩu</f:label>
-											<f:input path="anhDaiDien" cssClass="form-control" type="file"/>
+											<f:input path="anhDaiDien" cssClass="form-control"
+												type="file" />
 										</div>
-										
+
 										<div>
 											<button class="btn btn-success m-b-10 m-l-5">
 												<i class="fa fa-plus fa-lg"></i>&nbsp; <span>${tenbutton }</span>
