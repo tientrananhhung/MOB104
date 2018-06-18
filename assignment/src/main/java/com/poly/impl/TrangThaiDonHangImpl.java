@@ -14,4 +14,7 @@ public interface TrangThaiDonHangImpl {
 	
 	public TinhTrangDonHang getTinhTrang(int id);
 
+	public List<TinhTrangDonHang> danhsachTinhTrangTheoDonHang(int maDonHang);
+	
+	public List<TinhTrangDonHang> danhsachTinhTrangTheoTrangThaiMoiNhat();
 }
