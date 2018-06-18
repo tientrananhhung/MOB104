@@ -20,7 +20,7 @@
 					Chủ</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Về Chúng
 					Tôi</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"
+			<li class="nav-item"><a class="nav-link" id="traCuuDH" href="#"
 				data-toggle="modal" data-target="#exampleModal">Tra Cứu ĐH</a></li>
 		</ul>
 	</div>

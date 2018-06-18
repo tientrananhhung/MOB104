@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "nhanvien")
 public class NhanVien {
 
@@ -32,8 +34,9 @@ public class NhanVien {
 	@JoinColumn(name = "maChucVu")
 	private ChucVu chucVu;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "maNhanVien")
+	@JsonIgnore
 	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
 	public NhanVien() {
