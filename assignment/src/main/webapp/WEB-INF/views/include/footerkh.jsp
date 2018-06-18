@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Footer -->
 <section class="section widget_text">
 <div class="textwidget">
@@ -16,7 +17,7 @@
 				</div>
 				<div class="col-sm-3 col-md-3">
 					<a class="btn btn-primary btn-100" style="line-height: 43px;"
-						href="">Đăng ký ngay</a>
+						href="dangky">Đăng ký ngay</a>
 				</div>
 			</div>
 		</div>
@@ -28,7 +29,8 @@
 <div class="container">
 	<div class="pull-left">
 		<div style="text-align: left;">
-			<div class="copy-right">&nbsp;&nbsp;CÔNG TY CỔ PHẦN GIAO HÀNG CHẬM</div>
+			<div class="copy-right">&nbsp;&nbsp;CÔNG TY CỔ PHẦN GIAO HÀNG
+				CHẬM</div>
 			<div class="footer-links">
 				<div class="menu-footer-links-container">
 					<ul id="menu-footer-links" class="menu">
@@ -48,28 +50,27 @@
 				</div>
 				<li id="menu-item-32"
 					class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32">
-					<a href="" target="_blank">Quy định chung</a>&nbsp;&nbsp;&nbsp;
-					<a href="" target="_blank">Chính sách bảo
-						mật</a>
+					<a href="" target="_blank">Quy định chung</a>&nbsp;&nbsp;&nbsp; <a
+					href="" target="_blank">Chính sách bảo mật</a>
 				</li>
 			</div>
 			<div class="social-links">
 				<ul>
-					<li><a href="https://www.facebook.com/Giaohangtietkiem.vn"
+					<li><a href="https://www.facebook.com/trananhhungtien"
 						target="_blank" style="color: white; font-size: 20px;"> <i
 							class="fab fa-facebook"></i>
 					</a></li>
-					<li><a href="https://www.facebook.com/Giaohangtietkiem.vn"
+					<li><a href="https://www.facebook.com/trananhhungtien"
 						target="_blank" style="color: white; font-size: 20px;"> <i
 							class="fab fa-youtube"></i>
 					</a></li>
-					<li><a href="mailto:cskh@ghtk.vn" target="_blank"
+					<li><a href="mailto:tientahpd01815@fpt.edu.vn" target="_blank"
 						style="font-size: 20px;"> <i class="fas fa-envelope"
 							style="color: white;"></i>
 					</a></li>
 					<li><a href="" target="_blank"> <img
-							src="images/dathongbao.png" alt="feedback"
-							style="max-width: 6rem" class="img-responsive">
+							src="<c:url value="resources/images/dathongbao.png" />"
+							alt="feedback" style="max-width: 6rem" class="img-responsive">
 					</a></li>
 				</ul>
 			</div>

@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Giao Hang Chậm - Chậm Mà Chắc</title>
+<base href="${pageContext.servletContext.contextPath}/" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />">
 <link rel="stylesheet" type="text/css"
@@ -41,6 +42,43 @@
 								ĐƠN</button>
 						</div>
 					</div>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">Thông tin vận đơn</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Người nhận</td>
+								<td>Name</td>
+							</tr>
+							<tr>
+								<td>Người gửi</td>
+								<td>Name</td>
+							</tr>
+							<tr>
+								<td>Thông tin đơn hàng</td>
+								<td>Information</td>
+							</tr>
+							<tr>
+								<td>Trạng thái đơn hàng</td>
+								<td>Đã đối soát</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">Log</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Log trong đây</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -97,11 +135,11 @@
 				<div class="block block-signup">
 					<div class="content text-center" style="padding: 10px;">
 						<h3 class="h4">Bạn là khách hàng mới?</h3>
-						<a href="" class="btn btn-primary" style="padding: 10px;"> <span>Đăng
+						<a href="dangky" class="btn btn-primary" style="padding: 10px;"> <span>Đăng
 								ký ngay</span>
 						</a>
 						<h3 class="h4" style="padding: 10px; margin: 0px;">Hoặc</h3>
-						<a href=""> <span>ĐĂNG NHẬP</span>
+						<a href="dangnhap"> <span>ĐĂNG NHẬP</span>
 						</a>
 					</div>
 				</div>
@@ -172,7 +210,7 @@
 							hợp với </em><br> <strong>5 khách hàng</strong>
 					</h3>
 					<p>
-						<a class="btn btn-primary btn-100" href="">Đăng ký ngay</a>
+						<a class="btn btn-primary btn-100" href="dangky">Đăng ký ngay</a>
 					</p>
 				</div>
 				<div class="col-md-1"></div>
