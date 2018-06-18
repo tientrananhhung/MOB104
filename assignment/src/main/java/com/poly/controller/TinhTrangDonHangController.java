@@ -58,16 +58,16 @@ public class TinhTrangDonHangController {
 	
 	@GetMapping("editdtinhtrang/{id}")
 	public String editTinhTrang(@PathVariable("id") int id, ModelMap model) {
-        TinhTrangDonHang tinhtrang = tinhTrangDonHangService.getTinhTrang(id);
+        TinhTrangDonHang donhang = tinhTrangDonHangService.getTinhTrang(id);
         layDonHang(model);
         layTrangThai(model);
         layNhanVien(model);
-        model.addAttribute("tinhtrangDH", tinhtrang);
-        model.addAttribute("action","taotinhtrangDH");
+        model.addAttribute("tinhtrangDH", donhang);
+        model.addAttribute("action","tinhtrangDH");
         return "taotinhtrangdon";
 	}
 	
-	@PostMapping("editdtinhtrang/taotinhtrangDH")
+	@PostMapping("editdtinhtrang/tinhtrangDH")
 	public String guiTinhTrang(ModelMap model, @ModelAttribute(value = "tinhtrangDH") TinhTrangDonHang tinhTrangDH) {
 		tinhTrangDH.setThoiGian(new Date());
 		if (tinhTrangDonHangService.suaTinhTrang(tinhTrangDH)) {
