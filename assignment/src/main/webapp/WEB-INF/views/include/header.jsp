@@ -9,10 +9,11 @@
 <!DOCTYPE html>
 <html>
 <%
-	if (session == null) {
-		if (session.getAttribute("loginnv") != null) {
-		response.sendRedirect("/assignment/dangnhapNV");
-		}
+		 if (session != null) {
+             if (session.getAttribute("loginnv") != "true") {
+            	 response.sendRedirect("/assignment/dangnhapNV");
+             }
+        
 	}
 %>
     <head>
