@@ -22,20 +22,20 @@ public class DiaChiKhachHangService implements DiaChiKhachHangImpl {
 
 	@Override
 	public boolean themDiaChi(DiaChiKhachHang diaChi) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean check = diaChiDAO.themDiaChi(diaChi);
+		return check;
 	}
 
 	@Override
 	public boolean suaDiaChi(DiaChiKhachHang diaChi) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean check = diaChiDAO.suaDiaChi(diaChi);
+		return check;
 	}
 
 	@Override
 	public boolean xoaDiaChi(DiaChiKhachHang diaChi) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean check = diaChiDAO.xoaDiaChi(diaChi);
+		return check;
 	}
 
 	@Override
