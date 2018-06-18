@@ -16,7 +16,7 @@ public class TinhTrangDonHangDAO implements TrangThaiDonHangImpl {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Override
 	public boolean taoTinhTrangDon(TinhTrangDonHang tinhtrang) {
 		Session ss = sessionFactory.getCurrentSession();
@@ -57,7 +57,7 @@ public class TinhTrangDonHangDAO implements TrangThaiDonHangImpl {
 		try {
 			TinhTrangDonHang tinhtrang = (TinhTrangDonHang) ss.get(TinhTrangDonHang.class, id);
 			return tinhtrang;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
@@ -65,7 +65,7 @@ public class TinhTrangDonHangDAO implements TrangThaiDonHangImpl {
 	@Override
 	public List<TinhTrangDonHang> danhsachTinhTrangTheoDonHang(int maDonHang) {
 		Session ss = sessionFactory.getCurrentSession();
-		String sql = "from tinhtrangdonhang WHERE `maDonHang` = '"+ maDonHang +"' ORDER BY thoiGian DESC";
+		String sql = "from tinhtrangdonhang WHERE `maDonHang` = '" + maDonHang + "' ORDER BY thoiGian DESC";
 		try {
 			List<TinhTrangDonHang> lst = ss.createQuery(sql).getResultList();
 			return lst;
@@ -78,6 +78,18 @@ public class TinhTrangDonHangDAO implements TrangThaiDonHangImpl {
 	public List<TinhTrangDonHang> danhsachTinhTrangTheoTrangThaiMoiNhat() {
 		Session ss = sessionFactory.getCurrentSession();
 		String sql = "FROM tinhtrangdonhang GROUP BY maDonHang ORDER BY maDonHang DESC";
+		try {
+			List<TinhTrangDonHang> lst = ss.createQuery(sql).getResultList();
+			return lst;
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<TinhTrangDonHang> danhSachTinhTrangTheoMaDonHang(int maDonHang) {
+		Session ss = sessionFactory.getCurrentSession();
+		String sql = "FROM tinhtrangdonhang WHERE maDonHang = '" + maDonHang + "'";
 		try {
 			List<TinhTrangDonHang> lst = ss.createQuery(sql).getResultList();
 			return lst;
