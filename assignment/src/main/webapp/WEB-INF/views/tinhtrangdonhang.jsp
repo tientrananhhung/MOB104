@@ -44,6 +44,10 @@
 							<div class="card-body">
 								<h4 class="card-title">Tình trạng đơn hàng</h4>
 								<div class="table-responsive m-t-40">
+								<div class="text-left">
+								<a href="trangthaidonhang/taotinhtrangdon"><button type="button"
+										class="btn btn-success m-b-10 m-l-5">Cập nhật tình trạng đơn hàng</button></a>
+							</div>
 									<table id="example23"
 										class="display nowrap table table-hover table-striped table-bordered"
 										cellspacing="0" width="100%">
