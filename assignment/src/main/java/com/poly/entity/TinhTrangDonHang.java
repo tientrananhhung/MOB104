@@ -26,7 +26,7 @@ public class TinhTrangDonHang {
 	@JoinColumn(name = "maNhanVien")
 	private NhanVien nhanVien;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDonHang")
 	private DonHang donHang;
 

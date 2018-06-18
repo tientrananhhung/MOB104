@@ -1,6 +1,5 @@
 package com.poly.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,10 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.poly.entity.ChucVu;
 import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
 import com.poly.entity.KhachHang;
@@ -49,7 +46,7 @@ public class TrangChuController {
 	
 	@GetMapping
 	public String trangChu() {
-		return "index";
+		return "trangchukh";
 	}
 	
 	@GetMapping("dangky")
