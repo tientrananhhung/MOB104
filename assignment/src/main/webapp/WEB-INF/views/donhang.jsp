@@ -2,6 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<%
+		 if (session != null) {
+             if (session.getAttribute("loginnv") != "true") {
+            	 response.sendRedirect("/assignment/dangnhapNV");
+             }
+        
+	}
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Danh sách đơn hàng</title>

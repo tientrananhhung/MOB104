@@ -138,10 +138,9 @@ public class TrangChuController {
 	public String guiDangNhapNV(@ModelAttribute("dangnhapNV") NhanVien nhanvien, HttpServletRequest rq) {
 		NhanVien nv = nhanVienService.dangNhapNV(nhanvien.getSoDienThoai(), nhanvien.getMatKhau());
 		if (nv != null) {
-			rq.getSession().setAttribute("login", "true");
+			rq.getSession().setAttribute("loginnv", "true");
 			rq.getSession().setAttribute("thongtinNV", nv.getMaNhanVien());
-			return "quanlynhanvien";
-
+			return "redirect:/quanlynhanvien";
 		} else {
 			return "dangnhapNV";
 		}
