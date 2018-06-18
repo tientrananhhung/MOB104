@@ -62,10 +62,6 @@
 											<f:select path="trangThai.trangThai" cssClass="form-control">
 												<f:options items="${dsTrangThai}" />
 											</f:select>
-										</div>
-										<div class="form-group">
-											<f:label cssClass="control-label mb-1" path="thoiGian">Thời gian</f:label>
-											<f:input path="thoiGian" cssClass="form-control" type="Date" />
 										</div><br/>
 										<hr style="background-color: #00a400">
 										<div class="form-actions">

@@ -1,6 +1,5 @@
 package com.poly.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,10 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.poly.entity.ChucVu;
 import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
 import com.poly.entity.KhachHang;
@@ -28,6 +25,7 @@ import com.poly.entity.TrangThai;
 import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
+import com.poly.service.NhanVienService;
 import com.poly.service.TinhTrangDonHangService;
 
 @Controller
@@ -47,9 +45,12 @@ public class TrangChuController {
 	@Autowired
 	TinhTrangDonHangService tinhTrangDonHangService;
 	
+	@Autowired
+	NhanVienService nhanVienService;
+	
 	@GetMapping
 	public String trangChu() {
-		return "index";
+		return "trangchukh";
 	}
 	
 	@GetMapping("dangky")
@@ -89,7 +90,6 @@ public class TrangChuController {
 		}else {
 			return "dangnhap";
 		}
-		
 	}
 
 	@PostMapping("taodonhang")
@@ -127,4 +127,23 @@ public class TrangChuController {
 		return model;
 	}
 	
+	
+	@GetMapping("dangnhapNV")
+	public String dangNhapNV(ModelMap model) {
+		model.addAttribute("dangnhapNV", new NhanVien());
+		return "dangnhapNV";
+	}
+	
+	@PostMapping("dangnhapNV")
+	public String guiDangNhapNV(@ModelAttribute("dangnhapNV") NhanVien nhanvien,HttpServletRequest rq) {
+		NhanVien nv = nhanVienService.dangNhapNV(nhanvien.getSoDienThoai(), nhanvien.getMatKhau());
+		if(nv != null) {
+			rq.getSession().setAttribute("login", "true");
+			rq.getSession().setAttribute("thongtinNV", nv.getMaNhanVien());
+			return "index";
+			
+		}else {
+			return "dangnhapNV";
+		}
+	}
 }

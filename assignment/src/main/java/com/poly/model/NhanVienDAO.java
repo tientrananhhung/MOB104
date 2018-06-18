@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.poly.entity.KhachHang;
 import com.poly.entity.NhanVien;
 import com.poly.impl.NhanVienImpl;
 import com.poly.service.NhanVienService;
@@ -69,6 +70,18 @@ public class NhanVienDAO implements NhanVienImpl {
 		try {
 			NhanVien nv = (NhanVien) session.get(NhanVien.class, id);
 			return nv;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public NhanVien dangNhapNV(String userName, String passWord) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "from nhanvien where soDienThoai = '"+userName+"' AND matKhau = '"+passWord+"' OR email = '" + userName + "'and matKhau = '" + passWord + "'";
+		try {
+			NhanVien nhanvien = (NhanVien) session.createQuery(sql).getSingleResult();
+			return nhanvien;
 		} catch (Exception e) {
 			return null;
 		}
