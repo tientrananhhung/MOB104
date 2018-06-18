@@ -3,6 +3,12 @@
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
+<%
+	if (session == null) {
+		response.sendRedirect("/assignment/dangnhap");
+
+	}
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tạo đơn hàng</title>
@@ -74,7 +80,7 @@
 													<label class="col-lg-2 col-form-label"
 														for="val-suggestions">Trọng lượng :</label>
 													<div class="col-lg-9">
-														<f:input path="trongLuong" type="number"
+														<f:input id="trongluong" path="trongLuong" type="number"
 															cssClass="form-control" placeholder="Kilogam" />
 													</div>
 												</div>
@@ -82,8 +88,8 @@
 													<label class="col-lg-2 col-form-label" for="val-currency">Phí
 														vận chuyển :</label>
 													<div class="col-lg-9">
-														<f:input path="phiVanChuyen" type="number"
-															cssClass="form-control" placeholder="VNĐ" />
+														<f:input id="phivanchuyen" path="phiVanChuyen"
+															type="number" cssClass="form-control" placeholder="VNĐ" />
 													</div>
 												</div>
 												<div class="form-group row">
@@ -188,5 +194,10 @@
 		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"/>"></script>
 	<script
 		src="<c:url value="resources/js/lib/datatables/datatables-init.js"/>"></script>
+	<script>
+		$("#trongluong").bind("change paste keyup", function() {
+			$("#phivanchuyen").val($(this).val() * 40000);
+		});
+	</script>
 </body>
 </html>
