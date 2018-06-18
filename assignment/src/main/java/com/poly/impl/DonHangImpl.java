@@ -13,7 +13,4 @@ public interface DonHangImpl {
 	public List<DonHang> danhsachDonHang();
 	
 	public DonHang getDonHang(int id);
-	
-	public List<DonHang> layDonHangId(int id);
-
 }

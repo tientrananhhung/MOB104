@@ -44,6 +44,7 @@ public class DonHangNVController {
 		@GetMapping
 		public String qlDonHang(ModelMap model) {
 			model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
+			model.addAttribute("dsTinhTrangDonHang", tinhTrangDonHangService.danhsachTinhTrangTheoTrangThaiMoiNhat());
 			return "donhang";
 		}
 		

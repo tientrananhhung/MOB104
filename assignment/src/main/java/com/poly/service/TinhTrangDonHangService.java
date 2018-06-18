@@ -39,4 +39,16 @@ public class TinhTrangDonHangService implements TrangThaiDonHangImpl {
 		return tinhtrang;
 	}
 
+	@Override
+	public List<TinhTrangDonHang> danhsachTinhTrangTheoDonHang(int maDonHang) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TinhTrangDonHang> danhsachTinhTrangTheoTrangThaiMoiNhat() {
+		List<TinhTrangDonHang> lst = tinhTrangDonHangDAO.danhsachTinhTrangTheoTrangThaiMoiNhat();
+		return lst;
+	}
+
 }
