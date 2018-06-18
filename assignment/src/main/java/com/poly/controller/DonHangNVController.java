@@ -73,7 +73,14 @@ public class DonHangNVController {
 		@GetMapping("editdonhang/{id}")
 		public String editDonHang(@PathVariable("id") int id, ModelMap model) {
 	        DonHang donhang = donhangService.getDonHang(id);
-	        layDCKhachHang(model);
+	        List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
+			if (!list.isEmpty()) {
+				HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
+				for (DiaChiKhachHang diachi : list) {
+					cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+				}
+				model.addAttribute("diachi", cateMap);
+			}
 	        model.addAttribute("donhang", donhang);
 	        model.addAttribute("action","suadonhang");
 	        return "themdonhang";

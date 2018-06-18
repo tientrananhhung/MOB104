@@ -34,7 +34,7 @@ public class DonHang {
 	private DiaChiKhachHang diaChiKhachHang;
 
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "maDonHang")
+	@JoinColumn(name = "maDonHang", updatable=false)
 	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
 	public DonHang() {
