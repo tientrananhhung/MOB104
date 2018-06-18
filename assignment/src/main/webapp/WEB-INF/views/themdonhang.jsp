@@ -91,15 +91,7 @@
 														vận chuyển :</label>
 													<div class="col-lg-9">
 														<f:input id="phivanchuyen" path="phiVanChuyen"
-															type="number" cssClass="form-control" placeholder="VNĐ" />
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-lg-2 col-form-label" for="val-currency">Thu
-														hộ :</label>
-													<div class="col-lg-9">
-														<f:input path="tienThuHo" type="number"
-															cssClass="form-control" placeholder="VNĐ" />
+															type="number" cssClass="form-control" readonly="true" />
 													</div>
 												</div>
 												<div class="form-group row">
@@ -116,11 +108,26 @@
 													<label class="col-lg-2 col-form-label" for="val-skill">Cách
 														trả phí :</label>
 													<div class="col-lg-9">
-														<f:select path="cachThucTraPhi" cssClass="form-control"
+														<f:select id="cachthuc" path="cachThucTraPhi" cssClass="form-control"
 															name="val-skill">
 															<f:option value="0">Người gửi trả</f:option>
 															<f:option value="1">Người nhận trả</f:option>
 														</f:select>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label" for="val-currency">Thu
+														hộ :</label>
+													<div class="col-lg-9">
+														<input id="thuho" type="number"
+															class="form-control" placeholder="VNĐ" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label" for="val-currency">Tổng người nhận phải trả :</label>
+													<div class="col-lg-9">
+														<f:input id="tongthanhtoan" path="tienThuHo" type="number"
+															cssClass="form-control" readonly="true" />
 													</div>
 												</div>
 												<div class="form-group row">
@@ -197,9 +204,29 @@
 	<script
 		src="<c:url value="/resources/js/lib/datatables/datatables-init.js"/>"></script>
 	<script>
-		$("#trongluong").bind("change paste keyup", function() {
-			$("#phivanchuyen").val($(this).val() * 40000);
-		});
-	</script>
+	
+	$("#trongluong").bind("change paste keyup", function() {
+	       $("#phivanchuyen").val($(this).val()*40000);
+	       if($("#cachthuc").val() == 0){
+	    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()));
+	       } else {
+	    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()) + parseFloat($("#phivanchuyen").val()));
+	       }
+	 });
+	  $("#thuho").bind("change paste keyup", function() {
+		  if($("#cachthuc").val() == 0){
+	    	   $("#tongthanhtoan").val(parseFloat($(this).val()));
+	       } else {
+	    	   $("#tongthanhtoan").val(parseFloat($(this).val()) + parseFloat($("#phivanchuyen").val()));
+	       }
+	  });
+		  $("#cachthuc").bind("change paste keyup", function() {
+			  if($("#cachthuc").val() == 0){
+		    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()));
+		       } else {
+		    	   $("#tongthanhtoan").val(parseFloat($("#thuho").val()) + parseFloat($("#phivanchuyen").val()));
+		       }
+	 });
+	  </script>  
 </body>
 </html>
