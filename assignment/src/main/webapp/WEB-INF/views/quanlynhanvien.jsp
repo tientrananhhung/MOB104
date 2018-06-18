@@ -4,23 +4,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-		 if (session != null) {
-             if (session.getAttribute("loginnv") != "true") {
-            	 response.sendRedirect("/assignment/dangnhapNV");
-             }
-        
+	if (session != null) {
+		if (session.getAttribute("loginnv") != "true") {
+			response.sendRedirect("/assignment/dangnhapNV");
+		}
+
 	}
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quản lý nhân viên</title>
+<base href="${pageContext.servletContext.contextPath}/" />
+<link rel="icon" type="image/png" sizes="16x16"
+	href="<c:url value="resources/images/favicon.png" />">
+<!-- Nice Select Box -->
+<link rel="stylesheet"
+	href="<c:url value="resources/css/nice-select.css" />">
+<!-- Bootstrap Core CSS -->
+<link
+	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="<c:url value="resources/css/helper.css" />" rel="stylesheet">
+<link href="<c:url value="resources/css/style.css" />" rel="stylesheet">
+<link href="<c:url value="resources/css/custom.css" />" rel="stylesheet">
 </head>
 <body>
 	<div id="main-wrapper">
-		<jsp:include page="include/header.jsp"></jsp:include><br />
-		<br />
+		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h3 class="text-primary">QUẢN LÝ NHÂN VIÊN</h3>
+				</div>
+				<div class="col-md-7 align-self-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang chủ</a></li>
+						<li class="breadcrumb-item active">Nhân viên</li>
+					</ol>
+				</div>
+			</div>
 			<div class="container-fluid">
 				<div class="card">
 					<div class="card-body">
@@ -34,8 +58,8 @@
 										viên</button></a>
 							</div>
 							<table id="example23"
-										class="display nowrap table table-hover table-striped table-bordered"
-										cellspacing="0" width="100%">
+								class="display nowrap table table-hover table-striped table-bordered"
+								cellspacing="0" width="100%">
 								<thead>
 									<tr>
 										<th>Avatar</th>
@@ -65,9 +89,12 @@
 											<td><c:out value="${item.chucVu.tenChucVu}" /></td>
 											<td><c:out value="${item.luongCoBan}" /></td>
 											<td><c:out value="${item.matKhau}" /></td>
-											<td>
-												<a href="quanlynhanvien/editnhanvien/${item.maNhanVien}" class="btn btn-warning m-b-10 m-l-5"><i class="ti-pencil-alt"></i></a> 
-												<a href="quanlynhanvien/xoanhanvien/${item.maNhanVien}" class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
+											<td><a
+												href="quanlynhanvien/editnhanvien/${item.maNhanVien}"
+												class="btn btn-warning m-b-10 m-l-5"><i
+													class="ti-pencil-alt"></i></a> <a
+												href="quanlynhanvien/xoanhanvien/${item.maNhanVien}"
+												class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -79,7 +106,7 @@
 			</div>
 		</div>
 	</div>
-<!-- All Jquery -->
+	<!-- All Jquery -->
 	<script src="<c:url value="/resources/js/lib/jquery/jquery.min.js" />"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script
@@ -121,4 +148,3 @@
 	<script src="<c:url value="/resources/js/lib/nice-select/prism.js" />"></script>
 </body>
 </html>
-													
