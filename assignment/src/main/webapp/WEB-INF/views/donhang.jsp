@@ -21,6 +21,7 @@
 <link href="<c:url value="resources/css/custom.css" />" rel="stylesheet">
 </head>
 <body>
+
 	<div id="main-wrapper">
 		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
@@ -59,6 +60,7 @@
 												<th>Số điện thoại người nhận</th>
 												<th>Địa chỉ người nhận</th>
 												<th>Địa chỉ gửi</th>
+												<th>Địa chỉ gửi</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -71,6 +73,13 @@
 													<td><c:out value="${a.sdtNguoiNhan}" /></td>
 													<td><c:out value="${a.diaChiNguoiNhan}" /></td>
 													<td><c:out value="${a.diaChiKhachHang.diaChiGui}" /></td>
+													<td>
+													<c:forEach var="b" items="${dsTinhTrangDonHang}">
+													<c:if test="${b.donHang.maDonHang == a.maDonHang }">
+													  <c:out value="${b.trangThai.trangThai}"/>
+													</c:if>
+													</c:forEach>
+													</td>
 													<th><a href="quanlydonhang/editdonhang/${a.maDonHang}"
 														class="btn btn-warning m-b-10 m-l-5"><i
 															class="ti-pencil-alt"></i></i></a></th>

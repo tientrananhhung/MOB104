@@ -35,11 +35,6 @@ public class DonHangService implements DonHangImpl {
 		return donhang;
 	}
 
-	@Override
-	public List<DonHang> layDonHangId(int id) {
-		List<DonHang> list = donhangDAO.layDonHangId(id);
-		return list;
-	}
 
 	@Override
 	public int taoDonHang(DonHang donhang) {

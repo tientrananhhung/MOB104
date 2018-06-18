@@ -62,4 +62,28 @@ public class TinhTrangDonHangDAO implements TrangThaiDonHangImpl {
 		}
 	}
 
+	@Override
+	public List<TinhTrangDonHang> danhsachTinhTrangTheoDonHang(int maDonHang) {
+		Session ss = sessionFactory.getCurrentSession();
+		String sql = "from tinhtrangdonhang WHERE `maDonHang` = '"+ maDonHang +"' ORDER BY thoiGian DESC";
+		try {
+			List<TinhTrangDonHang> lst = ss.createQuery(sql).getResultList();
+			return lst;
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<TinhTrangDonHang> danhsachTinhTrangTheoTrangThaiMoiNhat() {
+		Session ss = sessionFactory.getCurrentSession();
+		String sql = "FROM tinhtrangdonhang GROUP BY maDonHang ORDER BY maDonHang DESC";
+		try {
+			List<TinhTrangDonHang> lst = ss.createQuery(sql).getResultList();
+			return lst;
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+
 }
