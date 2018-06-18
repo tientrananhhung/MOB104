@@ -140,12 +140,7 @@
 								ký ngay</span>
 						</a>
 						<h3 class="h4" style="padding: 10px; margin: 0px;">Hoặc</h3>
-<<<<<<< HEAD
-						<a href="dangnhap"> 
-						<span>ĐĂNG NHẬP</span>
-=======
 						<a href="dangnhap"> <span>ĐĂNG NHẬP</span>
->>>>>>> 77c1fb122135d5e6a9a14e5ad6ff53cd60b6aad3
 						</a>
 					</div>
 				</div>
