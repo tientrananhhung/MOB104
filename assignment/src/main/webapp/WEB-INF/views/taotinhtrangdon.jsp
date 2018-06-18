@@ -44,7 +44,6 @@
 								<div class="typo-headers">
 									<f:form action="${action}" modelAttribute="tinhtrangDH"
 										method="POST">
-										<f:hidden path="id" />
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="donHang.maDonHang">Mã đơn hàng</f:label>
 											<f:select path="donHang.maDonHang" cssClass="form-control">
