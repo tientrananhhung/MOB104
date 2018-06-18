@@ -47,7 +47,7 @@
 									<c:forEach var="item" items="${dsNhanVien}">
 										<tr>
 											<td><img style="width: 70px; height: 80px;"
-												src="resources/images/${item.anhDaiDien}" /></td>
+												src="/resources/images/${item.anhDaiDien}" /></td>
 											<td><c:out value="${item.maNhanVien}" /></td>
 											<td><c:out value="${item.tenNhanVien}" /></td>
 											<td><c:out value="${item.email}" /></td>
@@ -72,45 +72,45 @@
 		</div>
 	</div>
 <!-- All Jquery -->
-	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
+	<script src="<c:url value="/resources/js/lib/jquery/jquery.min.js" />"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script
-		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/bootstrap/js/popper.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
 	<!-- slimscrollbar scrollbar JavaScript -->
-	<script src="<c:url value="resources/js/jquery.slimscroll.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery.slimscroll.js" />"></script>
 	<!--Menu sidebar -->
-	<script src="<c:url value="resources/js/sidebarmenu.js" />"></script>
+	<script src="<c:url value="/resources/js/sidebarmenu.js" />"></script>
 	<!--stickey kit -->
 	<script
-		src="<c:url value="resources/js/lib/sticky-kit-master/dist/sticky-kit.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/sticky-kit-master/dist/sticky-kit.min.js" />"></script>
 	<!--Custom JavaScript -->
-	<script src="<c:url value="resources/js/custom.min.js" />"></script>
+	<script src="<c:url value="/resources/js/custom.min.js" />"></script>
 
 	<script
-		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/datatables.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/datatables/datatables-init.js" />"></script>
+		src="<c:url value="/resources/js/lib/datatables/datatables-init.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/nice-select/jquery.nice-select.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/nice-select/jquery.nice-select.min.js" />"></script>
 	<script
-		src="<c:url value="resources/js/lib/nice-select/fastclick.js" />"></script>
-	<script src="<c:url value="resources/js/lib/nice-select/prism.js" />"></script>
+		src="<c:url value="/resources/js/lib/nice-select/fastclick.js" />"></script>
+	<script src="<c:url value="/resources/js/lib/nice-select/prism.js" />"></script>
 </body>
 </html>
 													
