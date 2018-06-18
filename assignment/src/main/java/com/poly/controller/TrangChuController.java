@@ -28,6 +28,7 @@ import com.poly.entity.TrangThai;
 import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
+import com.poly.service.NhanVienService;
 import com.poly.service.TinhTrangDonHangService;
 
 @Controller
@@ -46,6 +47,9 @@ public class TrangChuController {
 	
 	@Autowired
 	TinhTrangDonHangService tinhTrangDonHangService;
+	
+	@Autowired
+	NhanVienService nhanVienService;
 	
 	@GetMapping
 	public String trangChu() {
@@ -126,4 +130,23 @@ public class TrangChuController {
 		return model;
 	}
 	
+	
+	@GetMapping("dangnhapNV")
+	public String dangNhapNV(ModelMap model) {
+		model.addAttribute("dangnhapNV", new NhanVien());
+		return "dangnhapNV";
+	}
+	
+	@PostMapping("dangnhapNV")
+	public String guiDangNhapNV(@ModelAttribute("dangnhapNV") NhanVien nhanvien,HttpServletRequest rq) {
+		NhanVien nv = nhanVienService.dangNhapNV(nhanvien.getSoDienThoai(), nhanvien.getMatKhau());
+		if(nv != null) {
+			rq.getSession().setAttribute("login", "true");
+			rq.getSession().setAttribute("thongtinNV", nv.getMaNhanVien());
+			return "index";
+			
+		}else {
+			return "dangnhapNV";
+		}
+	}
 }

@@ -6,12 +6,12 @@
 
 <html>
 <%
-            if (session != null) {
-                if (session.getAttribute("login") != null) {
-                    response.sendRedirect("/assignment/");
-                }
-            }
-        %>
+	if (session != null) {
+		if (session.getAttribute("login") != null) {
+			response.sendRedirect("/assignment/");
+		}
+	}
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Đăng nhập</title>
@@ -41,28 +41,29 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="<c:url value="resources/images/img-01.png" />" alt="IMG">
 				</div>
-				<f:form cssClass="login100-form validate-form" method="POST" modelAttribute="dangnhap" action="dangnhap" >
+				<f:form cssClass="login100-form validate-form" method="POST"
+					modelAttribute="dangnhapNV" action="dangnhapNV">
 					<span class="login100-form-title"> TRANG ĐĂNG NHẬP </span>
 					<div class="wrap-input100 validate-input"
 						data-validate="Vui lòng nhập đúng email hoặc sdt">
-						<f:input path="soDienThoai" cssClass="input100" type="text" placeholder="Tên đăng nhập"/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-envelope"
-							aria-hidden="true"></i>
+						<f:input path="soDienThoai" cssClass="input100" type="text"
+							placeholder="Tên đăng nhập" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Vui lòng nhập mật khẩu">
-						<f:input path="matKhau" cssClass="input100" type="password" placeholder="Mật khẩu"/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-lock"
-							aria-hidden="true"></i>
+						<f:input path="matKhau" cssClass="input100" type="password"
+							placeholder="Mật khẩu" />
+						<span class="focus-input100"></span> <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" >Đăng nhập</button>
+						<button class="login100-form-btn">Đăng nhập</button>
 					</div>
 
 					<div class="text-center p-t-12">
@@ -71,15 +72,14 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="dangnhapNV"> Trang đăng này dành cho nhân viên <i
-							class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						<a class="txt2" href="dangnhap"> Trang đăng nhập cho khách
+							hàng<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
 				</f:form>
 			</div>
 		</div>
 	</div>
-
 	<c:url value="resources/js/main.js" />
 	<script
 		src="<c:url value="resources/vendor/jquery/jquery-3.2.1.min.js" />"></script>

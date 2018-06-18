@@ -44,6 +44,7 @@ public class DonHangNVController {
 	@Autowired
 	KhachHangService khachHangService;
 
+
 	@GetMapping
 	public String qlDonHang(ModelMap model) {
 		model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
@@ -61,40 +62,46 @@ public class DonHangNVController {
 	@GetMapping("taodonhang")
 	public String taoDonHang(ModelMap model, HttpServletRequest rq) {
 		model.addAttribute("donhang", new DonHang());
-		int maKH = Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString());
-		model.addAttribute("khachhang", khachHangService.layKhachHang(maKH));
+		int maNV = Integer.parseInt(rq.getSession().getAttribute("thongtinNV").toString());
+		model.addAttribute("nhanvien", nhanVienService.layNhanVien(maNV));
 		List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
 		model.addAttribute("action", "taodonhang");
 		if (!list.isEmpty()) {
-			HashMap<Integer, String> cateMap = new HashMap<Integer, String>();
+			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
 			for (DiaChiKhachHang diachi : list) {
 				cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
 			}
 			model.addAttribute("diachi", cateMap);
 		}
-
 		return "themdonhang";
-	}
-
-	@GetMapping("editdonhang/{id}")
-	public String editDonHang(@PathVariable("id") int id, ModelMap model) {
-		DonHang donhang = donhangService.getDonHang(id);
-		layDCKhachHang(model);
-		model.addAttribute("donhang", donhang);
-		model.addAttribute("action", "suadonhang");
-		return "themdonhang";
-	}
-
-	public void layDCKhachHang(ModelMap model) {
-		List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
-		if (!list.isEmpty()) {
-			HashMap<Integer, String> map = new HashMap<Integer, String>();
-			for (DiaChiKhachHang diachikh : list) {
-				map.put(diachikh.getMaDiaChi(), diachikh.getDiaChiGui());
-			}
-			model.addAttribute("diachi", map);
 		}
-	}
+		
+		@GetMapping("editdonhang/{id}")
+		public String editDonHang(@PathVariable("id") int id, ModelMap model) {
+	        DonHang donhang = donhangService.getDonHang(id);
+	        List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
+			if (!list.isEmpty()) {
+				HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
+				for (DiaChiKhachHang diachi : list) {
+					cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+				}
+				model.addAttribute("diachi", cateMap);
+			}
+	        model.addAttribute("donhang", donhang);
+	        model.addAttribute("action","suadonhang");
+	        return "themdonhang";
+		}
+		
+		public void layDCKhachHang(ModelMap model) {
+			List<DiaChiKhachHang> list = chiKhachHangService.layDSDiaChi();
+			if (!list.isEmpty()) {
+				HashMap<Integer, String> map = new HashMap<Integer, String>();
+				for (DiaChiKhachHang diachikh : list) {
+					map.put(diachikh.getMaDiaChi(), diachikh.getDiaChiGui());
+				}
+				model.addAttribute("dsDCKhachHang", map);
+			}
+		}
 
 	// public void layKhachHang(ModelMap model) {
 	// List<KhachHang> list = khachHangService.layDSKhachHang();
@@ -108,11 +115,12 @@ public class DonHangNVController {
 	// }
 
 	@PostMapping("taodonhang")
-	public String taoDonHangNV(@ModelAttribute("donhang") DonHang donhang) {
+	public String taoDonHangNV(@ModelAttribute("donhang") DonHang donhang, HttpServletRequest rq) {
 		try {
+			int maNV = Integer.parseInt(rq.getSession().getAttribute("thongtinNV").toString());
 			int idDH = donhangService.taoDonHang(donhang);
 			tinhTrangDonHangService.taoTinhTrangDon(
-					new TinhTrangDonHang(new Date(), new TrangThai("daTao", ""), new NhanVien(1), new DonHang(idDH)));
+					new TinhTrangDonHang(new Date(), new TrangThai("daTao", ""), new NhanVien(maNV), new DonHang(idDH)));
 			return "redirect:/quanlydonhang";
 		} catch (Exception e) {
 			return "themdonhang";
