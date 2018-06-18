@@ -80,7 +80,7 @@
 					</div>
 
 					<div class="text-center p-t-12">
-						<a class="txt2" href="#"> Đăng Nhập ? </a>
+						<a class="txt2" href="dangnhap"> Đăng Nhập ? </a>
 					</div>
 
 					<div class="text-center p-t-136">
@@ -92,8 +92,7 @@
 			</div>
 		</div>
 	</div>
-
-	<c:url value="resources/js/main.js" />
+	
 	<script
 		src="<c:url value="resources/vendor/jquery/jquery-3.2.1.min.js" />"></script>
 	<script src="<c:url value="resources/vendor/bootstrap/js/popper.js" />"></script>
