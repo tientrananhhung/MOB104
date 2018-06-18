@@ -49,7 +49,6 @@ public class DonHangService implements DonHangImpl {
 		} catch (Exception e) {
 			return 0;
 		}
-		
 	}
 
 }
