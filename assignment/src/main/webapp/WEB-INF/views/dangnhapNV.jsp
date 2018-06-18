@@ -7,9 +7,11 @@
 <html>
 <%
 	if (session != null) {
-		if (session.getAttribute("login") != null) {
-			response.sendRedirect("/assignment/");
+		if (session.getAttribute("loginnv") != null) {
+			response.sendRedirect("/assignment/quanlynhanvien");
 		}
+	}  else {
+		response.sendRedirect("/assignment/dangnhapNV");
 	}
 %>
 <head>

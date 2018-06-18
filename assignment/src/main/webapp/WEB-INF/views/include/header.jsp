@@ -8,6 +8,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<%
+	if (session == null) {
+		if (session.getAttribute("loginnv") != null) {
+		response.sendRedirect("/assignment/dangnhapNV");
+		}
+	}
+%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
@@ -209,7 +216,7 @@
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
-                                    <li><a href="logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="logoutnv"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
