@@ -12,6 +12,7 @@
 	href="<c:url value="resources/css/lib/font-awesome/fontawesome-all.css" />">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/styleIndex.css" />">
+	<base href="${pageContext.servletContext.contextPath}/" />
 </head>
 <body>
 	<jsp:include page="include/headerkh.jsp" />
@@ -97,11 +98,12 @@
 				<div class="block block-signup">
 					<div class="content text-center" style="padding: 10px;">
 						<h3 class="h4">Bạn là khách hàng mới?</h3>
-						<a href="" class="btn btn-primary" style="padding: 10px;"> <span>Đăng
+						<a href="dangky" class="btn btn-primary" style="padding: 10px;"> <span>Đăng
 								ký ngay</span>
 						</a>
 						<h3 class="h4" style="padding: 10px; margin: 0px;">Hoặc</h3>
-						<a href=""> <span>ĐĂNG NHẬP</span>
+						<a href="dangnhap"> 
+						<span>ĐĂNG NHẬP</span>
 						</a>
 					</div>
 				</div>

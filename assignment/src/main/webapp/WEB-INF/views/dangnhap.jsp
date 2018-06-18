@@ -5,13 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
 <html>
-<%
-            if (session != null) {
-                if (session.getAttribute("login") != null) {
-                    response.sendRedirect("/assignment/");
-                }
-            }
-        %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Đăng nhập</title>
