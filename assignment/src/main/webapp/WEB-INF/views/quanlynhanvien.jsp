@@ -25,7 +25,7 @@
 										class="btn btn-success m-b-10 m-l-5">Thêm mới nhân
 										viên</button></a>
 							</div>
-							<table id="example23"
+							<table id="example23" style="font-size: 10px;"
 										class="display nowrap table table-hover table-striped table-bordered"
 										cellspacing="0" width="100%">
 								<thead>
