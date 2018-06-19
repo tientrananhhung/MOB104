@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
 import com.poly.entity.NhanVien;
 import com.poly.entity.TinhTrangDonHang;
@@ -48,36 +49,46 @@ public class TinhTrangDonHangController {
 	
 	@GetMapping("taotinhtrangdon")
 	public String themTinhTrang(ModelMap model) {
-		model.addAttribute("tinhtrang", new TinhTrangDonHang());
-		model.addAttribute("action","taotinhtrangDH");
+		model.addAttribute("tinhtrangDH", new TinhTrangDonHang());
 		layDonHang(model);
 		layNhanVien(model);
 		layTrangThai(model);
 		return "taotinhtrangdon";
 	}
 	
-	@GetMapping("editdtinhtrang/{id}")
-	public String editTinhTrang(@PathVariable("id") int id, ModelMap model) {
-        TinhTrangDonHang donhang = tinhTrangDonHangService.getTinhTrang(id);
-        layDonHang(model);
-        layTrangThai(model);
-        layNhanVien(model);
-        model.addAttribute("tinhtrangDH", donhang);
-        model.addAttribute("action","tinhtrangDH");
-        return "taotinhtrangdon";
-	}
-	
-	@PostMapping("editdtinhtrang/tinhtrangDH")
-	public String guiTinhTrang(ModelMap model, @ModelAttribute(value = "tinhtrangDH") TinhTrangDonHang tinhTrangDH) {
+	@PostMapping("taotinhtrangdon")
+	public String taoDonHangNV(@ModelAttribute("tinhtrangDH") TinhTrangDonHang tinhTrangDH, HttpServletRequest rq) {
 		tinhTrangDH.setThoiGian(new Date());
-		if (tinhTrangDonHangService.suaTinhTrang(tinhTrangDH)) {
-			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
+		if (tinhTrangDonHangService.taoTinhTrangDon(tinhTrangDH)) {
 			return "redirect:/trangthaidonhang";
 		} else {
-			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
-			return "redirect:/trangthaidonhang";
+			return "taotinhtrangdon";
 		}
+		
 	}
+	
+//	@GetMapping("editdtinhtrang/{id}")
+//	public String editTinhTrang(@PathVariable("id") int id, ModelMap model) {
+//        TinhTrangDonHang donhang = tinhTrangDonHangService.getTinhTrang(id);
+//        layDonHang(model);
+//        layTrangThai(model);
+//        layNhanVien(model);
+//        model.addAttribute("tinhtrangDH", donhang);
+//        model.addAttribute("action","tinhtrangDH");
+//        return "taotinhtrangdon";
+//	}
+//	
+//	@PostMapping("editdtinhtrang/tinhtrangDH")
+//	public String guiTinhTrang(ModelMap model, @ModelAttribute(value = "tinhtrangDH") TinhTrangDonHang tinhTrangDH) {
+//		tinhTrangDH.setThoiGian(new Date());
+//		if (tinhTrangDonHangService.suaTinhTrang(tinhTrangDH)) {
+//			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
+//			return "redirect:/trangthaidonhang";
+//		} else {
+//			model.addAttribute("dsTinhTrang", tinhTrangDonHangService.danhsachTinhTrang());
+//			return "redirect:/trangthaidonhang";
+//		}
+//	}
 	
 	public void layDonHang(ModelMap model) {
 		List<DonHang> list = donHangService.danhsachDonHang();

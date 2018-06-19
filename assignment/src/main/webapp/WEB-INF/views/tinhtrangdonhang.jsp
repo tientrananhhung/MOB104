@@ -44,6 +44,10 @@
 							<div class="card-body">
 								<h4 class="card-title">Tình trạng đơn hàng</h4>
 								<div class="table-responsive m-t-40">
+								<div class="text-left">
+								<a href="trangthaidonhang/taotinhtrangdon"><button type="button"
+										class="btn btn-success m-b-10 m-l-5">Cập nhật tình trạng đơn hàng</button></a>
+							</div>
 									<table id="example23"
 										class="display nowrap table table-hover table-striped table-bordered"
 										cellspacing="0" width="100%">
@@ -53,7 +57,6 @@
 												<th>Nhân viên</th>
 												<th>Trạng thái đơn</th>
 												<th>Thời gian</th>
-												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -63,9 +66,6 @@
 													<td><c:out value="${a.nhanVien.tenNhanVien}" /></td>
 													<td><c:out value="${a.trangThai.trangThai}" /></td>
 													<td><c:out value="${a.thoiGian}" /></td>
-													<th><center><a href="trangthaidonhang/editdtinhtrang/${a.id}"
-														class="btn btn-warning m-b-10 m-l-5"><i
-															class="ti-pencil-alt"></i></i></a></center></th>
 												</tr>
 											</c:forEach>
 										</tbody>

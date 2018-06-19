@@ -51,4 +51,10 @@ public class TinhTrangDonHangService implements TrangThaiDonHangImpl {
 		return lst;
 	}
 
+	@Override
+	public List<TinhTrangDonHang> danhSachTinhTrangTheoMaDonHang(int maDonHang) {
+		List<TinhTrangDonHang> list = tinhTrangDonHangDAO.danhSachTinhTrangTheoMaDonHang(maDonHang);
+		return list;
+	}
+
 }

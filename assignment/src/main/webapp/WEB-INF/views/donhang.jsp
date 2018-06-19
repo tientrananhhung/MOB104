@@ -2,6 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<%
+		 if (session != null) {
+             if (session.getAttribute("loginnv") != "true") {
+            	 response.sendRedirect("/assignment/dangnhapNV");
+             }
+        
+	}
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Danh sách đơn hàng</title>
@@ -80,9 +88,9 @@
 													</c:if>
 													</c:forEach>
 													</td>
-													<th><a href="quanlydonhang/editdonhang/${a.maDonHang}"
+													<th><center><a href="quanlydonhang/editdonhang/${a.maDonHang}"
 														class="btn btn-warning m-b-10 m-l-5"><i
-															class="ti-pencil-alt"></i></i></a></th>
+															class="ti-pencil-alt"></i></i></a></center></th>
 												</tr>
 											</c:forEach>
 										</tbody>

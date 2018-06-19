@@ -42,7 +42,7 @@
 							<!--/row-->
 							<div class="card-body">
 								<div class="typo-headers">
-									<f:form action="${action}" modelAttribute="tinhtrangDH"
+									<f:form action="taotinhtrangdon" modelAttribute="tinhtrangDH"
 										method="POST">
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="donHang.maDonHang">Mã đơn hàng</f:label>
@@ -52,13 +52,13 @@
 										</div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="nhanVien.tenNhanVien">Nhân viên</f:label>
-											<f:select path="nhanVien.tenNhanVien" cssClass="form-control">
+											<f:select path="nhanVien.maNhanVien" cssClass="form-control">
 												<f:options items="${dsNhanVien}" />
 											</f:select>
 										</div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="trangThai.trangThai">Trạng thái</f:label>
-											<f:select path="trangThai.trangThai" cssClass="form-control">
+											<f:select path="trangThai.maTrangThai" cssClass="form-control">
 												<f:options items="${dsTrangThai}" />
 											</f:select>
 										</div><br/>

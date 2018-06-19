@@ -137,12 +137,19 @@ public class TrangChuController {
 	@PostMapping("dangnhapNV")
 	public String guiDangNhapNV(@ModelAttribute("dangnhapNV") NhanVien nhanvien, HttpServletRequest rq) {
 		NhanVien nv = nhanVienService.dangNhapNV(nhanvien.getSoDienThoai(), nhanvien.getMatKhau());
-		if(nv != null) {
-			rq.getSession().setAttribute("login", "true");
+		if (nv != null) {
+			rq.getSession().setAttribute("loginnv", "true");
 			rq.getSession().setAttribute("thongtinNV", nv.getMaNhanVien());
-			return "index";
-		}else {
+			return "redirect:/quanlynhanvien";
+		} else {
 			return "dangnhapNV";
 		}
+	}
+	
+	@GetMapping("logoutnv")
+	public String dangXuatNV(ModelMap model, HttpServletRequest request) {
+		request.getSession().invalidate();
+		model.addAttribute("dangnhapNV", new NhanVien());
+		return "dangnhapNV";
 	}
 }

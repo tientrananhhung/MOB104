@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,6 +15,7 @@
 	href="<c:url value="resources/css/lib/font-awesome/fontawesome-all.css" />">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/styleIndex.css" />">
+<base href="${pageContext.servletContext.contextPath}/" />
 </head>
 <body>
 	<jsp:include page="include/headerkh.jsp" />
@@ -30,54 +33,25 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body" id="phaDo">
 					Mời quý khách nhập mã vận đơn để tra cứu (VD: 123456789)
 					<div class="input-group mb-3">
-						<input type="text" class="form-control"
+						<input type="text" class="form-control" id="maHoaDon"
 							placeholder="Nhập mã vận đơn" aria-label="Recipient's username"
 							aria-describedby="basic-addon2">
 						<div class="input-group-append">
-							<button class="btn btn-outline-secondary" type="button"
+							<button id="timHoaDon" class="btn btn-outline-secondary"
+								type="button"
 								style="padding: 7px; border-radius: 0px 5px 5px 0px;">TÌM
 								ĐƠN</button>
 						</div>
 					</div>
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th scope="col" colspan="2">Thông tin vận đơn</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Người nhận</td>
-								<td>Name</td>
-							</tr>
-							<tr>
-								<td>Người gửi</td>
-								<td>Name</td>
-							</tr>
-							<tr>
-								<td>Thông tin đơn hàng</td>
-								<td>Information</td>
-							</tr>
-							<tr>
-								<td>Trạng thái đơn hàng</td>
-								<td>Đã đối soát</td>
-							</tr>
-						</tbody>
+					<div class="daPho"></div>
+					<table class="table table-bordered tt-kh">
+
 					</table>
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th scope="col">Log</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Log trong đây</td>
-							</tr>
-						</tbody>
+					<table class="table table-bordered log-kh">
+
 					</table>
 				</div>
 			</div>
@@ -135,8 +109,8 @@
 				<div class="block block-signup">
 					<div class="content text-center" style="padding: 10px;">
 						<h3 class="h4">Bạn là khách hàng mới?</h3>
-						<a href="dangky" class="btn btn-primary" style="padding: 10px;"> <span>Đăng
-								ký ngay</span>
+						<a href="dangky" class="btn btn-primary" style="padding: 10px;">
+							<span>Đăng ký ngay</span>
 						</a>
 						<h3 class="h4" style="padding: 10px; margin: 0px;">Hoặc</h3>
 						<a href="dangnhap"> <span>ĐĂNG NHẬP</span>
@@ -280,10 +254,131 @@
 			document.documentElement.scrollTop = 0;
 		}
 	</script>
-	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
+	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
 	<!-- End Script -->
+	<!-- Custom Script -->
+	<script type="text/javascript">
+		$(document)
+				.on(
+						'click',
+						'#timHoaDon',
+						function(event) {
+							var maHoaDon = $('#maHoaDon').val();
+							$
+									.ajax(
+											{
+												url : '/assignment/api/tinhtrangdonhang/'
+														+ maHoaDon,
+												type : 'GET',
+											})
+									.done(
+											function(data) {
+												console.log(data);
+												if (data.length == 0) {
+													$('.daPho').empty();
+													$('.tt-kh').empty();
+													$('.daPho')
+															.append(
+																	'<div class="alert alert-danger" role="alert"> Mã hóa đơn không tồn tại</div>');
+												} else {
+													var traShip;
+													if (data[0].donHang.cachThucTraPhi == true
+															|| data[0].donHang.cachThucTraPhi == 'true') {
+														traShip = '<b id="traShip">Người nhận</b>'
+													} else {
+														traShip = '<b id="traShip">Người gửi</b>'
+													}
+													$('.tt-kh').empty();
+													$('.daPho').empty();
+													$('.tt-kh')
+															.append(
+																	'<thead><tr><th scope="col" colspan="2">Thông tin vận đơn</th></tr></thead>'
+																			+ '<tbody>'
+																			+ '<tr>'
+																			+ '<td>Người nhận</td>'
+																			+ '<td>'
+																			+ '<p>Họ Tên: '
+																			+ '<b id="hoTenNN">'
+																			+ data[0].donHang.tenNguoiNhan
+																			+ '</b>'
+																			+ '</p>'
+																			+ '<p>SĐT: '
+																			+ '<b id="sdtNN">'
+																			+ data[0].donHang.sdtNguoiNhan
+																			+ '</b>'
+																			+ '</p>'
+																			+ '<p>Địa chỉ: '
+																			+ '<b id="diaChiNN">'
+																			+ data[0].donHang.diaChiNguoiNhan
+																			+ '</b>'
+																			+ '</p>'
+																			+ '</td></tr>'
+																			+ '<tr><td>Người gửi</td><td>'
+																			+ '<p>Họ Tên: '
+																			+ '<b id="hoTenNG">'
+																			+ data[0].donHang.diaChiKhachHang.khachHang.tenKhachHang
+																			+ '</b>'
+																			+ '</p>'
+																			+ '<p>SĐT: '
+																			+ '<b id="sdtNG">'
+																			+ data[0].donHang.diaChiKhachHang.khachHang.soDienThoai
+																			+ '</b>'
+																			+ '</p>'
+																			+ '<p>Địa chỉ: '
+																			+ '<b id="diaChiNG">'
+																			+ data[0].donHang.diaChiKhachHang.diaChiGui
+																			+ '</b>'
+																			+ '</p></td></tr>'
+																			+ '<tr><td>Thông tin đơn hàng</td><td>'
+																			+ '<p>Mã đơn hàng của KH: <b id="mdhKH"></b></p>'
+																			+ '<p>Tiền thu hộ: '
+																			+ '<b id="tienThuHo">'
+																			+ data[0].donHang.tienThuHo
+																			+ ' VNĐ</b>'
+																			+ '</p>'
+																			+ '<p>Phí ship: '
+																			+ '<b id="phiShip">'
+																			+ data[0].donHang.phiVanChuyen
+																			+ ' VNĐ</b>'
+																			+ '</p>'
+																			+ '<p>Trả ship: '
+																			+ traShip
+																			+ '</p></td></tr>'
+																			+ '<tr><td>Trạng thái đơn hàng</td>'
+																			+ '<td id="trangThaiDH">'
+																			+ data[0].trangThai.trangThai
+																			+ '</td>'
+																			+ '</tr>'
+																			+ '</tbody>');
+													$('.log-kh').empty();
+													$('.log-kh')
+															.append(
+																	'<thead><tr><th scope="col">Log</th></tr></thead>'
+																			+ '<tbody>'
+																			+ '<tr><td>Log trong đây</td></tr>'
+																			+ '</tbody>');
+												}
+											})
+									.fail(
+											function() {
+												$('.daPho').empty();
+												$('.daPho')
+														.append(
+																'<div class="alert alert-danger" role="alert"> Lỗi</div>');
+											}).always(function() {
+									});
+						});
+	</script>
+	<script type="text/javascript">
+		$(document).on('click', '#traCuuDH', function(event) {
+			$('.tt-kh').empty();
+			$('.daPho').empty();
+			$('.log-kh').empty();
+			$('#maHoaDon').val('');
+		});
+	</script>
+	<!-- End Custom Script -->
 </body>
 </html>

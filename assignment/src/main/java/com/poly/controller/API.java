@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,9 +19,11 @@ import com.poly.entity.JSONChucVu;
 import com.poly.entity.JSONDonHang;
 import com.poly.entity.JSONNhanVien;
 import com.poly.entity.NhanVien;
+import com.poly.entity.TinhTrangDonHang;
 import com.poly.service.ChucVuService;
 import com.poly.service.DonHangService;
 import com.poly.service.NhanVienService;
+import com.poly.service.TinhTrangDonHangService;
 import com.poly.service.TrangThaiService;
 
 @Controller
@@ -36,6 +39,8 @@ public class API {
 	NhanVienService nhanVienService;
 	@Autowired
 	TrangThaiService trangThaiService;
+	@Autowired
+	TinhTrangDonHangService tinhTrangDonHangService;
 
 	@GetMapping(path = "/dsChucVu", produces = "application/json; charset=utf-8")
 	@ResponseBody
@@ -100,5 +105,16 @@ public class API {
 			dsDonHang.add(jsonNhanVien);
 		}
 		return dsDonHang;
+	}
+	
+	@GetMapping(path = "/tinhtrangdonhang/{maDonHang}", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<TinhTrangDonHang> dsTinhTrangDonHangTheoMa(@PathVariable("maDonHang") int maDonHang){
+		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhSachTinhTrangTheoMaDonHang(maDonHang);
+		for(TinhTrangDonHang tt : list) {
+			System.out.println(tt.getDonHang().getMaDonHang());
+			System.out.println(tt.getNhanVien().getTenNhanVien());
+		}
+		return list;
 	}
 }

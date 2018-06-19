@@ -41,8 +41,8 @@ public class NhanVienController {
 	@GetMapping("themnhanvien")
 	public String themNhanVien(ModelMap model) {
 		model.addAttribute("nhanvien", new NhanVien());
-		model.addAttribute("action", "themnhanvien");
-		model.addAttribute("tenbutton", "Thêm nhân viên");
+		model.addAttribute("action","themnhanvien");
+		model.addAttribute("tenbutton","Thêm nhân viên");
 		layChucVu(model);
 		return "themnhanvien";
 	}
@@ -58,17 +58,15 @@ public class NhanVienController {
 			return "redirect:/quanlynhanvien";
 		}
 	}
-
 	@GetMapping("editnhanvien/{id}")
 	public String editNhanVien(@PathVariable("id") int id, ModelMap model) {
-		NhanVien nv = nhanVienService.layNhanVien(id);
-		layChucVu(model);
-		model.addAttribute("nhanvien", nv);
-		model.addAttribute("action", "suanhanvien");
-		model.addAttribute("tenbutton", "Sửa nhân viên");
-		return "themnhanvien";
+        NhanVien nv = nhanVienService.layNhanVien(id);
+        layChucVu(model);
+        model.addAttribute("nhanvien", nv);
+        model.addAttribute("action","suanhanvien");
+		model.addAttribute("tenbutton","Sửa nhân viên");
+        return "themnhanvien";
 	}
-
 	public void layChucVu(ModelMap model) {
 		List<ChucVu> list = chucVuService.layDSChucVu();
 		if (!list.isEmpty()) {
@@ -79,7 +77,6 @@ public class NhanVienController {
 			model.addAttribute("dsChucVu", cateMap);
 		}
 	}
-
 	@PostMapping("editnhanvien/suanhanvien")
 	public String suaNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
 		nv.setAnhDaiDien(null);
@@ -91,7 +88,6 @@ public class NhanVienController {
 			return "redirect:/quanlynhanvien";
 		}
 	}
-
 	@GetMapping("xoanhanvien/{id}")
 	public String xoaNhanVien(@PathVariable("id") int id, ModelMap model) {
 		NhanVien nv = nhanVienService.layNhanVien(id);
@@ -101,25 +97,6 @@ public class NhanVienController {
 		} else {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
-		}
-	}
-
-	@GetMapping("dangnhapNV")
-	public String dangNhapNV(ModelMap model) {
-		model.addAttribute("dangnhapNV", new NhanVien());
-		return "dangnhapNV";
-	}
-
-	@PostMapping("dangnhapNV")
-	public String guiDangNhapNV(@ModelAttribute("dangnhapNV") NhanVien nhanvien, HttpServletRequest rq) {
-		NhanVien nv = nhanVienService.dangNhapNV(nhanvien.getSoDienThoai(), nhanvien.getMatKhau());
-		if (nv != null) {
-			rq.getSession().setAttribute("login", "true");
-			rq.getSession().setAttribute("thongtinNV", nv.getMaNhanVien());
-			return "index";
-
-		} else {
-			return "dangnhapNV";
 		}
 	}
 }
