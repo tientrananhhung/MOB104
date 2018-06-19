@@ -40,7 +40,8 @@
 				</div>
 				<div class="col-md-7 align-self-center">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang chủ</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
+								chủ</a></li>
 						<li class="breadcrumb-item active">Nhân viên</li>
 					</ol>
 				</div>
@@ -48,7 +49,6 @@
 			<div class="container-fluid">
 				<div class="card">
 					<div class="card-body">
-						<h1 class="card-title">ABC Group</h1>
 						<h3 class="card-subtitle">Danh sách nhân viên</h3>
 						<hr style="background-color: #00827c" />
 						<div class="table-responsive m-t-40">
@@ -57,15 +57,9 @@
 										class="btn btn-success m-b-10 m-l-5">Thêm mới nhân
 										viên</button></a>
 							</div>
-<<<<<<< HEAD
-							<table id="example23" style="font-size: 10px;"
-										class="display nowrap table table-hover table-striped table-bordered"
-										cellspacing="0" width="100%">
-=======
 							<table id="example23"
 								class="display nowrap table table-hover table-striped table-bordered"
 								cellspacing="0" width="100%">
->>>>>>> 2fd9547fe79345e339d821b0fb02da8c3b3614a8
 								<thead>
 									<tr>
 										<th>Avatar</th>
@@ -73,11 +67,11 @@
 										<th>Tên NV</th>
 										<th>Email</th>
 										<th>Số điện thoại</th>
-										<th>Địa chỉ</th>
+										<th hidden>Địa chỉ</th>
 										<th>CMDN</th>
 										<th>Chức vụ</th>
 										<th>Lương CB</th>
-										<th>Mật khẩu</th>
+										<th hidden>Mật khẩu</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -90,11 +84,11 @@
 											<td><c:out value="${item.tenNhanVien}" /></td>
 											<td><c:out value="${item.email}" /></td>
 											<td><c:out value="${item.soDienThoai}" /></td>
-											<td><c:out value="${item.diaChi}" /></td>
+											<td hidden><c:out value="${item.diaChi}" /></td>
 											<td><c:out value="${item.cmnd}" /></td>
 											<td><c:out value="${item.chucVu.tenChucVu}" /></td>
 											<td><c:out value="${item.luongCoBan}" /></td>
-											<td><c:out value="${item.matKhau}" /></td>
+											<td hidden><c:out value="${item.matKhau}" /></td>
 											<td><a
 												href="quanlynhanvien/editnhanvien/${item.maNhanVien}"
 												class="btn btn-warning m-b-10 m-l-5"><i
