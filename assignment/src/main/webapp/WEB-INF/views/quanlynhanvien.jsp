@@ -57,9 +57,15 @@
 										class="btn btn-success m-b-10 m-l-5">Thêm mới nhân
 										viên</button></a>
 							</div>
+<<<<<<< HEAD
+							<table id="example23" style="font-size: 10px;"
+										class="display nowrap table table-hover table-striped table-bordered"
+										cellspacing="0" width="100%">
+=======
 							<table id="example23"
 								class="display nowrap table table-hover table-striped table-bordered"
 								cellspacing="0" width="100%">
+>>>>>>> 2fd9547fe79345e339d821b0fb02da8c3b3614a8
 								<thead>
 									<tr>
 										<th>Avatar</th>
