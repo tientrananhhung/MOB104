@@ -77,15 +77,23 @@ public class TrangChuController {
 		return "dangnhap";
 	}
 	
-	
+	@GetMapping("donhangkh")
+	public String donhangkh(ModelMap model, HttpServletRequest rq) {
+		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+		model.addAttribute("dsDonHang", donHangService.danhsachDonHangTheoMaKhachHang(maKH));
+		return "donhangkh";
+	}
 	
 	@PostMapping("dangnhap")
-	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang,HttpServletRequest rq) {
+	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang,HttpServletRequest rq,ModelMap model) {
 		KhachHang kh = khachHangService.dangNhapKhachHang(khachHang.getSoDienThoai(), khachHang.getMatKhau());
 		if(kh != null) {
 			rq.getSession().setAttribute("login", "true");
-			rq.getSession().setAttribute("thongtindangnhap", kh.getMaKhachHang());
-			return "index";
+			rq.getSession().setAttribute("thongtindangnhap", kh);
+			rq.getSession().setAttribute("maKhachHang", kh.getMaKhachHang());
+			model.addAttribute("dsDonHang", donHangService.danhsachDonHangTheoMaKhachHang(kh.getMaKhachHang()));
+			System.out.println(donHangService.danhsachDonHangTheoMaKhachHang(kh.getMaKhachHang()).size());
+			return "donhangkh";
 			
 		}else {
 			return "dangnhap";
@@ -106,7 +114,7 @@ public class TrangChuController {
 	@GetMapping("taodonhang")
 	public String taoDonHang(ModelMap model,HttpServletRequest rq) {
 		model.addAttribute("donhang", new DonHang());
-		int maKH = Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString());
+		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
 		model.addAttribute("khachhang",khachHangService.layKhachHang(maKH));
 		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
 		if (!list.isEmpty()) {

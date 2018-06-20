@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/lib/font-awesome/fontawesome-all.css" />">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="resources/css/styleIndex.css" />">
+	href="<c:url value="resources/css/styleindex.css" />">
 <base href="${pageContext.servletContext.contextPath}/" />
 </head>
 <body>
@@ -25,7 +25,10 @@
 		class="title-page-st title-page">
 	<div class="container">
 		<h1 class="mashead-title text-center">Quản lý đơn hàng</h1>
-		<h3>Xin chào! Tên khách hàng</h3>
+		<h3>
+			Xin chào!
+			<c:out value="${thongtindangnhap.tenKhachHang}" />
+		</h3>
 		<div class="dropdown">
 			<button class="btn btn-secondary dropdown-toggle btn-dropdown-kh"
 				type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -38,35 +41,61 @@
 		</div>
 	</div>
 	</section>
-	<table class="table table-bordered" style="margin-top: 50px;">
-		<thead>
-			<tr>
-				<th scope="col">Thông tin đơn hàng</th>
-				<th scope="col">Khách hàng</th>
-				<th scope="col">Hàng hóa</th>
-				<th scope="col">Ghi chú</th>
-				<th scope="col">Thao tác</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Minh</td>
-				<td>Durex</td>
-				<td>Hàng dễ lủng</td>
-				<td>
-					<button type="button" class="btn btn-info"
-						style="border-color: #17a2b8; border-radius: .25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; padding: .375rem .75rem;">
-						<i class="fas fa-pencil-alt"></i>
-					</button>
-					<button type="button" class="btn btn-danger"
-						style="border-color: #b21f2d; border-radius: .25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; padding: .375rem .75rem;">
-						<i class="fas fa-trash-alt"></i>
-					</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-subtitle">Danh sách đơn hàng</h3>
+				<hr style="background-color: #00827c" />
+				<div class="table-responsive m-t-40">
+					<div class="text-left">
+						<a href="quanlynhanvien/themnhanvien"><button type="button"
+								class="btn btn-success m-b-10 m-l-5">Thêm mới nhân viên</button></a>
+					</div>
+					<table
+						class="display nowrap table table-hover table-striped table-bordered dataTable no-footer"
+						style="margin-top: 50px" align="center">
+						<thead>
+							<tr>
+								<th>Mã đơn hàng</th>
+								<th>Tên mặt hàng</th>
+								<th>Tên người nhận</th>
+								<th>Địa chỉ người nhận</th>
+								<th>SDT người nhận</th>
+								<th>Trọng lượng</th>
+								<th>Phí vận chuyển</th>
+								<th>Cách thức trả phí</th>
+								<th>Tiền thu hộ</th>
+								<th>Ghi Chú</th>
+								<th>Chức năng</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${dsDonHang}">
+								<tr>
+									<td><c:out value="${item.maDonHang}" /></td>
+									<td><c:out value="${item.tenMatHang}" /></td>
+									<td><c:out value="${item.tenNguoiNhan}" /></td>
+									<td><c:out value="${item.diaChiNguoiNhan}" /></td>
+									<td><c:out value="${item.sdtNguoiNhan}" /></td>
+									<td><c:out value="${item.trongLuong}" /></td>
+									<td><c:out value="${item.phiVanChuyen}" /></td>
+									<td><c:out value="${item.cachThucTraPhi}" /></td>
+									<td><c:out value="${item.tienThuHo}" /></td>
+									<td><c:out value="${item.ghiChu}" /></td>
+									<td><a href="chucvu/suachucvu/${item.maDonHang}"
+										class="btn btn-warning m-b-10 m-l-5"><i
+											class="ti-pencil-alt"></i></a> <a
+										href="chucvu/xoachucvu/${item.maDonHang}"
+										class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 	</main>
 	<!-- End Main -->
 	<jsp:include page="include/footerkh.jsp" />
