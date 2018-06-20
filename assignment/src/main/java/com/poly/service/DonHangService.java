@@ -46,4 +46,10 @@ public class DonHangService implements DonHangImpl {
 		}
 	}
 
+	@Override
+	public List<DonHang> danhsachDonHangTheoMaKhachHang(int maKH) {
+		List<DonHang> lst = donhangDAO.danhsachDonHangTheoMaKhachHang(maKH);
+		return lst;
+	}
+
 }

@@ -36,7 +36,7 @@ public class DonHang {
 	private DiaChiKhachHang diaChiKhachHang;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "maDonHang", updatable=false)
+	@JoinColumn(name = "maDonHang", updatable = false)
 	@JsonIgnore
 	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
