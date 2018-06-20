@@ -70,8 +70,7 @@
 				<div class="form-group row">
 					<label class="col-lg-1 col-form-label" for="val-skill">Dữ
 						liệu</label>
-					<form action="quanlythongke" method="post">
-						<div class="col-lg-12">
+						<div class="col-lg-2">
 							<select class="form-control" id="val-skill" name="val-skill">
 								<option value="">Please select</option>
 								<option value="dt">Doanh thu</option>
@@ -79,16 +78,13 @@
 								<option value="nv">Lương nhân viên</option>
 							</select>
 						</div>
-						<div class="col-lg-8">
+						<div class="col-lg-6">
 							<div class="row" id="val-date-choose"></div>
 						</div>
 						<div>
-							<button type="submit"
-								class="btn btn-success btn-flat m-b-10 m-l-5">Success</button>
 						</div>
-					</form>
 				</div>
-				<div class="row" ${trangthai}>
+				<div class="row" id="bangdonhang">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -105,23 +101,15 @@
 												<th>Thời gian nhận đơn</th>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${danhsachdonhang}" var="item">
-												<tr>
-													<td><c:out value="${item.donHang.maDonHang}" /></td>
-													<td><c:out value="${item.donHang.tenMatHang}" /></td>
-													<td><c:out value="${item.donHang.tenNguoiNhan}" /></td>
-													<td><c:out value="${item.thoiGian}" /></td>
-												</tr>
-											</c:forEach>
+										<tbody id="bangdh">
 										</tbody>
-									</table>
+									</table >
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row" ${trangthai1}>
+				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -148,7 +136,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row" ${trangthai2}>
+				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -186,8 +174,7 @@
 	</div>
 	<footer class="footer">
 		© 2018 All rights reserved. Template designed by <a
-			href="https://www.facebook.com/profile.php?id=100010754627040">Chu
-			Thái</a>
+			href="https://www.facebook.com/profile.php?id=100010754627040"></a>
 	</footer>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
@@ -235,27 +222,47 @@
 							if (ck == 'nv') {
 								$('#val-date-choose').empty();
 							} else if (ck == 'dh') {
-								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>');
 								$.ajax({
-									url : '/assignment/api/dsDonHang',
+									url : '/assignment/api/tinhtrangdonhang',
 									type : 'GET',
 								}).done(function(data) {
 									console.log(data);
-
+									$('#val-date-choose').empty();
+									$('#val-date-choose')
+									.append(
+											'<label class="col-form-label" for="val-skill">Từ ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>'
+													+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>');
+									$('#bangdh').empty();
+									
+									$.each(data, function(index, val) {
+												$('#bangdh').append(
+												'<tr>'
+												+'<td>'
+												+val.donHang.maDonHang
+												+'</td>'
+												+'<td>'
+												+val.donHang.tenDonHang
+												+'</td>'
+												+'<td>'
+												+val.donHang.tenNguoiGui
+												+'</td>'
+												+'<td>'
+												+val.thoiGian
+												+'</td>'
+												+'</tr>'
+												);
+									
+									});
+									$('#bangdonhang').show();
+										
 								}).fail(function() {
-									console.log("error");
 								}).always(function() {
-									console.log("complete");
 								});
 							} else if (ck == 'dt') {
 								$('#val-date-choose').empty();
@@ -285,6 +292,7 @@
 								$('#').empty();
 							} else if (ck == 'dh') {
 								$('#val-date-choose').empty();
+								
 								$('#val-date-choose')
 										.append(
 												'<label class="col-form-label" for="val-skill">Từ ngày</label>'

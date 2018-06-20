@@ -28,7 +28,7 @@ public class JSONTinhTrangDonHang {
 		this.jsonNhanVien = jsonNhanVien;
 		this.jsonDonHang = jsonDonHang;
 	}
-
+	
 	public int getId() {
 		return id;
 	}

@@ -16,7 +16,7 @@ public class JSONDonHang {
 	private String ghiChu;
 	private DiaChiKhachHang diaChiKhachHang;
 	private Set<JSONTinhTrangDonHang> jsonTinhTrangDonHang = new HashSet<JSONTinhTrangDonHang>(0);
-
+	
 	public int getMaDonHang() {
 		return maDonHang;
 	}
