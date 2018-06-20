@@ -283,6 +283,27 @@
 															.append(
 																	'<div class="alert alert-danger" role="alert"> Mã hóa đơn không tồn tại</div>');
 												} else {
+													$('.log-kh').empty();
+													$('.log-kh').append(
+														'<thead><tr><th scope="col">Log</th></tr></thead>'+
+														'<tbody id="log-donhang">'+
+														'</tbody>'
+													);
+													$.each(data, function(index, val) {
+														var d = new Date(val.thoiGian);
+														var formattedDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+														var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+														var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+														var formattedTime = hours + ":" + minutes;
+
+														formattedDate = formattedDate + " " + formattedTime;
+														$('#log-donhang').append(
+															'<tr><td>'+formattedTime+', ngày '+
+															formattedDate+': '+val.trangThai.trangThai+' bởi '+
+															val.nhanVien.tenNhanVien+'</td></tr>'
+														);
+													});
+													
 													var traShip;
 													if (data[0].donHang.cachThucTraPhi == true
 															|| data[0].donHang.cachThucTraPhi == 'true') {
@@ -332,7 +353,7 @@
 																			+ '</b>'
 																			+ '</p></td></tr>'
 																			+ '<tr><td>Thông tin đơn hàng</td><td>'
-																			+ '<p>Mã đơn hàng của KH: <b id="mdhKH"></b></p>'
+																			+ '<p>Tên mặt hàng: <b id="mdhKH">'+data[0].donHang.tenMatHang+'</b></p>'
 																			+ '<p>Tiền thu hộ: '
 																			+ '<b id="tienThuHo">'
 																			+ data[0].donHang.tienThuHo
@@ -352,13 +373,7 @@
 																			+ '</td>'
 																			+ '</tr>'
 																			+ '</tbody>');
-													$('.log-kh').empty();
-													$('.log-kh')
-															.append(
-																	'<thead><tr><th scope="col">Log</th></tr></thead>'
-																			+ '<tbody>'
-																			+ '<tr><td>Log trong đây</td></tr>'
-																			+ '</tbody>');
+													
 												}
 											})
 									.fail(
