@@ -136,10 +136,8 @@
 		        
 		      })
 		      .fail(function() {
-		        console.log("error");
 		      })
 		      .always(function() {
-		        console.log("complete");
 		      });
 		});
 		

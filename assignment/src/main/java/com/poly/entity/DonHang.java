@@ -31,12 +31,13 @@ public class DonHang {
 	private float tienThuHo;
 	private String ghiChu;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "maDiaChi")
+	@JsonIgnore
 	private DiaChiKhachHang diaChiKhachHang;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "maDonHang", updatable=false)
+	@JoinColumn(name = "maDonHang", updatable = false)
 	@JsonIgnore
 	private Set<TinhTrangDonHang> tinhTrangDonHang = new HashSet<TinhTrangDonHang>(0);
 
