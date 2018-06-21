@@ -5,13 +5,12 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "khachhang")
 public class KhachHang {
@@ -25,33 +24,18 @@ public class KhachHang {
 	private String email;
 	private String matKhau;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maKhachHang")
-	@JsonIgnore
-	private Set<DonHang> donHang = new HashSet<DonHang>(0);
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "maKhachHang")
-	private Set<DiaChiKhachHang> diaChiKhachHang = new HashSet<DiaChiKhachHang>(0);
+	private Set<DiaChiKhachHang> diaChiKhachHang;
 
 	public KhachHang() {
 		super();
 	}
 
-	public KhachHang(int maKhachHang, String tenKhachHang, String anhDaiDien, String soDienThoai,
-			String email, String matKhau) {
-		super();
-		this.maKhachHang = maKhachHang;
-		this.tenKhachHang = tenKhachHang;
-		this.anhDaiDien = anhDaiDien;
-		this.soDienThoai = soDienThoai;
-		this.email = email;
-		this.matKhau = matKhau;
-	}
-
-	public KhachHang(String tenKhachHang, String anhDaiDien, String soDienThoai, String email,
+	public KhachHang(int maKhachHang, String tenKhachHang, String anhDaiDien, String soDienThoai, String email,
 			String matKhau) {
 		super();
+		this.maKhachHang = maKhachHang;
 		this.tenKhachHang = tenKhachHang;
 		this.anhDaiDien = anhDaiDien;
 		this.soDienThoai = soDienThoai;
@@ -59,8 +43,17 @@ public class KhachHang {
 		this.matKhau = matKhau;
 	}
 
-	public KhachHang(int maKhachHang, String tenKhachHang, String anhDaiDien, String soDienThoai,
-			String email, String matKhau, Set<DonHang> donHang) {
+	public KhachHang(String tenKhachHang, String anhDaiDien, String soDienThoai, String email, String matKhau) {
+		super();
+		this.tenKhachHang = tenKhachHang;
+		this.anhDaiDien = anhDaiDien;
+		this.soDienThoai = soDienThoai;
+		this.email = email;
+		this.matKhau = matKhau;
+	}
+
+	public KhachHang(int maKhachHang, String tenKhachHang, String anhDaiDien, String soDienThoai, String email,
+			String matKhau, Set<DiaChiKhachHang> diaChiKhachHang) {
 		super();
 		this.maKhachHang = maKhachHang;
 		this.tenKhachHang = tenKhachHang;
@@ -68,7 +61,7 @@ public class KhachHang {
 		this.soDienThoai = soDienThoai;
 		this.email = email;
 		this.matKhau = matKhau;
-		this.donHang = donHang;
+		this.diaChiKhachHang = diaChiKhachHang;
 	}
 
 	public int getMaKhachHang() {
@@ -119,12 +112,12 @@ public class KhachHang {
 		this.matKhau = matKhau;
 	}
 
-	public Set<DonHang> getDonHang() {
-		return donHang;
+	public Set<DiaChiKhachHang> getDiaChiKhachHang() {
+		return diaChiKhachHang;
 	}
 
-	public void setDonHang(Set<DonHang> donHang) {
-		this.donHang = donHang;
+	public void setDiaChiKhachHang(Set<DiaChiKhachHang> diaChiKhachHang) {
+		this.diaChiKhachHang = diaChiKhachHang;
 	}
 
 }
