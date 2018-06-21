@@ -115,10 +115,6 @@ public class API {
 	@ResponseBody
 	public List<TinhTrangDonHang> dsTinhTrangDonHangTheoMa(@PathVariable("maDonHang") int maDonHang) {
 		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhSachTinhTrangTheoMaDonHang(maDonHang);
-		for (TinhTrangDonHang tt : list) {
-			System.out.println(tt.getDonHang().getMaDonHang());
-			System.out.println(tt.getNhanVien().getTenNhanVien());
-		}
 		return list;
 	}
 

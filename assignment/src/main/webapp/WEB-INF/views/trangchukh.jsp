@@ -10,12 +10,11 @@
 <title>Giao Hang Chậm - Chậm Mà Chắc</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />">
+	href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="resources/css/lib/font-awesome/fontawesome-all.css" />">
+	href="<c:url value="/resources/css/lib/font-awesome/fontawesome-all.css" />">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="resources/css/styleIndex.css" />">
-<base href="${pageContext.servletContext.contextPath}/" />
+	href="<c:url value="/resources/css/styleindex.css" />">
 </head>
 <body>
 	<jsp:include page="include/headerkh.jsp" />
@@ -70,27 +69,27 @@
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img class="d-block w-100"
-								src="<c:url value="resources/images/anh1.jpg" />"
+								src="<c:url value="/resources/images/anh1.jpg" />"
 								alt="First slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block w-100"
-								src="<c:url value="resources/images/anh2.jpg" />"
+								src="<c:url value="/resources/images/anh2.jpg" />"
 								alt="Second slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block w-100"
-								src="<c:url value="resources/images/anh3.png" />"
+								src="<c:url value="/resources/images/anh3.png" />"
 								alt="Third slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block w-100"
-								src="<c:url value="resources/images/anh4.jpg" />"
+								src="<c:url value="/resources/images/anh4.jpg" />"
 								alt="Third slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block w-100"
-								src="<c:url value="resources/images/anh5.jpg" />"
+								src="<c:url value="/resources/images/anh5.jpg" />"
 								alt="Third slide">
 						</div>
 					</div>
@@ -120,7 +119,7 @@
 				<div class="block block-signin">
 					<div class="content text-center">
 						<a href=""> <img
-							src="<c:url value="resources/images/feedback.jpg" />"
+							src="<c:url value="/resources/images/feedback.jpg" />"
 							alt="feedback" style="max-width: 100%;">
 						</a>
 					</div>
@@ -133,7 +132,7 @@
 		<div class="row">
 			<div class="hidden-xs col-sm-5 col-md-6">
 				<img class="thumb-map-office"
-					src="<c:url value="resources/images/list-post-offices.jpg" />"
+					src="<c:url value="/resources/images/list-post-offices.jpg" />"
 					alt="map-office-img">
 			</div>
 			<div class="search-post-offices">
@@ -192,13 +191,13 @@
 					<ul>
 						<li><img
 							style="position: absolute; left: 0; top: 10px; height: 75px;"
-							src="<c:url value="resources/images/icon-04.png" />"><br>
+							src="<c:url value="/resources/images/icon-04.png" />"><br>
 							<strong><br> Phủ sóng 99% huyện xã<br> </strong><br>
 							<i
 							style="color: #958686; display: block; font-size: 14px; font-style: italic;">Lấy
 								hàng / Giao hàng trên 11.000 huyện xã trên toàn quốc</i></li>
 						<li class="know-3"><img
-							src="<c:url value="resources/images/icon-05.png" />"><br>
+							src="<c:url value="/resources/images/icon-05.png" />"><br>
 							<strong><br> Giao nhanh không kịp hủy<br> </strong><br>
 							<i
 							style="color: #958686; display: block; font-size: 14px; font-style: italic;">Giao
@@ -206,23 +205,23 @@
 								miền 48h
 						</i></li>
 						<li class="know-4"><img
-							src="<c:url value="resources/images/icon-06.png" />"><br>
+							src="<c:url value="/resources/images/icon-06.png" />"><br>
 							<strong><br> Đối soát trả tiền nhanh<br> </strong><br>
 							<i
 							style="color: #958686; display: block; font-size: 14px; font-style: italic;">Chuyển
 								khoản vào tài khoản NH 3 lần/tuần vào thứ 2/4/6</i></li>
 						<li class="know-5"><img style="top: 10%;"
-							src="<c:url value="resources/images/icon-07.png" />"><br>
+							src="<c:url value="/resources/images/icon-07.png" />"><br>
 							<strong>Giao hàng linh hoạt</strong><br> <i
 							style="color: #958686; display: block; font-size: 14px; font-style: italic;">Linh
 								hoạt giao hàng cho khách chọn, đổi địa chỉ giao, đổi tiền thu
 								hộ, đổi SĐT, đổi người nhận hàng,…</i></li>
 						<li class="know-6"><img style="top: 30%;"
-							src="<c:url value="resources/images/icon-03.png" />"><br>
+							src="<c:url value="/resources/images/icon-03.png" />"><br>
 							<strong style="margin: 10px 0 0 0;"><br> Miễn phí
 								giao nhiều lần<br> </strong></li>
 						<li class="know-7"><img style="top: 30%;"
-							src="<c:url value="resources/images/icon-03.png" />"><br>
+							src="<c:url value="/resources/images/icon-03.png" />"><br>
 							<strong style="margin: 22px 0 0 0;">Miễn phí thu hộ tiền</strong></li>
 					</ul>
 				</div>
@@ -254,9 +253,9 @@
 			document.documentElement.scrollTop = 0;
 		}
 	</script>
-	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
+	<script src="<c:url value="/resources/js/lib/jquery/jquery.min.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
 	<!-- End Script -->
 	<!-- Custom Script -->
 	<script type="text/javascript">

@@ -11,13 +11,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
+<title>Thống kê</title>
 </head>
 <body>
 	<div id="main-wrapper">
-		<jsp:include page="include/header.jsp"></jsp:include><br /> <br />
+		<jsp:include page="include/header.jsp"></jsp:include>
 		<jsp:include page="include/left-sidebar.jsp"></jsp:include>
 		<div class="page-wrapper">
+		<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h3 class="text-primary">DANH SÁCH THỐNG KÊ</h3>
+				</div>
+				<div class="col-md-7 align-self-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Trang
+								chủ</a></li>
+						<li class="breadcrumb-item active">Thống kê</li>
+					</ol>
+				</div>
+			</div>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
@@ -59,7 +71,7 @@
 					<label class="col-lg-1 col-form-label" for="val-skill">Dữ
 						liệu</label>
 					<form action="quanlythongke" method="post">
-						<div class="col-lg-2">
+						<div class="col-lg-12">
 							<select class="form-control" id="val-skill" name="val-skill">
 								<option value="">Please select</option>
 								<option value="dt">Doanh thu</option>

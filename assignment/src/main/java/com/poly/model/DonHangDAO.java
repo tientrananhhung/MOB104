@@ -61,4 +61,18 @@ public class DonHangDAO implements DonHangImpl {
 		}
 	}
 
+	@Override
+	public List<DonHang> danhsachDonHangTheoMaKhachHang(int maKH) {
+		Session ss = sessionFactory.getCurrentSession();
+		String sql = "from donhang as dh inner join dh.diaChiKhachHang";
+		try {
+			List<DonHang> lst = ss.createQuery(sql).getResultList();
+			return lst;
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+	
+	
+
 }
