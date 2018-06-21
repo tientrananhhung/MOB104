@@ -18,6 +18,7 @@ import com.poly.entity.DonHang;
 import com.poly.entity.JSONChucVu;
 import com.poly.entity.JSONDonHang;
 import com.poly.entity.JSONNhanVien;
+import com.poly.entity.JSONTinhTrangDonHang;
 import com.poly.entity.NhanVien;
 import com.poly.entity.TinhTrangDonHang;
 import com.poly.service.ChucVuService;
@@ -25,6 +26,7 @@ import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
 import com.poly.service.NhanVienService;
+import com.poly.service.ThongKeService;
 import com.poly.service.TinhTrangDonHangService;
 import com.poly.service.TrangThaiService;
 
@@ -115,6 +117,12 @@ public class API {
 	@ResponseBody
 	public List<TinhTrangDonHang> dsTinhTrangDonHangTheoMa(@PathVariable("maDonHang") int maDonHang) {
 		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhSachTinhTrangTheoMaDonHang(maDonHang);
+<<<<<<< HEAD
+		for (TinhTrangDonHang tt : list) {
+			System.out.println(tt.getDonHang().getMaDonHang());
+			System.out.println(tt.getNhanVien().getTenNhanVien());
+		}
+=======
 		return list;
 	}
 
@@ -122,6 +130,14 @@ public class API {
 	@ResponseBody
 	public List<DiaChiKhachHang> dsDonHangTheoMaKH(@PathVariable("maKH") int maKH) {
 		List<DiaChiKhachHang> list = diaChiKhachHangService.layDSDiaChiTheoMaKH(maKH);
+>>>>>>> 5e4471e7877f0a305e49a8782380443740075ed9
+		return list;
+	}
+
+	@GetMapping(path = "/tinhtrangdonhang", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<TinhTrangDonHang> dsTinhTrangDonHang() {
+		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhsachTinhTrang();
 		return list;
 	}
 }
