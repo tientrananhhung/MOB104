@@ -109,7 +109,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row" id="bangdoanhthu">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -124,11 +124,7 @@
 												<th>Tổng doanh thu</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td></td>
-												<td></td>
-											</tr>
+										<tbody id="bangdt">
 										</tbody>
 									</table>
 								</div>
@@ -136,7 +132,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row" id="bangluongcoban">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -152,14 +148,7 @@
 												<th>Lương cơ bản</th>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${danhsachnhanvien}" var="item">
-												<tr>
-													<td><c:out value="${item.maNhanVien}" /></td>
-													<td><c:out value="${item.tenNhanVien}" /></td>
-													<td><c:out value="${item.luongCoBan}" /></td>
-												</tr>
-											</c:forEach>
+										<tbody id="banglcb">
 										</tbody>
 									</table>
 								</div>
@@ -213,6 +202,9 @@
 	<script
 		src="<c:url value="resources/js/lib/datatables/datatables-init.js"/>"></script>
 	<script type="text/javascript">
+	$('#bangdonhang').hide();
+	$('#bangluongcoban').hide();
+	$('#bangdoanhthu').hide();
 		$(document)
 				.on(
 						'change',
@@ -221,6 +213,42 @@
 							var ck = $(this).val();
 							if (ck == 'nv') {
 								$('#val-date-choose').empty();
+								$.ajax({
+									url : '/assignment/api/dsNhanVien',
+									type : 'GET',
+								}).done(function(data) {
+									console.log(data);
+									$('#val-date-choose').empty();
+									$('#banglcb').empty();
+									$.each(data, function(index, val) {
+										var d = new Date(val.thoiGian);
+										var formattedDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+										var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+										var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+										var formattedTime = hours + ":" + minutes;
+
+										formattedDate = formattedDate + " " + formattedTime;
+												$('#banglcb').append(
+												'<tr>'
+												+'<td>'
+												+val.maNhanVien
+												+'</td>'
+												+'<td>'
+												+val.tenNhanVien
+												+'</td>'
+												+'<td>'
+												+val.luongCoBan
+												+'</td>'
+												+'</tr>'
+												);
+									});
+									$('#bangdonhang').hide();
+									$('#bangluongcoban').show();
+									$('#bangdoanhthu').hide();
+										
+								}).fail(function() {
+								}).always(function() {
+								});
 							} else if (ck == 'dh') {
 								$.ajax({
 									url : '/assignment/api/tinhtrangdonhang',
@@ -232,102 +260,95 @@
 									.append(
 											'<label class="col-form-label" for="val-skill">Từ ngày</label>'
 													+ '<div class="col-lg-4">'
-													+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '<input type="date" id="form" class="form-control" placeholder="dd/mm/yyyy">'
 													+ '</div>'
 													+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
 													+ '<div class="col-lg-4">'
-													+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '<input type="date" id="to" class="form-control" placeholder="dd/mm/yyyy">'
 													+ '</div>');
 									$('#bangdh').empty();
-									
 									$.each(data, function(index, val) {
+										if(val.trangThai.maTrangThai=="daTao"){
+										var d = new Date(val.thoiGian);
+										var formattedDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+										var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+										var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+										var formattedTime = hours + ":" + minutes;
+
+										formattedDate = formattedDate + " " + formattedTime;
 												$('#bangdh').append(
 												'<tr>'
 												+'<td>'
 												+val.donHang.maDonHang
 												+'</td>'
 												+'<td>'
-												+val.donHang.tenDonHang
+												+val.donHang.tenMatHang
 												+'</td>'
 												+'<td>'
-												+val.donHang.tenNguoiGui
+												+val.donHang.tenNguoiNhan
 												+'</td>'
 												+'<td>'
-												+val.thoiGian
+												+formattedDate
 												+'</td>'
 												+'</tr>'
 												);
+										}
 									
 									});
 									$('#bangdonhang').show();
+									$('#bangluongcoban').hide();
+									$('#bangdoanhthu').hide();
 										
 								}).fail(function() {
 								}).always(function() {
 								});
 							} else if (ck == 'dt') {
-								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" name="to" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" name="from" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>');
-							} else {
-								$('#val-date-choose').empty();
-							}
-						});
-	</script>
-	<script type="text/javascript">
-		$(document)
-				.on(
-						'change',
-						'#val-skill',
-						function(event) {
-							var ck = $(this).val();
-							if (ck == 'nv') {
-								$('#').empty();
-							} else if (ck == 'dh') {
-								$('#val-date-choose').empty();
-								
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="from" class="form-control" name="from" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="to" class="form-control" name="to" placeholder="dd/mm/yyyy">'
-														+ '</div>');
 								$.ajax({
-									url : '/assignment/api/dsDonHang',
+									url : '/assignment/api/tinhtrangdonhang',
 									type : 'GET',
 								}).done(function(data) {
 									console.log(data);
-
+									$('#val-date-choose').empty();
+									$('#val-date-choose')
+									.append(
+											'<label class="col-form-label" for="val-skill">Từ ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" id="form" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>'
+													+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" id="to" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>');
+									$('#bangdt').empty();
+									var a =0;
+									var b =0;
+									$.each(data, function(index, val) {
+										if(val.trangThai.maTrangThai=="daTiepNhan"){
+												a++;
+												b = b+ (val.donHang.phiVanChuyen);
+										}
+									});
+									$('#bangdt').append(
+											'<tr>'
+											+'<td>'
+											+a
+											+'</td>'
+											+'<td>'
+											+b+' vnd'
+											+'</td>'
+											+'</tr>'
+											);
+									$('#bangdonhang').hide();
+									$('#bangluongcoban').hide();
+									$('#bangdoanhthu').show();
 								}).fail(function() {
-									console.log("error");
 								}).always(function() {
-									console.log("complete");
 								});
-							} else if (ck == 'dt') {
-								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="from" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="to" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>');
 							} else {
 								$('#val-date-choose').empty();
+								$('#bangdonhang').hide();
+								$('#bangluongcoban').hide();
+								$('#bangdoanhthu').hide();
 							}
 						});
 	</script>
