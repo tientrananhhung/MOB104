@@ -117,12 +117,6 @@ public class API {
 	@ResponseBody
 	public List<TinhTrangDonHang> dsTinhTrangDonHangTheoMa(@PathVariable("maDonHang") int maDonHang) {
 		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhSachTinhTrangTheoMaDonHang(maDonHang);
-<<<<<<< HEAD
-		for (TinhTrangDonHang tt : list) {
-			System.out.println(tt.getDonHang().getMaDonHang());
-			System.out.println(tt.getNhanVien().getTenNhanVien());
-		}
-=======
 		return list;
 	}
 
@@ -130,7 +124,6 @@ public class API {
 	@ResponseBody
 	public List<DiaChiKhachHang> dsDonHangTheoMaKH(@PathVariable("maKH") int maKH) {
 		List<DiaChiKhachHang> list = diaChiKhachHangService.layDSDiaChiTheoMaKH(maKH);
->>>>>>> 5e4471e7877f0a305e49a8782380443740075ed9
 		return list;
 	}
 
