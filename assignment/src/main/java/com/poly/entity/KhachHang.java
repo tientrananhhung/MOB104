@@ -1,6 +1,5 @@
 package com.poly.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "khachhang")
 public class KhachHang {
@@ -26,6 +27,7 @@ public class KhachHang {
 
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maKhachHang")
+	@JsonIgnore
 	private Set<DiaChiKhachHang> diaChiKhachHang;
 
 	public KhachHang() {
