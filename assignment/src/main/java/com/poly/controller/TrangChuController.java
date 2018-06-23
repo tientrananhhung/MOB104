@@ -80,7 +80,6 @@ public class TrangChuController {
 	@GetMapping("donhangkh")
 	public String donhangkh(ModelMap model, HttpServletRequest rq) {
 		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
-		model.addAttribute("dsDonHang", donHangService.danhsachDonHangTheoMaKhachHang(maKH));
 		return "donhangkh";
 	}
 	
