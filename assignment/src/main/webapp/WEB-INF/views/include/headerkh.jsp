@@ -22,6 +22,7 @@
 					Tôi</a></li>
 			<li class="nav-item"><a class="nav-link" id="traCuuDH" href="#"
 				data-toggle="modal" data-target="#exampleModal">Tra Cứu ĐH</a></li>
+			<li class="nav-item"><a class="nav-link" href="thongtin">Thông Tin Cá Nhân</a></li>
 		</ul>
 	</div>
 

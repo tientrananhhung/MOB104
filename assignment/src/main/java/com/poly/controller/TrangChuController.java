@@ -159,4 +159,10 @@ public class TrangChuController {
 		model.addAttribute("dangnhapNV", new NhanVien());
 		return "dangnhapNV";
 	}
+	
+	@GetMapping("thongtin")
+	public ModelAndView thongTin() {
+		ModelAndView model = new ModelAndView("thongtinkh");
+		return model;
+	}
 }
