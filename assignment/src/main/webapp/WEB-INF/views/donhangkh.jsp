@@ -61,11 +61,10 @@
 										<th>Tên mặt hàng</th>
 										<th>Tên người nhận</th>
 										<th>SDT người nhận</th>
-										<th>Trọng lượng</th>
-										<th>Phí vận chuyển</th>
 										<th>Cách thức trả phí</th>
 										<th>Tiền thu hộ</th>
 										<th>Ghi Chú</th>
+										<th>Tình Trạng</th>
 										<th>Chức năng</th>
 									</tr>
 								</thead>
@@ -91,6 +90,8 @@
 		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+		<script type="text/javascript"
+		src="<c:url value="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.js" />"></script>
 	<!-- End Script -->
 	<script>
 		// When the user scrolls down 20px from the top of the document, show the button
@@ -131,18 +132,25 @@
 		    			}else{
 		    				b = 'Người gửi';
 		    			}
+		    			var trangthai = _.sortBy(val1.tinhTrangDonHang, "thoiGian");
+		    			trangthai.reverse();
+		    			var trangthai1 = trangthai[0].trangThai.trangThai;
+		    			if(trangthai1 == 'Đang Vận Chuyển' || trangthai1 == 'Đã Hủy' || trangthai1 == 'Đang Giao Hàng' || trangthai1 == 'Delay Giao Hàng'){
+		    				c = '';
+		    			}else{
+		    				c = '<center> <a href="suadonhang/'+val1.maDonHang+'" class="btn btn-warning m-b-10 m-l-5"><i class="fa fa-cog" style="color:white;"></i></a> <a href="huydonhang/'+val1.maDonHang+'" class="btn btn-danger m-b-10 m-l-5"><i class="fa fa-trash"></i></a></center>';
+		    			}
 		    			  $('tbody').append(
 		    			  	'<tr>'+
 		        			'<td>'+val1.maDonHang+'</td>'+
 		        			'<td>'+val1.tenMatHang+'</td>'+
 		        			'<td>'+val1.tenNguoiNhan+'</td>'+
 		        			'<td>'+val1.sdtNguoiNhan+'</td>'+
-		        			'<td>'+val1.trongLuong+'</td>'+
-		        			'<td>'+val1.phiVanChuyen+'</td>'+
 		        			'<td>'+b+'</td>'+
 		        			'<td>'+val1.tienThuHo+'</td>'+
 		        			'<td>'+val1.ghiChu+'</td>'+
-		        			'<td><center> <a href="suadonhang/'+val1.maDonHang+'" class="btn btn-warning m-b-10 m-l-5"><i class="fa fa-cog"></i></a> <a href="huydonhang/'+val1.maDonHang+'" class="btn btn-danger m-b-10 m-l-5"><i class="fa fa-trash"></i></a></center></td>'+
+		        			'<td>'+trangthai1+'</td>'+
+		        			'<td>'+c+'</td>'+
 		        			'</tr>'
 			        		);
 		    		 });
