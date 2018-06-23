@@ -374,3 +374,73 @@ ul, ol{
     background-color: #01904a;
     border-color: #01904a;
 }
+
+.card{
+    background: #ffffff none repeat scroll 0 0;
+    margin: 15px 0;
+    padding: 20px;
+    border: 0 solid #e7e7e7;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgb(162, 153, 153);
+}
+
+.card-body{
+    padding: 0;
+}
+
+.card-two{
+    position: relative;
+    margin: 0 !important;
+    border: 0;
+}
+
+.card-two header{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+.card-two header .avatar{
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -50px;
+    z-index: 5;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ccc;
+    border: 3px solid #fff;
+}
+
+.card-two header .avatar img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: auto;
+}
+
+.card-two h3{
+    position: relative;
+    margin: 80px 0 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.card-two .desc{
+    padding: 0 1rem 2rem;
+    line-height: 1.5;
+    color: #777;
+}
+
+.card-two .contacts{
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto 3.5rem;
+}

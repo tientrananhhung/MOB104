@@ -57,7 +57,7 @@ public class TinhTrangDonHangController {
 	}
 	
 	@PostMapping("taotinhtrangdon")
-	public String taoDonHangNV(@ModelAttribute("tinhtrangDH") TinhTrangDonHang tinhTrangDH, HttpServletRequest rq) {
+	public String taoDonHangNV(@ModelAttribute("tinhtrangDH") TinhTrangDonHang tinhTrangDH) {
 		tinhTrangDH.setThoiGian(new Date());
 		if (tinhTrangDonHangService.taoTinhTrangDon(tinhTrangDH)) {
 			return "redirect:/trangthaidonhang";

@@ -32,24 +32,25 @@ import com.poly.service.TinhTrangDonHangService;
 @RequestMapping("/quanlydonhang")
 public class DonHangNVController {
 
-	@Autowired
-	DonHangService donhangService;
-	@Autowired
-	DiaChiKhachHangService chiKhachHangService;
-	@Autowired
-	TinhTrangDonHangService tinhTrangDonHangService;
-	@Autowired
-	KhachHangService khachHangService;
-	@Autowired
-	NhanVienService nhanVienService;
-
-	@GetMapping
-	public String qlDonHang(ModelMap model) {
-		model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
-		model.addAttribute("dsTinhTrangDonHang", tinhTrangDonHangService.danhsachTinhTrangTheoTrangThaiMoiNhat());
-		return "donhang";
-	}
-
+		@Autowired
+		DonHangService donhangService;
+		@Autowired
+		DiaChiKhachHangService chiKhachHangService;
+		@Autowired
+		TinhTrangDonHangService tinhTrangDonHangService;
+		@Autowired
+		KhachHangService khachHangService;
+		@Autowired
+		NhanVienService nhanVienService;
+		
+		@GetMapping
+		public String qlDonHang(ModelMap model) {
+			model.addAttribute("dsDonHang", donhangService.danhsachDonHang());
+			model.addAttribute("dsTinhTrangDonHang", tinhTrangDonHangService.danhsachTinhTrangTheoTrangThaiMoiNhat());
+			System.out.println(donhangService.danhsachDonHang().get(0).getDiaChiKhachHang().getDiaChiGui());
+			return "donhang";
+		}
+		
 	@GetMapping("taodonhang")
 	public String taoDonHang(ModelMap model, HttpServletRequest rq) {
 		model.addAttribute("donhang", new DonHang());
