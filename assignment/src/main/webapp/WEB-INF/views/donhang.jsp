@@ -87,7 +87,7 @@
 															</c:if>
 														</c:forEach></td>
 													<th width="120px">
-														<a href="quanlydonhang/editdonhang/${a.maDonHang}" class="btn btn-warning m-b-10 m-l-5"><i class="ti-pencil-alt"></i></a>
+														<a href="quanlydonhang/editdonhang/${a.maDonHang}" class="btn btn-warning m-b-10 m-l-5"><i class="fa fa-cog"></i></a>
 														<a href="quanlydonhang/huydonhang/${a.maDonHang}" class="btn btn-danger m-b-10 m-l-5"><i class="icomoon icon-close"></i></a>
 													</th>
 												</tr>

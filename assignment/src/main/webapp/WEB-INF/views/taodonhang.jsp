@@ -102,7 +102,10 @@
 															type="number" cssClass="form-control" readonly="true" />
 													</div>
 												</div>
+<<<<<<< HEAD
 												
+=======
+>>>>>>> 4e398d9b18162615c7f7789b0f765e21f8119319
 												<div class="form-group row">
 													<label class="col-lg-2 col-form-label" for="val-currency">Tên người gửi :</label>
 													<div class="col-lg-9">
