@@ -70,26 +70,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="item" items="${dsDonHang}">
-								<tr>
-									<td><c:out value="${item.maDonHang}" /></td>
-									<td><c:out value="${item.tenMatHang}" /></td>
-									<td><c:out value="${item.tenNguoiNhan}" /></td>
-									<td><c:out value="${item.diaChiNguoiNhan}" /></td>
-									<td><c:out value="${item.sdtNguoiNhan}" /></td>
-									<td><c:out value="${item.trongLuong}" /></td>
-									<td><c:out value="${item.phiVanChuyen}" /></td>
-									<td><c:out value="${item.cachThucTraPhi}" /></td>
-									<td><c:out value="${item.tienThuHo}" /></td>
-									<td><c:out value="${item.ghiChu}" /></td>
-									<td><a href="chucvu/suachucvu/${item.maDonHang}"
-										class="btn btn-warning m-b-10 m-l-5"><i
-											class="ti-pencil-alt"></i></a> <a
-										href="chucvu/xoachucvu/${item.maDonHang}"
-										class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
-									</td>
-								</tr>
-							</c:forEach>
+							
 						</tbody>
 					</table>
 				</div>
@@ -100,6 +81,15 @@
 	<!-- End Main -->
 	<jsp:include page="include/footerkh.jsp" />
 	<!-- Script -->
+	
+	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+	<!-- End Script -->
 	<script>
 		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function() {
@@ -120,14 +110,49 @@
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
 		}
+		
+		
+		$(document).ready(function() {
+			$.ajax({
+		        url: '/assignment/api/donhang/${maKhachHang}',
+		        type: 'GET',
+		      })
+		      .done(function(data) {
+		        console.log(data);
+		        $('tbody').empty();
+		       	$.each(data, function(index, val) {
+		    		$.each(val.donHang, function(index, val1) {
+		    			var a = val1.cachThucTraPhi;
+		    			var b;
+		    			if(a){
+		    				b = 'Người nhận';
+		    			}else{
+		    				b = 'Người gửi';
+		    			}
+		    			  $('tbody').append(
+		    			  	'<tr>'+
+		        			'<td>'+val1.maDonHang+'</td>'+
+		        			'<td>'+val1.tenMatHang+'</td>'+
+		        			'<td>'+val1.tenNguoiNhan+'</td>'+
+		        			'<td>'+val1.diaChiNguoiNhan+'</td>'+
+		        			'<td>'+val1.sdtNguoiNhan+'</td>'+
+		        			'<td>'+val1.trongLuong+'</td>'+
+		        			'<td>'+val1.phiVanChuyen+'</td>'+
+		        			'<td>'+b+'</td>'+
+		        			'<td>'+val1.tienThuHo+'</td>'+
+		        			'<td>'+val1.ghiChu+'</td>'+
+		        			'<td>1</td>'+
+		        			'</tr>'
+			        		);
+		    		 });
+	    		});
+		        
+		      })
+		      .fail(function() {
+		      })
+		      .always(function() {
+		      });
+		});
 	</script>
-	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
-	<script
-		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
-	<!-- End Script -->
 </body>
 </html>

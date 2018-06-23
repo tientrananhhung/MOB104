@@ -70,8 +70,7 @@
 				<div class="form-group row">
 					<label class="col-lg-1 col-form-label" for="val-skill">Dữ
 						liệu</label>
-					<form action="quanlythongke" method="post">
-						<div class="col-lg-12">
+						<div class="col-lg-2">
 							<select class="form-control" id="val-skill" name="val-skill">
 								<option value="">Please select</option>
 								<option value="dt">Doanh thu</option>
@@ -79,16 +78,17 @@
 								<option value="nv">Lương nhân viên</option>
 							</select>
 						</div>
-						<div class="col-lg-8">
+						<div class="col-lg-6">
 							<div class="row" id="val-date-choose"></div>
 						</div>
+						<div class="col-lg-3" style="text-align: right;">
+						<button type="button" id="click"
+										class="btn btn-success m-b-10 m-l-5">Thống kê</button>
+										</div>
 						<div>
-							<button type="submit"
-								class="btn btn-success btn-flat m-b-10 m-l-5">Success</button>
 						</div>
-					</form>
 				</div>
-				<div class="row" ${trangthai}>
+				<div class="row" id="bangdonhang">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -105,23 +105,15 @@
 												<th>Thời gian nhận đơn</th>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${danhsachdonhang}" var="item">
-												<tr>
-													<td><c:out value="${item.donHang.maDonHang}" /></td>
-													<td><c:out value="${item.donHang.tenMatHang}" /></td>
-													<td><c:out value="${item.donHang.tenNguoiNhan}" /></td>
-													<td><c:out value="${item.thoiGian}" /></td>
-												</tr>
-											</c:forEach>
+										<tbody id="bangdh">
 										</tbody>
-									</table>
+									</table >
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row" ${trangthai1}>
+				<div class="row" id="bangdoanhthu">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -136,11 +128,7 @@
 												<th>Tổng doanh thu</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td></td>
-												<td></td>
-											</tr>
+										<tbody id="bangdt">
 										</tbody>
 									</table>
 								</div>
@@ -148,7 +136,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row" ${trangthai2}>
+				<div class="row" id="bangluongcoban">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -164,14 +152,7 @@
 												<th>Lương cơ bản</th>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${danhsachnhanvien}" var="item">
-												<tr>
-													<td><c:out value="${item.maNhanVien}" /></td>
-													<td><c:out value="${item.tenNhanVien}" /></td>
-													<td><c:out value="${item.luongCoBan}" /></td>
-												</tr>
-											</c:forEach>
+										<tbody id="banglcb">
 										</tbody>
 									</table>
 								</div>
@@ -186,8 +167,7 @@
 	</div>
 	<footer class="footer">
 		© 2018 All rights reserved. Template designed by <a
-			href="https://www.facebook.com/profile.php?id=100010754627040">Chu
-			Thái</a>
+			href="https://www.facebook.com/profile.php?id=100010754627040"></a>
 	</footer>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js"/>"></script>
@@ -235,91 +215,227 @@
 							if (ck == 'nv') {
 								$('#val-date-choose').empty();
 							} else if (ck == 'dh') {
-								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>');
-								$.ajax({
-									url : '/assignment/api/dsDonHang',
-									type : 'GET',
-								}).done(function(data) {
-									console.log(data);
-
-								}).fail(function() {
-									console.log("error");
-								}).always(function() {
-									console.log("complete");
-								});
+									$('#val-date-choose').empty();
+									$('#val-date-choose')
+									.append(
+											'<label class="col-form-label" for="val-skill">Từ ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" id="from" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>'
+													+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" id="to" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>');
 							} else if (ck == 'dt') {
-								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" name="to" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" name="from" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>');
+								
+									$('#val-date-choose').empty();
+									$('#val-date-choose')
+									.append(
+											'<label class="col-form-label" for="val-skill">Từ ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" id="from2" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>'
+													+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
+													+ '<div class="col-lg-4">'
+													+ '<input type="date" id="to2" class="form-control" placeholder="dd/mm/yyyy">'
+													+ '</div>');
+									
 							} else {
 								$('#val-date-choose').empty();
 							}
 						});
-	</script>
+	</script>	
 	<script type="text/javascript">
+	$('#bangdonhang').hide();
+	$('#bangluongcoban').hide();
+	$('#bangdoanhthu').hide();
 		$(document)
 				.on(
-						'change',
-						'#val-skill',
+						'click',
+						'#click',
 						function(event) {
-							var ck = $(this).val();
+							var ck = $('#val-skill').val();
 							if (ck == 'nv') {
-								$('#').empty();
-							} else if (ck == 'dh') {
 								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="from" class="form-control" name="from" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="to" class="form-control" name="to" placeholder="dd/mm/yyyy">'
-														+ '</div>');
 								$.ajax({
-									url : '/assignment/api/dsDonHang',
+									url : '/assignment/api/dsNhanVien',
 									type : 'GET',
 								}).done(function(data) {
 									console.log(data);
+									$('#val-date-choose').empty();
+									$('#banglcb').empty();
+									$.each(data, function(index, val) {
+										var d = new Date(val.thoiGian);
+										var formattedDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+										var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+										var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+										var formattedTime = hours + ":" + minutes;
 
+										formattedDate = formattedDate + " " + formattedTime;
+												$('#banglcb').append(
+												'<tr>'
+												+'<td>'
+												+val.maNhanVien
+												+'</td>'
+												+'<td>'
+												+val.tenNhanVien
+												+'</td>'
+												+'<td>'
+												+val.luongCoBan
+												+'</td>'
+												+'</tr>'
+												);
+									});
+									$('#bangdonhang').hide();
+									$('#bangluongcoban').show();
+									$('#bangdoanhthu').hide();
+										
 								}).fail(function() {
-									console.log("error");
 								}).always(function() {
-									console.log("complete");
+								});
+							} else if (ck == 'dh') {
+								$.ajax({
+									url : '/assignment/api/tinhtrangdonhang',
+									type : 'GET',
+								}).done(function(data) {
+									$('#bangdh').empty();
+									var a =  new Date($('#from').val());
+									var b = new Date($('#to').val());
+									a = a.getTime();
+									b =b.getTime();
+									$.each(data, function(index, val) {
+										var d = new Date(val.thoiGian);
+										var formattedDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+										var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+										var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+										var formattedTime = hours + ":" + minutes;
+										formattedDate = formattedDate + " " + formattedTime;
+										if(val.trangThai.maTrangThai=="daTao"&& a<= val.thoiGian&&b>=val.thoiGian){
+												$('#bangdh').append(
+												'<tr>'
+												+'<td>'
+												+val.donHang.maDonHang
+												+'</td>'
+												+'<td>'
+												+val.donHang.tenMatHang
+												+'</td>'
+												+'<td>'
+												+val.donHang.tenNguoiNhan
+												+'</td>'
+												+'<td>'
+												+formattedDate
+												+'</td>'
+												+'</tr>'
+												);
+										}else if(val.trangThai.maTrangThai=="daTao"&& a<= val.thoiGian){
+											$('#bangdh').append(
+													'<tr>'
+													+'<td>'
+													+val.donHang.maDonHang
+													+'</td>'
+													+'<td>'
+													+val.donHang.tenMatHang
+													+'</td>'
+													+'<td>'
+													+val.donHang.tenNguoiNhan
+													+'</td>'
+													+'<td>'
+													+formattedDate
+													+'</td>'
+													+'</tr>'
+													);
+										}else if(val.trangThai.maTrangThai=="daTao"&& b>= val.thoiGian){
+											$('#bangdh').append(
+													'<tr>'
+													+'<td>'
+													+val.donHang.maDonHang
+													+'</td>'
+													+'<td>'
+													+val.donHang.tenMatHang
+													+'</td>'
+													+'<td>'
+													+val.donHang.tenNguoiNhan
+													+'</td>'
+													+'<td>'
+													+formattedDate
+													+'</td>'
+													+'</tr>'
+													);
+										}else if(val.trangThai.maTrangThai=="daTao"&&isNaN( a)&&isNaN(b)){
+											$('#bangdh').append(
+													'<tr>'
+													+'<td>'
+													+val.donHang.maDonHang
+													+'</td>'
+													+'<td>'
+													+val.donHang.tenMatHang
+													+'</td>'
+													+'<td>'
+													+val.donHang.tenNguoiNhan
+													+'</td>'
+													+'<td>'
+													+formattedDate
+													+'</td>'
+													+'</tr>'
+													);
+										}
+									
+									});
+									$('#bangdonhang').show();
+									$('#bangluongcoban').hide();
+									$('#bangdoanhthu').hide();
+										
+								}).fail(function() {
+								}).always(function() {
 								});
 							} else if (ck == 'dt') {
-								$('#val-date-choose').empty();
-								$('#val-date-choose')
-										.append(
-												'<label class="col-form-label" for="val-skill">Từ ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="from" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>'
-														+ '<label class="col-form-label" for="val-skill">Đến ngày</label>'
-														+ '<div class="col-lg-4">'
-														+ '<input type="date" id="to" class="form-control" placeholder="dd/mm/yyyy">'
-														+ '</div>');
+								$.ajax({
+									url : '/assignment/api/tinhtrangdonhang',
+									type : 'GET',
+								}).done(function(data) {
+									$('#bangdt').empty();
+									var a1 =  new Date($('#from2').val());
+									var b1 = new Date($('#to2').val());
+									a1 = a1.getTime();
+									b1 =b1.getTime();
+									var a =0;
+									var b =0;
+									$.each(data, function(index, val) {
+										if(val.trangThai.maTrangThai=="daTiepNhan"&&a1<=val.thoiGian&&b1>= val.thoiGian){
+												a++;
+												b = b+ (val.donHang.phiVanChuyen);
+										}else if(val.trangThai.maTrangThai=="daTiepNhan"&&a1<=val.thoiGian){
+											a++;
+											b = b+ (val.donHang.phiVanChuyen);
+										}else if(val.trangThai.maTrangThai=="daTiepNhan"&&b1>= val.thoiGian){
+											a++;
+											b = b+ (val.donHang.phiVanChuyen);
+										}else if(val.trangThai.maTrangThai=="daTiepNhan"&&isNaN(a1)&&isNaN(b1)){
+											a++;
+											b = b+ (val.donHang.phiVanChuyen);
+										}
+									});
+									$('#bangdt').append(
+											'<tr>'
+											+'<td>'
+											+a
+											+'</td>'
+											+'<td>'
+											+b+' vnd'
+											+'</td>'
+											+'</tr>'
+											);
+									$('#bangdonhang').hide();
+									$('#bangluongcoban').hide();
+									$('#bangdoanhthu').show();
+								}).fail(function() {
+								}).always(function() {
+								});
 							} else {
 								$('#val-date-choose').empty();
+								$('#bangdonhang').hide();
+								$('#bangluongcoban').hide();
+								$('#bangdoanhthu').hide();
 							}
 						});
 	</script>

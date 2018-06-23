@@ -124,4 +124,11 @@ public class API {
 		List<DiaChiKhachHang> list = diaChiKhachHangService.layDSDiaChiTheoMaKH(maKH);
 		return list;
 	}
+
+	@GetMapping(path = "/tinhtrangdonhang", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<TinhTrangDonHang> dsTinhTrangDonHang() {
+		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhsachTinhTrang();
+		return list;
+	}
 }
