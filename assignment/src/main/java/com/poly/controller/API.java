@@ -18,7 +18,6 @@ import com.poly.entity.DonHang;
 import com.poly.entity.JSONChucVu;
 import com.poly.entity.JSONDonHang;
 import com.poly.entity.JSONNhanVien;
-import com.poly.entity.KhachHang;
 import com.poly.entity.NhanVien;
 import com.poly.entity.TinhTrangDonHang;
 import com.poly.service.ChucVuService;
@@ -130,13 +129,6 @@ public class API {
 	@ResponseBody
 	public List<TinhTrangDonHang> dsTinhTrangDonHang() {
 		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhsachTinhTrang();
-		return list;
-	}
-	
-	@GetMapping(path = "/thongtinkh/{maKH}", produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public List<DiaChiKhachHang> thongTinKHBoiMaKH(@PathVariable("maKH") int maKH) {
-		List<DiaChiKhachHang> list = diaChiKhachHangService.layDSDiaChiTheoMaKH(maKH);
 		return list;
 	}
 }
