@@ -51,6 +51,7 @@ public class TinhTrangDonHang {
 		this.donHang = donHang;
 	}
 
+
 	public int getId() {
 		return id;
 	}

@@ -10,12 +10,10 @@
 <title>Giao Hang Chậm - Chậm Mà Chắc</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="resources/css/lib/font-awesome/fontawesome-all.css" />">
-<link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/styleindex.css" />">
-<base href="${pageContext.servletContext.contextPath}/" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<jsp:include page="include/headerkh.jsp" />
@@ -42,37 +40,41 @@
 	</div>
 	</section>
 	<div class="container-fluid">
-		<div class="card">
-			<div class="card-body">
-				<h3 class="card-subtitle">Danh sách đơn hàng</h3>
-				<hr style="background-color: #00827c" />
-				<div class="table-responsive m-t-40">
-					<div class="text-left">
-						<a href="quanlynhanvien/themnhanvien"><button type="button"
-								class="btn btn-success m-b-10 m-l-5">Thêm mới nhân viên</button></a>
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h3 class="card-subtitle">Danh sách đơn hàng</h3>
+						<hr style="background-color: #00827c" />
+						<div class="table-responsive m-t-40">
+							<div class="text-left">
+								<a href="taodonhang"><button type="button"
+										class="btn btn-success m-b-10 m-l-5">Thêm mới đơn
+										hàng</button></a>
+							</div>
+							<table id="example23"
+								class="display nowrap table table-hover table-striped table-bordered dataTable no-footer"
+								style="margin-top: 50px" align="center">
+								<thead>
+									<tr>
+										<th>Mã đơn hàng</th>
+										<th>Tên mặt hàng</th>
+										<th>Tên người nhận</th>
+										<th>SDT người nhận</th>
+										<th>Trọng lượng</th>
+										<th>Phí vận chuyển</th>
+										<th>Cách thức trả phí</th>
+										<th>Tiền thu hộ</th>
+										<th>Ghi Chú</th>
+										<th>Chức năng</th>
+									</tr>
+								</thead>
+								<tbody>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
-					<table
-						class="display nowrap table table-hover table-striped table-bordered dataTable no-footer"
-						style="margin-top: 50px" align="center">
-						<thead>
-							<tr>
-								<th>Mã đơn hàng</th>
-								<th>Tên mặt hàng</th>
-								<th>Tên người nhận</th>
-								<th>Địa chỉ người nhận</th>
-								<th>SDT người nhận</th>
-								<th>Trọng lượng</th>
-								<th>Phí vận chuyển</th>
-								<th>Cách thức trả phí</th>
-								<th>Tiền thu hộ</th>
-								<th>Ghi Chú</th>
-								<th>Chức năng</th>
-							</tr>
-						</thead>
-						<tbody>
-							
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>
@@ -134,14 +136,13 @@
 		        			'<td>'+val1.maDonHang+'</td>'+
 		        			'<td>'+val1.tenMatHang+'</td>'+
 		        			'<td>'+val1.tenNguoiNhan+'</td>'+
-		        			'<td>'+val1.diaChiNguoiNhan+'</td>'+
 		        			'<td>'+val1.sdtNguoiNhan+'</td>'+
 		        			'<td>'+val1.trongLuong+'</td>'+
 		        			'<td>'+val1.phiVanChuyen+'</td>'+
 		        			'<td>'+b+'</td>'+
 		        			'<td>'+val1.tienThuHo+'</td>'+
 		        			'<td>'+val1.ghiChu+'</td>'+
-		        			'<td>1</td>'+
+		        			'<td><center> <a href="suadonhang/'+val1.maDonHang+'" class="btn btn-warning m-b-10 m-l-5"><i class="fa fa-cog"></i></a> <a href="huydonhang/'+val1.maDonHang+'" class="btn btn-danger m-b-10 m-l-5"><i class="fa fa-trash"></i></a></center></td>'+
 		        			'</tr>'
 			        		);
 		    		 });

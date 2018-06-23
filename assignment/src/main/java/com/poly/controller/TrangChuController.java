@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -104,7 +105,7 @@ public class TrangChuController {
 		try {
 			int id = donHangService.taoDonHang(donhang);
 			tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang( new Date(),new TrangThai("daTao", ""),new NhanVien(1),new DonHang(id)));
-			return "redirect:/quanlynhanvien";
+			return "redirect:/donhangkh";
 		} catch (Exception e) {
 			return "taodonhang";
 		}
@@ -112,9 +113,9 @@ public class TrangChuController {
 	
 	@GetMapping("taodonhang")
 	public String taoDonHang(ModelMap model,HttpServletRequest rq) {
+		model.addAttribute("action","taodonhang");
 		model.addAttribute("donhang", new DonHang());
 		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
-		model.addAttribute("khachhang",khachHangService.layKhachHang(maKH));
 		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
 		if (!list.isEmpty()) {
 			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
@@ -127,6 +128,34 @@ public class TrangChuController {
 		return "taodonhang";
 	}
 	
+	@GetMapping("suadonhang/{id}")
+	public String suadonhang(ModelMap model,HttpServletRequest rq, @PathVariable("id") int id ) {
+		model.addAttribute("action","suadonhang");
+		model.addAttribute("donhang", donHangService.getDonHang(id));
+		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
+		if (!list.isEmpty()) {
+			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
+			for (DiaChiKhachHang diachi : list) {
+				cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+			}
+			model.addAttribute("diachi", cateMap);
+		}
+
+		return "taodonhang";
+	}
+	
+	@PostMapping("suadonhang")
+	public String suaDonHang(@ModelAttribute("donhang") DonHang donhang) {
+		try {
+			donHangService.suaDonHang(donhang);
+			return "redirect:/donhangkh";
+		} catch (Exception e) {
+			return "suadonhang/"+donhang.getMaDonHang();
+		}
+	}
+	
+	
 	@GetMapping("danhsachdonhang")
 	public ModelAndView hienThiDonHang() {
 		ModelAndView model = new ModelAndView("danhsachdonhang");
@@ -134,6 +163,11 @@ public class TrangChuController {
 		return model;
 	}
 	
+	@GetMapping("huydonhang/{id}")
+	public String huyDonHang(@PathVariable("id") int id, ModelMap model) {
+		tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang(new Date(), new TrangThai("daHuy",""),new NhanVien(1),new DonHang(id)));
+		return "redirect:/donhangkh";
+	}
 	
 	@GetMapping("dangnhapNV")
 	public String dangNhapNV(ModelMap model) {
