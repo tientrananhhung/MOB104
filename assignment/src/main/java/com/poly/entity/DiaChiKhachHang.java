@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "diachikhachhang")
 public class DiaChiKhachHang {
@@ -22,13 +22,13 @@ public class DiaChiKhachHang {
 	private int maDiaChi;
 	private String diaChiGui;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "maKhachHang")
-	@JsonIgnore
 	private KhachHang khachHang;
 
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDiaChi")
+	@JsonIgnoreProperties({"diaChiKhachHang"})
 	private Set<DonHang> donHang;
 
 	public DiaChiKhachHang() {
