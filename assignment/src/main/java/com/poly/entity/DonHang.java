@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "donhang")
 public class DonHang {
@@ -35,9 +36,9 @@ public class DonHang {
 	@JoinColumn(name = "maDiaChi")
 	private DiaChiKhachHang diaChiKhachHang;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDonHang", updatable = false)
-	@JsonIgnore
+	@JsonIgnoreProperties({"nhanVien", "donHang"})
 	private Set<TinhTrangDonHang> tinhTrangDonHang;
 
 	public DonHang() {
