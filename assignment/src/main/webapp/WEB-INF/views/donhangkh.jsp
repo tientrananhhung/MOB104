@@ -70,26 +70,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="item" items="${dsDonHang}">
-								<tr>
-									<td><c:out value="${item.maDonHang}" /></td>
-									<td><c:out value="${item.tenMatHang}" /></td>
-									<td><c:out value="${item.tenNguoiNhan}" /></td>
-									<td><c:out value="${item.diaChiNguoiNhan}" /></td>
-									<td><c:out value="${item.sdtNguoiNhan}" /></td>
-									<td><c:out value="${item.trongLuong}" /></td>
-									<td><c:out value="${item.phiVanChuyen}" /></td>
-									<td><c:out value="${item.cachThucTraPhi}" /></td>
-									<td><c:out value="${item.tienThuHo}" /></td>
-									<td><c:out value="${item.ghiChu}" /></td>
-									<td><a href="chucvu/suachucvu/${item.maDonHang}"
-										class="btn btn-warning m-b-10 m-l-5"><i
-											class="ti-pencil-alt"></i></a> <a
-										href="chucvu/xoachucvu/${item.maDonHang}"
-										class="btn btn-danger m-b-10 m-l-5"><i class="ti-trash"></i></a>
-									</td>
-								</tr>
-							</c:forEach>
+							
 						</tbody>
 					</table>
 				</div>
@@ -120,6 +101,34 @@
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
 		}
+		
+		
+		$(document).ready(function() {
+			$.ajax({
+		        url: '/assignment/api/donhang/'+${maKhachHang},
+		        type: 'GET',
+		      })
+		      .done(function(data) {
+		        console.log(data);
+		        $('tbody').empty();
+		       	$.each(data, function(index, val) {
+		        $('tbody').append(
+		        		
+	        		);
+		    		$.each(val.donHang, function(index, val1) {
+		    			
+		    		});
+		        });
+	        	$('#myTable').draw();
+	        	$('#myTable').DataTable();
+		        }
+		        
+		      })
+		      .fail(function() {
+		      })
+		      .always(function() {
+		      });
+		});
 	</script>
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
 	<script
