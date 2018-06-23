@@ -63,9 +63,9 @@
 										<thead>
 											<tr>
 												<th>Mã đơn hàng</th>
-												<th>Tên mặt hàng</th>
+												<th width="90px">Tên mặt hàng</th>
 												<th>Tên người nhận</th>
-												<th>Số điện thoại người nhận</th>
+												<th width="80px">Số điện thoại người nhận</th>
 												<th>Địa chỉ người nhận</th>
 												<th>Địa chỉ gửi</th>
 												<th>Trạng thái đơn</th>
@@ -86,9 +86,10 @@
 																<c:out value="${b.trangThai.trangThai}" />
 															</c:if>
 														</c:forEach></td>
-													<th><a href="quanlydonhang/editdonhang/${a.maDonHang}"
-														class="btn btn-warning m-b-10 m-l-5"><i
-															class="ti-pencil-alt"></i></a></th>
+													<th width="120px">
+														<a href="quanlydonhang/editdonhang/${a.maDonHang}" class="btn btn-warning m-b-10 m-l-5"><i class="ti-pencil-alt"></i></a>
+														<a href="quanlydonhang/huydonhang/${a.maDonHang}" class="btn btn-danger m-b-10 m-l-5"><i class="icomoon icon-close"></i></a>
+													</th>
 												</tr>
 											</c:forEach>
 										</tbody>
