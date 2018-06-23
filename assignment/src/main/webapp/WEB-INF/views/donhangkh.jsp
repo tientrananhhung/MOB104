@@ -81,6 +81,15 @@
 	<!-- End Main -->
 	<jsp:include page="include/footerkh.jsp" />
 	<!-- Script -->
+	
+	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
+	<script
+		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+	<!-- End Script -->
 	<script>
 		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function() {
@@ -105,23 +114,38 @@
 		
 		$(document).ready(function() {
 			$.ajax({
-		        url: '/assignment/api/donhang/'+${maKhachHang},
+		        url: '/assignment/api/donhang/${maKhachHang}',
 		        type: 'GET',
 		      })
 		      .done(function(data) {
 		        console.log(data);
 		        $('tbody').empty();
 		       	$.each(data, function(index, val) {
-		        $('tbody').append(
-		        		
-	        		);
 		    		$.each(val.donHang, function(index, val1) {
-		    			
-		    		});
-		        });
-	        	$('#myTable').draw();
-	        	$('#myTable').DataTable();
-		        }
+		    			var a = val1.cachThucTraPhi;
+		    			var b;
+		    			if(a){
+		    				b = 'Người nhận';
+		    			}else{
+		    				b = 'Người gửi';
+		    			}
+		    			  $('tbody').append(
+		    			  	'<tr>'+
+		        			'<td>'+val1.maDonHang+'</td>'+
+		        			'<td>'+val1.tenMatHang+'</td>'+
+		        			'<td>'+val1.tenNguoiNhan+'</td>'+
+		        			'<td>'+val1.diaChiNguoiNhan+'</td>'+
+		        			'<td>'+val1.sdtNguoiNhan+'</td>'+
+		        			'<td>'+val1.trongLuong+'</td>'+
+		        			'<td>'+val1.phiVanChuyen+'</td>'+
+		        			'<td>'+b+'</td>'+
+		        			'<td>'+val1.tienThuHo+'</td>'+
+		        			'<td>'+val1.ghiChu+'</td>'+
+		        			'<td>1</td>'+
+		        			'</tr>'
+			        		);
+		    		 });
+	    		});
 		        
 		      })
 		      .fail(function() {
@@ -130,13 +154,5 @@
 		      });
 		});
 	</script>
-	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
-	<script
-		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
-	<!-- End Script -->
 </body>
 </html>
