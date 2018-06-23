@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.entity.DiaChiKhachHang;
 import com.poly.entity.DonHang;
-import com.poly.entity.KhachHang;
 import com.poly.entity.NhanVien;
 import com.poly.entity.TinhTrangDonHang;
 import com.poly.entity.TrangThai;

@@ -34,7 +34,7 @@ public class QuanLyKhachHangController {
 		return "DCKhachHang";
 	}
 
-	@GetMapping("themdiachiKH")
+	@GetMapping("themdiachiKhachHang")
 	public String themDiaChi(ModelMap model, HttpServletRequest rq) {
 		model.addAttribute("diachi", new DiaChiKhachHang());
 		int maKH = Integer.parseInt(rq.getSession().getAttribute("thongtindangnhap").toString());
@@ -47,7 +47,7 @@ public class QuanLyKhachHangController {
 	public String guiDiaChi(ModelMap model, @ModelAttribute(value = "diachi") DiaChiKhachHang dckh) {
 		if (diaChiKhachHangService.themDiaChi(dckh)) {
 			model.addAttribute("dsDiaChiKH", diaChiKhachHangService.layDSDiaChi());
-			return "redirect:/quanlynhanvien";
+			return "redirect:/khachhang";
 		} else {
 			return "themdiachiKH";
 		}
