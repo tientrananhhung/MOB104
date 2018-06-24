@@ -78,7 +78,8 @@ public class NhanVienDAO implements NhanVienImpl {
 	@Override
 	public NhanVien dangNhapNV(String userName, String passWord) {
 		Session session = sessionFactory.getCurrentSession();
-		String sql = "from nhanvien where soDienThoai = '"+userName+"' AND matKhau = '"+passWord+"' OR email = '" + userName + "'and matKhau = '" + passWord + "'";
+		String sql = "from nhanvien where soDienThoai = '" + userName + "' AND matKhau = '" + passWord
+				+ "' OR email = '" + userName + "'and matKhau = '" + passWord + "'";
 		try {
 			NhanVien nhanvien = (NhanVien) session.createQuery(sql).getSingleResult();
 			return nhanvien;
@@ -86,5 +87,41 @@ public class NhanVienDAO implements NhanVienImpl {
 			return null;
 		}
 	}
-	
+
+	@Override
+	public NhanVien layNhanVienTheoEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "FROM nhanvien WHERE email = '" + email + "'";
+		try {
+			NhanVien nv = (NhanVien) session.createQuery(hql).getSingleResult();
+			return nv;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public NhanVien layNhanVienTheoCMND(String cmnd) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "FROM nhanvien WHERE cmnd = '" + cmnd + "'";
+		try {
+			NhanVien nv = (NhanVien) session.createQuery(hql).getSingleResult();
+			return nv;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public NhanVien layNhanVienTheoSDT(String sdt) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "FROM nhanvien WHERE soDienThoai = '" + sdt + "'";
+		try {
+			NhanVien nv = (NhanVien) session.createQuery(hql).getSingleResult();
+			return nv;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

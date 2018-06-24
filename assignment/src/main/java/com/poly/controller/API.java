@@ -97,19 +97,53 @@ public class API {
 		}
 		return dsDonHang;
 	}
-	@GetMapping(path = "/checkNV", produces = "application/json; charset=utf-8")
+	
+	@PostMapping(path = "/cknhanvientheoemail", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public List<JSONNhanVien> dsCheck() {
-		List<NhanVien> list = nhanVienService.danhSachNhanVien();
-		List<JSONNhanVien> dsCheckNhanVien = new ArrayList<>();
-		for (NhanVien nv : list) {
-			JSONNhanVien jsonNhanVien = new JSONNhanVien();
-			jsonNhanVien.setEmail(nv.getEmail());
-			jsonNhanVien.setSoDienThoai(nv.getSoDienThoai());
-			jsonNhanVien.setCmnd(nv.getCmnd());
-			dsCheckNhanVien.add(jsonNhanVien);
+	public NhanVien checkTTNVTheoEmail(@RequestParam String dataJson) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode;
+		NhanVien nhanVien = new NhanVien();
+		try {
+			jsonNode = objectMapper.readTree(dataJson);
+			String email = jsonNode.get("email").asText();
+			nhanVien.setEmail(nhanVienService.layNhanVienTheoEmail(email).getEmail());
+		} catch (IOException e) {
+			nhanVien = null;
 		}
-		return dsCheckNhanVien;
+		return nhanVien;
+	}
+	
+	@PostMapping(path = "/cknhanvientheosdt", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public NhanVien checkTTNVTheoSDT(@RequestParam String dataJson) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode;
+		NhanVien nhanVien = new NhanVien();
+		try {
+			jsonNode = objectMapper.readTree(dataJson);
+			String sdt = jsonNode.get("soDienThoai").asText();
+			nhanVien.setSoDienThoai(nhanVienService.layNhanVienTheoSDT(sdt).getSoDienThoai());
+		} catch (IOException e) {
+			nhanVien = null;
+		}
+		return nhanVien;
+	}
+	
+	@PostMapping(path = "/cknhanvientheocmnd", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public NhanVien checkTTNVTheoCMND(@RequestParam String dataJson) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode;
+		NhanVien nhanVien = new NhanVien();
+		try {
+			jsonNode = objectMapper.readTree(dataJson);
+			String cmnd = jsonNode.get("cmnd").asText();
+			nhanVien.setCmnd(nhanVienService.layNhanVienTheoCMND(cmnd).getCmnd());
+		} catch (IOException e) {
+			nhanVien = null;
+		}
+		return nhanVien;
 	}
 
 	@GetMapping(path = "/tinhtrangdonhang/{maDonHang}", produces = "application/json; charset=utf-8")
@@ -132,14 +166,14 @@ public class API {
 		List<TinhTrangDonHang> list = tinhTrangDonHangService.danhsachTinhTrang();
 		return list;
 	}
-	
+
 	@GetMapping("timkiemdiachikh/{maDiaChi}")
 	@ResponseBody
 	public DiaChiKhachHang timKiemDiaChiKH(@PathVariable("maDiaChi") int maDiaChi) {
 		DiaChiKhachHang diaChiKhachHang = diaChiKhachHangService.timDiaChi(maDiaChi);
 		return diaChiKhachHang;
 	}
-	
+
 	@PostMapping("themdiachikh")
 	@ResponseBody
 	public void themDiaChiKH(@RequestParam String dataJson) {
@@ -149,20 +183,21 @@ public class API {
 			jsonNode = objectMapper.readTree(dataJson);
 			int maKH = jsonNode.get("khachHang.maKhachHang").asInt();
 			KhachHang khachHang = khachHangService.layKhachHang(maKH);
-			boolean ck = diaChiKhachHangService.themDiaChi(new DiaChiKhachHang(jsonNode.get("diaChiGui").asText(), khachHang));
+			boolean ck = diaChiKhachHangService
+					.themDiaChi(new DiaChiKhachHang(jsonNode.get("diaChiGui").asText(), khachHang));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	@DeleteMapping("xoadiachikh/{maDiaChi}")
 	@ResponseBody
 	public void xoaDiaChiKH(@PathVariable("maDiaChi") int maDiaChi) {
 		DiaChiKhachHang diaChiKhachHang = diaChiKhachHangService.timDiaChi(maDiaChi);
 		diaChiKhachHangService.xoaDiaChi(diaChiKhachHang);
 	}
-	
+
 	@PostMapping("suadiachikh")
 	@ResponseBody
 	public void suaDiaChiKH(@RequestParam String dataJson) {
@@ -172,7 +207,8 @@ public class API {
 			jsonNode = objectMapper.readTree(dataJson);
 			int maKH = jsonNode.get("makhachhang").asInt();
 			KhachHang khachHang = khachHangService.layKhachHang(maKH);
-			DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang(jsonNode.get("madiachi").asInt(), jsonNode.get("diachigui").asText(), khachHang);
+			DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang(jsonNode.get("madiachi").asInt(),
+					jsonNode.get("diachigui").asText(), khachHang);
 			boolean ck = diaChiKhachHangService.suaDiaChi(diaChiKhachHang);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
