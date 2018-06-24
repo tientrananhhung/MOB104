@@ -5,6 +5,11 @@
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
+<%
+		if (session.getAttribute("loginnv") != "true") {
+			response.sendRedirect("/assignment/dangnhapNV");
+		}
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16"

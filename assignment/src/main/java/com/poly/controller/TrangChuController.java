@@ -33,148 +33,162 @@ import com.poly.service.TinhTrangDonHangService;
 @Transactional
 @RequestMapping("/")
 public class TrangChuController {
-	
+
 	@Autowired
 	KhachHangService khachHangService;
-	 
+
 	@Autowired
 	DiaChiKhachHangService diaChiService;
-	
+
 	@Autowired
 	DonHangService donHangService;
-	
+
 	@Autowired
 	TinhTrangDonHangService tinhTrangDonHangService;
-	
+
 	@Autowired
 	NhanVienService nhanVienService;
-	
+
 	@GetMapping
 	public String trangChu() {
 		return "trangchukh";
 	}
-	
+
 	@GetMapping("dangky")
 	public String dangKy(ModelMap model) {
 		model.addAttribute("dangky", new KhachHang());
 		return "dangky";
 	}
-	
+
 	@PostMapping("dangky")
 	public String guiDangKy(@ModelAttribute("dangky") KhachHang khachHang, ModelMap model) {
-		
-		if(khachHangService.dangKyKhachHang(khachHang)) {
+
+		if (khachHangService.dangKyKhachHang(khachHang)) {
 			model.addAttribute("dangnhap", khachHang);
 			return "dangnhap";
 		} else {
 			return "dangky";
 		}
-		
+
 	}
-	
+
 	@GetMapping("dangnhap")
 	public String dangNhap(ModelMap model) {
 		model.addAttribute("dangnhap", new KhachHang());
 		return "dangnhap";
 	}
-	
+
 	@GetMapping("donhangkh")
 	public String donhangkh(ModelMap model, HttpServletRequest rq) {
-		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
-		return "donhangkh";
+		try {
+			int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+			return "donhangkh";
+		} catch (Exception e) {
+			return "redirect:/dangnhap";
+		}
 	}
-	
+
 	@PostMapping("dangnhap")
-	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang,HttpServletRequest rq,ModelMap model) {
+	public String guiDangNhap(@ModelAttribute("dangnhap") KhachHang khachHang, HttpServletRequest rq, ModelMap model) {
 		KhachHang kh = khachHangService.dangNhapKhachHang(khachHang.getSoDienThoai(), khachHang.getMatKhau());
-		if(kh != null) {
-			rq.getSession().setAttribute("login", "true");
+		if (kh != null) {
+			rq.getSession().setAttribute("loginkh", "true");
 			rq.getSession().setAttribute("thongtindangnhap", kh);
 			rq.getSession().setAttribute("maKhachHang", kh.getMaKhachHang());
 			model.addAttribute("dsDonHang", donHangService.danhsachDonHangTheoMaKhachHang(kh.getMaKhachHang()));
 			System.out.println(donHangService.danhsachDonHangTheoMaKhachHang(kh.getMaKhachHang()).size());
-			return "donhangkh";
-			
-		}else {
+			return "redirect:/donhangkh";
+
+		} else {
 			return "dangnhap";
 		}
+	}
+	
+	@GetMapping("logoutkh")
+	public String dangXuatKH(ModelMap model, HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/";
 	}
 
 	@PostMapping("taodonhang")
 	public String guiDangNhap(@ModelAttribute("donhang") DonHang donhang) {
 		try {
 			int id = donHangService.taoDonHang(donhang);
-			tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang( new Date(),new TrangThai("daTao", ""),new NhanVien(1),new DonHang(id)));
+			tinhTrangDonHangService.taoTinhTrangDon(
+					new TinhTrangDonHang(new Date(), new TrangThai("daTao", ""), new NhanVien(1), new DonHang(id)));
 			return "redirect:/donhangkh";
 		} catch (Exception e) {
 			return "taodonhang";
 		}
 	}
-	
+
 	@GetMapping("taodonhang")
-	public String taoDonHang(ModelMap model,HttpServletRequest rq) {
-		model.addAttribute("action","taodonhang");
-		model.addAttribute("donhang", new DonHang());
-		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
-		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
-		if (!list.isEmpty()) {
-			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
-			for (DiaChiKhachHang diachi : list) {
-				cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+	public String taoDonHang(ModelMap model, HttpServletRequest rq) {
+		try {
+			model.addAttribute("action", "taodonhang");
+			model.addAttribute("donhang", new DonHang());
+			int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+			List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
+			if (!list.isEmpty()) {
+				HashMap<Integer, String> cateMap = new HashMap<Integer, String>();
+				for (DiaChiKhachHang diachi : list) {
+					cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+				}
+				model.addAttribute("diachi", cateMap);
 			}
-			model.addAttribute("diachi", cateMap);
+			return "taodonhang";
+		} catch (Exception e) {
+			return "redirect:/dangnhap";
 		}
-
-		return "taodonhang";
 	}
-	
+
 	@GetMapping("suadonhang/{id}")
-	public String suadonhang(ModelMap model,HttpServletRequest rq, @PathVariable("id") int id ) {
-		model.addAttribute("action","suadonhang");
-		model.addAttribute("donhang", donHangService.getDonHang(id));
-		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
-		List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
-		if (!list.isEmpty()) {
-			HashMap<Integer,String> cateMap = new HashMap<Integer,String>();
-			for (DiaChiKhachHang diachi : list) {
-				cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+	public String suadonhang(ModelMap model, HttpServletRequest rq, @PathVariable("id") int id) {
+		try {
+			model.addAttribute("action", "suadonhang");
+			model.addAttribute("donhang", donHangService.getDonHang(id));
+			int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+			List<DiaChiKhachHang> list = diaChiService.layDSDiaChiTheoMaKH(maKH);
+			if (!list.isEmpty()) {
+				HashMap<Integer, String> cateMap = new HashMap<Integer, String>();
+				for (DiaChiKhachHang diachi : list) {
+					cateMap.put(diachi.getMaDiaChi(), diachi.getDiaChiGui());
+				}
+				model.addAttribute("diachi", cateMap);
 			}
-			model.addAttribute("diachi", cateMap);
+			return "taodonhang";
+		} catch (Exception e) {
+			return "redirect:/dangnhap";
 		}
-
-		return "taodonhang";
 	}
-	
+
 	@PostMapping("suadonhang")
 	public String suaDonHang(@ModelAttribute("donhang") DonHang donhang) {
 		try {
 			donHangService.suaDonHang(donhang);
 			return "redirect:/donhangkh";
 		} catch (Exception e) {
-			return "suadonhang/"+donhang.getMaDonHang();
+			return "suadonhang/" + donhang.getMaDonHang();
 		}
 	}
-	
-	
-	@GetMapping("danhsachdonhang")
-	public ModelAndView hienThiDonHang() {
-		ModelAndView model = new ModelAndView("danhsachdonhang");
-		model.addObject("dsChucVu", donHangService.danhsachDonHang());
-		return model;
-	}
-	
+
 	@GetMapping("huydonhang/{id}")
 	public String huyDonHang(@PathVariable("id") int id, ModelMap model) {
-		tinhTrangDonHangService.taoTinhTrangDon(new TinhTrangDonHang(new Date(), new TrangThai("daHuy",""),new NhanVien(1),new DonHang(id)));
-		return "redirect:/donhangkh";
+		try {
+			tinhTrangDonHangService.taoTinhTrangDon(
+					new TinhTrangDonHang(new Date(), new TrangThai("daHuy", ""), new NhanVien(1), new DonHang(id)));
+			return "redirect:/donhangkh";
+		} catch (Exception e) {
+			return "redirect:/dangnhap";
+		}
 	}
-	
+
 	@GetMapping("dangnhapNV")
 	public String dangNhapNV(ModelMap model) {
 		model.addAttribute("dangnhapNV", new NhanVien());
 		return "dangnhapNV";
 	}
-	
+
 	@PostMapping("dangnhapNV")
 	public String guiDangNhapNV(@ModelAttribute("dangnhapNV") NhanVien nhanvien, HttpServletRequest rq) {
 		NhanVien nv = nhanVienService.dangNhapNV(nhanvien.getSoDienThoai(), nhanvien.getMatKhau());
@@ -186,21 +200,25 @@ public class TrangChuController {
 			return "dangnhapNV";
 		}
 	}
-	
+
 	@GetMapping("logoutnv")
 	public String dangXuatNV(ModelMap model, HttpServletRequest request) {
 		request.getSession().invalidate();
 		model.addAttribute("dangnhapNV", new NhanVien());
 		return "dangnhapNV";
 	}
-	
+
 	@GetMapping("thongtin")
-	public ModelAndView thongTin(HttpServletRequest rq) {
-		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
-		KhachHang khachHang = khachHangService.layKhachHang(maKH);
-		DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang();
-		diaChiKhachHang.setKhachHang(khachHang);
-		ModelAndView model = new ModelAndView("thongtinkh", "thongTinKH", diaChiKhachHang);
-		return model;
+	public String thongTin(HttpServletRequest rq, ModelMap model) {
+		try {
+			int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+			KhachHang khachHang = khachHangService.layKhachHang(maKH);
+			DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang();
+			diaChiKhachHang.setKhachHang(khachHang);
+			model.addAttribute("thongTinKH", diaChiKhachHang);
+			return "thongtinkh";
+		} catch (Exception e) {
+			return "redirect:/dangnhap";
+		}
 	}
 }
