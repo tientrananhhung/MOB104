@@ -40,6 +40,45 @@
 			</tr>
 		</tbody>
 	</table>
+	<br><br><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<form id="checknv" action="abc" method="POST">
+					<div class=".row">
+						<div class="col-lg-3">
+							<label for="email">Email</label>
+						</div>
+						<div class="col-lg-9">
+							<input id="email" name="email">
+						</div>
+						<div class="col-lg-12">
+							<div class="alert alert-primary" id="thongbao1"></div>
+						</div>
+						<div class="col-lg-3">
+							<label for="soDienThoai">SĐT</label>
+						</div>
+						<div class="col-lg-9">
+							<input id="soDienThoai" name="soDienThoai">
+						</div>
+						<div class="col-lg-12">
+							<div class="alert alert-primary" id="thongbao2"></div>
+						</div>
+						<div class="col-lg-3">
+							<label for="cmnd">CMND</label>
+						</div>
+						<div class="col-lg-9">
+							<input id="cmnd" name="cmnd">
+						</div>
+						<div class="col-lg-12">
+							<div class="alert alert-primary" id="thongbao3"></div>
+						</div>
+						<button id="btn-check">Check</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- All Jquery -->
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
 	<!-- Bootstrap tether Core JavaScript -->
@@ -147,13 +186,85 @@
                 type: 'GET',
             })
             .done(function(data) {
-                console.log(data);
             })
             .fail(function() {
             })
             .always(function() {
             });
         });
+		
+		$(document).on('change', '#email', function(event){
+			event.preventDefault();
+			var formCheckNV = $('#checknv').serializeArray();
+			json = {};
+			$.each(formCheckNV, function(index, val) {
+				json[val.name] = val.value;
+			});
+			$.ajax({
+				url: "/assignment/api/cknhanvientheoemail",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					dataJson: JSON.stringify(json)
+				},
+			})
+			.done(function(data) {
+				console.log(data);
+				$('#thongbao1').html('Đã trùng');
+			})
+			.fail(function() {
+				$('#thongbao1').html('Được thêm');
+				console.log("Không tồn tại");
+			})
+		});
+		$(document).on('change', '#soDienThoai', function(event){
+			event.preventDefault();
+			var formCheckNV = $('#checknv').serializeArray();
+			json = {};
+			$.each(formCheckNV, function(index, val) {
+				json[val.name] = val.value;
+			});
+			$.ajax({
+				url: "/assignment/api/cknhanvientheosdt",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					dataJson: JSON.stringify(json)
+				},
+			})
+			.done(function(data) {
+				console.log(data);
+				$('#thongbao2').html('Đã trùng');
+			})
+			.fail(function() {
+				$('#thongbao2').html('Được thêm');
+				console.log("Không tồn tại");
+			})
+		});
+		$(document).on('change', '#cmnd', function(event){
+			event.preventDefault();
+			var formCheckNV = $('#checknv').serializeArray();
+			json = {};
+			$.each(formCheckNV, function(index, val) {
+				json[val.name] = val.value;
+			});
+			$.ajax({
+				url: "/assignment/api/cknhanvientheocmnd",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					dataJson: JSON.stringify(json)
+				},
+			})
+			.done(function(data) {
+				console.log(data);
+				$('#thongbao3').html('Đã trùng');
+			})
+			.fail(function() {
+				$('#thongbao3').html('Được thêm');
+				console.log("Không tồn tại");
+			})
+		});
 	</script>
 </body>
 </html>

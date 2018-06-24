@@ -51,4 +51,22 @@ public class NhanVienService implements NhanVienImpl {
 		NhanVien nv = nhanVienDAO.dangNhapNV(userName, passWord);
 		return nv;
 	}
+
+	@Override
+	public NhanVien layNhanVienTheoEmail(String email) {
+		NhanVien nhanVien = nhanVienDAO.layNhanVienTheoEmail(email);
+		return nhanVien;
+	}
+
+	@Override
+	public NhanVien layNhanVienTheoCMND(String cmnd) {
+		NhanVien nhanVien = nhanVienDAO.layNhanVienTheoCMND(cmnd);
+		return nhanVien;
+	}
+
+	@Override
+	public NhanVien layNhanVienTheoSDT(String sdt) {
+		NhanVien nhanVien = nhanVienDAO.layNhanVienTheoSDT(sdt);
+		return nhanVien;
+	}
 }
