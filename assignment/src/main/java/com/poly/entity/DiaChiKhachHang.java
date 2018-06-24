@@ -22,17 +22,23 @@ public class DiaChiKhachHang {
 	private int maDiaChi;
 	private String diaChiGui;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maKhachHang")
 	private KhachHang khachHang;
 
-	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "maDiaChi")
-	@JsonIgnoreProperties({"diaChiKhachHang"})
+	@JsonIgnoreProperties({ "diaChiKhachHang" })
 	private Set<DonHang> donHang;
 
 	public DiaChiKhachHang() {
 		super();
+	}
+
+	public DiaChiKhachHang(String diaChiGui, KhachHang khachHang) {
+		super();
+		this.diaChiGui = diaChiGui;
+		this.khachHang = khachHang;
 	}
 
 	public DiaChiKhachHang(int maDiaChi, String diaChiGui, KhachHang khachHang) {

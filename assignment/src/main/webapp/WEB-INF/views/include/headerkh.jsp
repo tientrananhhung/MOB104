@@ -16,7 +16,7 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent"
 		style="flex-grow: 0">
 		<ul class="navbar-nav mr-auto form-inline">
-			<li class="nav-item current-item"><a class="nav-link" href="#">Trang
+			<li class="nav-item current-item"><a class="nav-link" href="">Trang
 					Chủ</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Về Chúng
 					Tôi</a></li>

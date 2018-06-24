@@ -19,44 +19,7 @@
 <body>
 	<jsp:include page="include/headerkh.jsp" />
 
-	<!-- Modal -->
-	<div class="modal fade bd-example-modal-lg" id="exampleModal"
-		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Tra Cứu Vận Đơn</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body" id="phaDo">
-					Mời quý khách nhập mã vận đơn để tra cứu (VD: 123456789)
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" id="maHoaDon"
-							placeholder="Nhập mã vận đơn" aria-label="Recipient's username"
-							aria-describedby="basic-addon2">
-						<div class="input-group-append">
-							<button id="timHoaDon" class="btn btn-outline-secondary"
-								type="button"
-								style="padding: 7px; border-radius: 0px 5px 5px 0px;">TÌM
-								ĐƠN</button>
-						</div>
-					</div>
-					<div class="daPho"></div>
-					<table class="table table-bordered tt-kh">
-
-					</table>
-					<table class="table table-bordered log-kh">
-
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Modal -->
+	<jsp:include page="include/tracuuvandon.jsp" />
 
 	<!-- Main -->
 	<main> <section id="masthead" class="section-banner"
@@ -232,165 +195,35 @@
 	<!-- End Main -->
 	<jsp:include page="include/footerkh.jsp" />
 	<!-- Script -->
-	<script>
-		// When the user scrolls down 20px from the top of the document, show the button
-		window.onscroll = function() {
-			scrollFunction()
-		};
-
-		function scrollFunction() {
-			if (document.body.scrollTop > 20
-					|| document.documentElement.scrollTop > 20) {
-				document.getElementById("myBtn").style.display = "block";
-			} else {
-				document.getElementById("myBtn").style.display = "none";
-			}
-		}
-
-		// When the user clicks on the button, scroll to the top of the document
-		function topFunction() {
-			document.body.scrollTop = 0;
-			document.documentElement.scrollTop = 0;
-		}
-	</script>
 	<script src="<c:url value="/resources/js/lib/jquery/jquery.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/custom.js" />"></script>
 	<!-- End Script -->
 	<!-- Custom Script -->
 	<script type="text/javascript">
-		$(document)
-				.on(
-						'click',
-						'#timHoaDon',
-						function(event) {
-							var maHoaDon = $('#maHoaDon').val();
-							$
-									.ajax(
-											{
-												url : '/assignment/api/tinhtrangdonhang/'
-														+ maHoaDon,
-												type : 'GET',
-											})
-									.done(
-											function(data) {
-												console.log(data);
-												if (data.length == 0) {
-													$('.daPho').empty();
-													$('.tt-kh').empty();
-													$('.daPho')
-															.append(
-																	'<div class="alert alert-danger" role="alert"> Mã hóa đơn không tồn tại</div>');
-												} else {
-													$('.log-kh').empty();
-													$('.log-kh').append(
-														'<thead><tr><th scope="col">Log</th></tr></thead>'+
-														'<tbody id="log-donhang">'+
-														'</tbody>'
-													);
-													$.each(data, function(index, val) {
-														var d = new Date(val.thoiGian);
-														var formattedDate = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
-														var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-														var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-														var formattedTime = hours + ":" + minutes;
-
-														formattedDate = formattedDate + " " + formattedTime;
-														$('#log-donhang').append(
-															'<tr><td>'+formattedTime+', ngày '+
-															formattedDate+': '+val.trangThai.trangThai+' bởi '+
-															val.nhanVien.tenNhanVien+'</td></tr>'
-														);
-													});
-													
-													var traShip;
-													if (data[0].donHang.cachThucTraPhi == true
-															|| data[0].donHang.cachThucTraPhi == 'true') {
-														traShip = '<b id="traShip">Người nhận</b>'
-													} else {
-														traShip = '<b id="traShip">Người gửi</b>'
-													}
-													$('.tt-kh').empty();
-													$('.daPho').empty();
-													$('.tt-kh')
-															.append(
-																	'<thead><tr><th scope="col" colspan="2">Thông tin vận đơn</th></tr></thead>'
-																			+ '<tbody>'
-																			+ '<tr>'
-																			+ '<td>Người nhận</td>'
-																			+ '<td>'
-																			+ '<p>Họ Tên: '
-																			+ '<b id="hoTenNN">'
-																			+ data[0].donHang.tenNguoiNhan
-																			+ '</b>'
-																			+ '</p>'
-																			+ '<p>SĐT: '
-																			+ '<b id="sdtNN">'
-																			+ data[0].donHang.sdtNguoiNhan
-																			+ '</b>'
-																			+ '</p>'
-																			+ '<p>Địa chỉ: '
-																			+ '<b id="diaChiNN">'
-																			+ data[0].donHang.diaChiNguoiNhan
-																			+ '</b>'
-																			+ '</p>'
-																			+ '</td></tr>'
-																			+ '<tr><td>Người gửi</td><td>'
-																			+ '<p>Họ Tên: '
-																			+ '<b id="hoTenNG">'
-																			+ data[0].donHang.diaChiKhachHang.khachHang.tenKhachHang
-																			+ '</b>'
-																			+ '</p>'
-																			+ '<p>SĐT: '
-																			+ '<b id="sdtNG">'
-																			+ data[0].donHang.diaChiKhachHang.khachHang.soDienThoai
-																			+ '</b>'
-																			+ '</p>'
-																			+ '<p>Địa chỉ: '
-																			+ '<b id="diaChiNG">'
-																			+ data[0].donHang.diaChiKhachHang.diaChiGui
-																			+ '</b>'
-																			+ '</p></td></tr>'
-																			+ '<tr><td>Thông tin đơn hàng</td><td>'
-																			+ '<p>Tên mặt hàng: <b id="mdhKH">'+data[0].donHang.tenMatHang+'</b></p>'
-																			+ '<p>Tiền thu hộ: '
-																			+ '<b id="tienThuHo">'
-																			+ data[0].donHang.tienThuHo
-																			+ ' VNĐ</b>'
-																			+ '</p>'
-																			+ '<p>Phí ship: '
-																			+ '<b id="phiShip">'
-																			+ data[0].donHang.phiVanChuyen
-																			+ ' VNĐ</b>'
-																			+ '</p>'
-																			+ '<p>Trả ship: '
-																			+ traShip
-																			+ '</p></td></tr>'
-																			+ '<tr><td>Trạng thái đơn hàng</td>'
-																			+ '<td id="trangThaiDH">'
-																			+ data[0].trangThai.trangThai
-																			+ '</td>'
-																			+ '</tr>'
-																			+ '</tbody>');
-													
-												}
-											})
-									.fail(
-											function() {
-												$('.daPho').empty();
-												$('.daPho')
-														.append(
-																'<div class="alert alert-danger" role="alert"> Lỗi</div>');
-											}).always(function() {
-									});
-						});
+		$(document).ready(function() {
+			activeLinkNav();
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).on('click', '#timHoaDon', function(event) {
+			var maHoaDon = $('#maHoaDon').val();
+			if(maHoaDon != null && maHoaDon != undefined && maHoaDon != ''){
+				traDonHang(maHoaDon);
+			}else{
+				$('.daPho').empty();
+				$('.tt-kh').empty();
+				$('.daPho').append(
+					'<div class="alert alert-danger" role="alert"> Mã hóa đơn không tồn tại</div>'
+				);
+			}
+		});
 	</script>
 	<script type="text/javascript">
 		$(document).on('click', '#traCuuDH', function(event) {
-			$('.tt-kh').empty();
-			$('.daPho').empty();
-			$('.log-kh').empty();
-			$('#maHoaDon').val('');
+			resetTraCuuDonHang();
 		});
 	</script>
 	<!-- End Custom Script -->
