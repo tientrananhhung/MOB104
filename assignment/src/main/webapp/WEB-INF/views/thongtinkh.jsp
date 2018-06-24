@@ -109,7 +109,7 @@
 							<div class="card-two">
 								<header>
 									<div class="avatar">
-										<img src="images/user.png" alt="avatar customer">
+										<img src="images/user.png" alt="avatar customer" id="customer-avartar">
 									</div>
 								</header>
 								<h3 id="name-kh"></h3>

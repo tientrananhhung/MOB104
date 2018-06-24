@@ -10,10 +10,13 @@
 <title>Giao Hang Chậm - Chậm Mà Chắc</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="stylesheet" type="text/css"
+	href="<c:url value="resources/css/style.css" />">
+<link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/styleindex.css" />">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 	<jsp:include page="include/headerkh.jsp" />
@@ -94,6 +97,8 @@
 		src="<c:url value="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.js" />"></script>
 	<!-- End Script -->
 	<script>
+		
+		var datafortable;
 		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function() {
 			scrollFunction()
@@ -114,15 +119,15 @@
 			document.documentElement.scrollTop = 0;
 		}
 		
-		
 		$(document).ready(function() {
 			$.ajax({
 		        url: '/assignment/api/donhang/${maKhachHang}',
 		        type: 'GET',
 		      })
 		      .done(function(data) {
-		        console.log(data);
 		        $('tbody').empty();
+		        datafortable = [];
+		        
 		       	$.each(data, function(index, val) {
 		    		$.each(val.donHang, function(index, val1) {
 		    			var a = val1.cachThucTraPhi;
@@ -153,6 +158,17 @@
 		        			'<td>'+c+'</td>'+
 		        			'</tr>'
 			        		);
+		    			  donHang = [];
+		    			  donHang = val1.maDonHang;
+		    			  donHang = val1.tenMatHang;
+		    			  donHang = val1.tenNguoiNhan;
+		    			  donHang = val1.sdtNguoiNhan;
+		    			  donHang = b;
+		    			  donHang = val1.tienThuHo;
+		    			  donHang = val1.ghiChu;
+		    			  donHang = trangthai1;
+		    			  donHang = c;
+		    			  datafortable.push(donHang);
 		    		 });
 	    		});
 		        
@@ -160,8 +176,18 @@
 		      .fail(function() {
 		      })
 		      .always(function() {
+		    	  console.log("a");
+		    	  testdata();
 		      });
 		});
+		
+		//Datatables
+		function testdata(){
+			console.log("abcakjsbhkjwg");
+			console.log(datafortable);
+			$('#example23').DataTable({
+			});
+		}
 	</script>
 </body>
 </html>
