@@ -79,7 +79,7 @@
 									<c:forEach var="item" items="${dsNhanVien}">
 										<tr>
 											<td><img style="width: 70px; height: 80px;"
-												src="/resources/images/${item.anhDaiDien}" /></td>
+												src="resources/images/${item.anhDaiDien}" /></td>
 											<td><c:out value="${item.maNhanVien}" /></td>
 											<td><c:out value="${item.tenNhanVien}" /></td>
 											<td><c:out value="${item.email}" /></td>
