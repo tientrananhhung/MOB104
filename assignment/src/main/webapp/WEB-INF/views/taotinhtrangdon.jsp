@@ -47,7 +47,7 @@
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="donHang.maDonHang">Mã đơn hàng</f:label>
 											<f:select path="donHang.maDonHang" cssClass="form-control">
-												<f:options items="${dsDonHang}" />
+												<f:options items="${dsDonHang}"/>
 											</f:select>
 										</div>
 										<div class="form-group">
