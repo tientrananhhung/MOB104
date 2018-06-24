@@ -49,7 +49,7 @@ public class NhanVienController {
 
 	@PostMapping("themnhanvien")
 	public String guiNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
-		nv.setAnhDaiDien("anhthe1.jpg");
+		nv.setAnhDaiDien("user.png");
 		if (nhanVienService.themNhanVien(nv)) {
 			model.addAttribute("dsNhanVien", nhanVienService.danhSachNhanVien());
 			return "redirect:/quanlynhanvien";
@@ -77,7 +77,7 @@ public class NhanVienController {
 			model.addAttribute("dsChucVu", cateMap);
 		}
 	}
-	@PostMapping("editnhanvien/suanhanvien")
+	@PostMapping("suanhanvien")
 	public String suaNhanVien(ModelMap model, @ModelAttribute(value = "nhanvien") NhanVien nv) {
 		nv.setAnhDaiDien(null);
 		if (nhanVienService.suaNhanVien(nv)) {

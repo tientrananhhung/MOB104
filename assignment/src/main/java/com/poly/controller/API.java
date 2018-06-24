@@ -97,6 +97,20 @@ public class API {
 		}
 		return dsDonHang;
 	}
+	@GetMapping(path = "/checkNV", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<JSONNhanVien> dsCheck() {
+		List<NhanVien> list = nhanVienService.danhSachNhanVien();
+		List<JSONNhanVien> dsCheckNhanVien = new ArrayList<>();
+		for (NhanVien nv : list) {
+			JSONNhanVien jsonNhanVien = new JSONNhanVien();
+			jsonNhanVien.setEmail(nv.getEmail());
+			jsonNhanVien.setSoDienThoai(nv.getSoDienThoai());
+			jsonNhanVien.setCmnd(nv.getCmnd());
+			dsCheckNhanVien.add(jsonNhanVien);
+		}
+		return dsCheckNhanVien;
+	}
 
 	@GetMapping(path = "/tinhtrangdonhang/{maDonHang}", produces = "application/json; charset=utf-8")
 	@ResponseBody
