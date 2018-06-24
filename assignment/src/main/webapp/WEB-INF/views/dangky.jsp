@@ -5,6 +5,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <html>
 <head>
+<%
+		if (session.getAttribute("loginkh") == "true") {
+			response.sendRedirect("/assignment/donhangkh");
+		}
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Đăng ký</title>
 <base href="${pageContext.servletContext.contextPath}/" />

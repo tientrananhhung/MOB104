@@ -5,6 +5,11 @@
 
 <html>
 <head>
+<%
+		if (session.getAttribute("loginnv") != "true") {
+			response.sendRedirect("/assignment/dangnhapNV");
+		}
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quản Lý Chức Vụ - Giao Hàng Chậm</title>
 <base href="${pageContext.servletContext.contextPath}/" />

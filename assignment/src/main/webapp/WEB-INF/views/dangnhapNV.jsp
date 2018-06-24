@@ -6,13 +6,9 @@
 
 <html>
 <%
-	if (session != null) {
-		if (session.getAttribute("loginnv") != null) {
+		if (session.getAttribute("loginnv") == "true") {
 			response.sendRedirect("/assignment/quanlynhanvien");
 		}
-	}  else {
-		response.sendRedirect("/assignment/dangnhapNV");
-	}
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

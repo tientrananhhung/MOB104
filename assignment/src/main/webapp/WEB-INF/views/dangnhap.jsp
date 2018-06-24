@@ -6,6 +6,11 @@
 
 <html>
 <head>
+<%
+		if (session.getAttribute("loginkh") == "true") {
+			response.sendRedirect("/assignment/donhangkh");
+		}
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Đăng nhập</title>
 <base href="${pageContext.servletContext.contextPath}/" />
@@ -27,7 +32,6 @@
 	href="<c:url value="resources/css/main.css" />">
 </head>
 <body>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -65,7 +69,7 @@
 					</div>
 					
 					<div class="text-center p-t-12">
-						<span class="txt1"> Bạn đã có tài khoản? </span> <a class="txt2" href="dangnhap"> Hãy đăng nhập </a>
+						<span class="txt1"> Bạn chưa có tài khoản? </span> <a class="txt2" href="dangky"> Đăng Ký Ngay </a>
 					</div>
 
 					<div class="text-center p-t-120">

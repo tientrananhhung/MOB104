@@ -9,6 +9,11 @@
 <!DOCTYPE html>
 
 <html>
+<%
+		if (session.getAttribute("loginnv") != "true") {
+			response.sendRedirect("/assignment/dangnhapNV");
+		}
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Thống kê</title>
