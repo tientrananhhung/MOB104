@@ -3,11 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Đăng nhập</title>
+<title>Quên mật khẩu</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="icon" type="image/png"
 	href="<c:url value="resources/images/icons/favicon.ico" />" />
@@ -34,51 +33,44 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="<c:url value="resources/images/img-01.png" />" alt="IMG">
 				</div>
-				<f:form cssClass="login100-form validate-form" method="POST"
-					modelAttribute="dangnhap" action="dangnhap">
-					<span class="login100-form-title"> TRANG ĐĂNG NHẬP </span>
+				<form class="login100-form validate-form" method="POST" action="quenmatkhau/sendmail">
+					<span class="login100-form-title"> QUÊN MẬT KHẨU
+					</span>
 					<div class="wrap-input100 validate-input"
-						data-validate="Vui lòng nhập đúng email hoặc sdt">
-						<f:input path="soDienThoai" cssClass="input100" type="text"
-							placeholder="Tên đăng nhập" />
+						data-validate="Vui lòng nhập email">
+						<input class="input100" name="to" type="email"
+							placeholder="Email khách hàng" />
 						<span class="focus-input100"></span> <span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input"
-						data-validate="Vui lòng nhập mật khẩu">
-						<f:input path="matKhau" cssClass="input100" type="password"
-							placeholder="Mật khẩu" />
-						<span class="focus-input100"></span> <span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">Đăng nhập</button>
-					</div>
-
+						<div class="wrap-input100 validate-input"
+							data-validate="Vui lòng nhập số điện thoại">
+							<input class="input100" name="sodienthoai" type="text"
+								placeholder="Số điện thoại khách hàng" />
+							<span class="focus-input100"></span> <span class="symbol-input100">
+								<i class="fa fa-phone" aria-hidden="true"></i> </i>
+							</span>
+						</div>
+						<div class="container-login100-form-btn">
+						<button class="login100-form-btn">Quên mật khẩu</button>
+						</div>
+				<form>
+				
+					<br/>
 					<div class="text-center p-t-12">
-						<span class="txt1"> Quên </span> <a class="txt2" href="quenmatkhau"> Mật
-							khẩu? </a>
+					<a class="txt2" href="dangnhap">Quay lại trang đăng nhập </a>
 					</div>
-					
-					<div class="text-center p-t-12">
-						<span class="txt1"> Bạn đã có tài khoản? </span> <a class="txt2" href="dangnhap"> Hãy đăng nhập </a>
-					</div>
-
-					<div class="text-center p-t-120">
-						<a class="txt2" href="dangnhapNV"> Trang đăng này dành cho
-							nhân viên <i class="fa fa-long-arrow-right m-l-5"
-							aria-hidden="true"></i>
-						</a>
-					</div>
-				</f:form>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
 			</div>
 		</div>
 	</div>
-
+	
 	<script
 		src="<c:url value="resources/vendor/jquery/jquery-3.2.1.min.js" />"></script>
 	<script src="<c:url value="resources/vendor/bootstrap/js/popper.js" />"></script>
