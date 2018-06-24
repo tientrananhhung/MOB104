@@ -195,8 +195,12 @@ public class TrangChuController {
 	}
 	
 	@GetMapping("thongtin")
-	public ModelAndView thongTin() {
-		ModelAndView model = new ModelAndView("thongtinkh");
+	public ModelAndView thongTin(HttpServletRequest rq) {
+		int maKH = Integer.parseInt(rq.getSession().getAttribute("maKhachHang").toString());
+		KhachHang khachHang = khachHangService.layKhachHang(maKH);
+		DiaChiKhachHang diaChiKhachHang = new DiaChiKhachHang();
+		diaChiKhachHang.setKhachHang(khachHang);
+		ModelAndView model = new ModelAndView("thongtinkh", "thongTinKH", diaChiKhachHang);
 		return model;
 	}
 }

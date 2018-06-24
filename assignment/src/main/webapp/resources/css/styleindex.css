@@ -444,3 +444,66 @@ ul, ol{
     max-width: 100%;
     margin: 0 auto 3.5rem;
 }
+
+.btn-primary-format{
+    border-color: #007bff;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+    background-color: #007bff;
+}
+
+.btn-primary-format:hover{
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-secondary-format{
+    border-color: #6c757d;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}
+
+.btn-success-format{
+    border-color: #28a745;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}
+
+.btn-danger-format{
+    border-color: #dc3545;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}
+
+.btn-warning-format{
+    border-color: #ffc107;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}
+
+.btn-info-format{
+    border-color: #17a2b8;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}
+
+.btn-light-format{
+    border-color: #f8f9fa;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}
+
+.btn-dark-format{
+    border-color: #343a40;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-weight: 400;
+}

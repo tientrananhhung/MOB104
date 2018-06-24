@@ -13,7 +13,7 @@ import com.poly.model.DiaChiKhachHangDAO;
 public class DiaChiKhachHangService implements DiaChiKhachHangImpl {
 	@Autowired
 	DiaChiKhachHangDAO diaChiDAO;
-	
+
 	@Override
 	public List<DiaChiKhachHang> layDSDiaChi() {
 		List<DiaChiKhachHang> list = diaChiDAO.layDSDiaChi();
@@ -39,9 +39,9 @@ public class DiaChiKhachHangService implements DiaChiKhachHangImpl {
 	}
 
 	@Override
-	public DiaChiKhachHang timDiaChi(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public DiaChiKhachHang timDiaChi(int id) {
+		DiaChiKhachHang diaChiKhachHang = diaChiDAO.timDiaChi(id);
+		return diaChiKhachHang;
 	}
 
 	@Override
