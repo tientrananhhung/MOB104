@@ -180,7 +180,7 @@ function loadInfoCustomer(maKH){
 				);
 			});
 			$('#name-kh').html(data[0].khachHang.tenKhachHang);
-			$('.avatar').html(data[0].khachHang.anhDaiDien);
+			$('#customer-avartar').attr('src', '/resoures/images/customer/'+data[0].khachHang.anhDaiDien);
 			$('.col-sdt-kh').html(data[0].khachHang.soDienThoai);
 			$('.col-email-kh').html(data[0].khachHang.email);
 			$('.col-sdt-kh').attr('rowspan', data.length+1);
