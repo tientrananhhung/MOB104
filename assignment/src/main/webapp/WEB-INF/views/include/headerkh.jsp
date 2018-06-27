@@ -22,10 +22,21 @@
 					Tôi</a></li>
 			<li class="nav-item"><a class="nav-link" id="traCuuDH" href="#"
 				data-toggle="modal" data-target="#exampleModal">Tra Cứu ĐH</a></li>
-			<li class="nav-item"><a class="nav-link" href="thongtin">Thông Tin Cá Nhân</a></li>
+			
+			<%
+		if (session.getAttribute("loginkh") == "true") {
+			out.print("<li class='nav-item'><a class='nav-link' href='thongtin'>Thông Tin Cá Nhân</a></li><li class='nav-item'><a class='nav-link' href='donhangkh'>Đơn Hàng</a></li><li class='nav-item'><a class='nav-link' href='logoutkh'>Đăng Xuất</a></li>");  
+		};
+		%>	
 		</ul>
 	</div>
 
 </div>
 </nav> </header>
+<script>
+<script type="text/javascript">
+$(document).ready(function() {
+	activeLinkNav();
+});
+</script>
 <!-- End Header -->

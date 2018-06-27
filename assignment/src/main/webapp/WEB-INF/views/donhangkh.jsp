@@ -36,7 +36,7 @@
 				aria-haspopup="true" aria-expanded="false">Sửa thông tin
 				khách hàng</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Đổi thông tin khách hàng</a> <a
+				<a class="dropdown-item" href="thongtin">Đổi thông tin khách hàng</a> <a
 					class="dropdown-item" href="#">Thoát</a>
 			</div>
 		</div>
@@ -189,5 +189,6 @@
 			});
 		}
 	</script>
+	
 </body>
 </html>
