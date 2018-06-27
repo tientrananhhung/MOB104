@@ -76,7 +76,7 @@
 				<div class='content text-center' style='padding: 10px;'><h3 >Xin Chào</h3><h2 style="color:red;">${thongtindangnhap.tenKhachHang}</h2><a href='logoutkh'> <span>Đăng Xuất</span></a></div>
 				</c:when>
 				<c:otherwise>
-				<div class='content text-center' style='padding: 10px;'> <h3 class='h4'>Bạn là khách hàng mới?</h3> <a href='dangky' class='btn btn-primary' style='padding: 10px;'> <span>Đăng ký ngay</span> </a> <h3 class='h4' style='padding: 10px; margin: 0px;'>Hoặc</h3> <a href='dangnhap'> <span>ĐĂNG NHẬP</span> </a> </div>
+				<div class='content text-center' style='padding: 10px;'> <h3 class='h4'>Bạn là khách hàng mới?</h3> <a href='dangky' class='btn btn-primary' style='padding: 10px;'> <span>Đăng ký ngay</span> </a> <h3 class='h4' style='padding: 10px; margin: 0px;'>Hoặc</h3> <a id='login' href='dangnhap'> <span>ĐĂNG NHẬP</span> </a> </div>
 				</c:otherwise>
 				</c:choose>
 	
