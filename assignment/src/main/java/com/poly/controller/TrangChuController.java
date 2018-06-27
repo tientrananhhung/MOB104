@@ -62,7 +62,7 @@ public class TrangChuController {
 
 	@PostMapping("dangky")
 	public String guiDangKy(@ModelAttribute("dangky") KhachHang khachHang, ModelMap model) {
-
+		khachHang.setAnhDaiDien("user.png");
 		if (khachHangService.dangKyKhachHang(khachHang)) {
 			model.addAttribute("dangnhap", khachHang);
 			return "dangnhap";
