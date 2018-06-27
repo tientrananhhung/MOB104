@@ -31,6 +31,7 @@ import com.poly.service.DiaChiKhachHangService;
 import com.poly.service.DonHangService;
 import com.poly.service.KhachHangService;
 import com.poly.service.NhanVienService;
+import com.poly.service.TestService;
 import com.poly.service.TinhTrangDonHangService;
 import com.poly.service.TrangThaiService;
 
@@ -53,6 +54,8 @@ public class API {
 	KhachHangService khachHangService;
 	@Autowired
 	DiaChiKhachHangService diaChiKhachHangService;
+	@Autowired
+	TestService testService;
 
 	@GetMapping(path = "/dsChucVu", produces = "application/json; charset=utf-8")
 	@ResponseBody
@@ -214,5 +217,12 @@ public class API {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@GetMapping("/testCom/{maKH}")
+	@ResponseBody
+	public List<String> testCom(@PathVariable("maKH") int maKH){
+		List<String> list = testService.search(maKH);
+		return list;
 	}
 }

@@ -17,6 +17,9 @@
 <link
 	href="<c:url value="resources/css/lib/bootstrap/bootstrap.min.css" />"
 	rel="stylesheet">
+<link
+	href="<c:url value="resources/css/lib/jquery-ui/jquery-ui.css" />"
+	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="<c:url value="resources/css/helper.css" />" rel="stylesheet">
 <link href="<c:url value="resources/css/style.css" />" rel="stylesheet">
@@ -41,6 +44,17 @@
 		</tbody>
 	</table>
 	<br><br><br><br>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12" style="text-align: center;">
+				<label for="autoc">TEST</label>
+				<input id="autoc" name="autoc">
+			</div>
+		</div>
+	</div>
+	
+	<br><br><br>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -79,6 +93,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<!-- All Jquery -->
 	<script src="<c:url value="resources/js/lib/jquery/jquery.min.js" />"></script>
 	<!-- Bootstrap tether Core JavaScript -->
@@ -93,6 +108,9 @@
 	<!--stickey kit -->
 	<script
 		src="<c:url value="resources/js/lib/sticky-kit-master/dist/sticky-kit.min.js" />"></script>
+		
+	<script
+		src="<c:url value="resources/js/lib/jquery-ui/jquery-ui.min.js" />"></script>
 	<!--Custom JavaScript -->
 	<script src="<c:url value="resources/js/custom.min.js" />"></script>
 
@@ -264,6 +282,12 @@
 				$('#thongbao3').html('Được thêm');
 				console.log("Không tồn tại");
 			})
+		});
+		
+		$(document).ready(function(){
+			$('#autoc').autocomplete({
+				source: '/assignment/api/testCom/${maKhachHang}'
+			});
 		});
 	</script>
 </body>
