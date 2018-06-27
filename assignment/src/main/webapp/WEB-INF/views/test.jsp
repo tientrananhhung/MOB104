@@ -26,6 +26,7 @@
 <link href="<c:url value="resources/css/custom.css" />" rel="stylesheet">
 </head>
 <body>
+	<!-- This is project's body -->
 	<select id="ds" style="margin-top: 20px;">
 		<option value="dsNhanVien">Danh sách nhân viên</option>
 		<option value="dsChucVu">Danh sách chức vụ</option>
