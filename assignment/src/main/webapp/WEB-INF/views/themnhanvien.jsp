@@ -53,7 +53,7 @@
 							<hr />
 							<div class="card-body">
 								<div class="typo-headers">
-									<f:form action="quanlynhanvien/${action}" modelAttribute="nhanvien"
+									<f:form action="quanlynhanvien/${action}" modelAttribute="nhanvien" id="checknv"
 										method="POST">
 										<f:hidden path="maNhanVien"/>
 										<div class="form-group">
@@ -68,12 +68,14 @@
 												placeholder="Xin mời nhập email nhân viên" />
 										</div>
 										<div id="e2"></div>
+										<div id="ee2"></div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="soDienThoai">Số điện thoại</f:label>
 											<f:input path="soDienThoai" cssClass="form-control"
 												placeholder="Xin mời nhập số điện thoại nhân viên" />
 										</div>
 										<div id="e3"></div>
+										<div id="ee3"></div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="diaChi">Địa chỉ</f:label>
 											<f:input path="diaChi" cssClass="form-control"
@@ -86,6 +88,7 @@
 												placeholder="Xin mời nhập chứng minh nhân dân" />
 										</div>
 										<div id="e5"></div>
+										<div id="ee5"></div>
 										<div class="form-group">
 											<f:label cssClass="control-label mb-1" path="chucVu.maChucVu">Chức vụ</f:label>
 											<f:select path="chucVu.maChucVu" cssClass="form-control">
@@ -163,6 +166,84 @@
 	<script
 		src="<c:url value="resources/js/lib/datatables/datatables-init.js"/>"></script>
 	<script type="text/javascript">
+	$(document).on('change', '#email', function(event){
+		event.preventDefault();
+		var formCheckNV = $('#checknv').serializeArray();
+		json = {};
+		$.each(formCheckNV, function(index, val) {
+			json[val.name] = val.value;
+		});
+		$.ajax({
+			url: "/assignment/api/cknhanvientheoemail",
+			type: "POST",
+			dataType: 'json',
+			data: {
+				dataJson: JSON.stringify(json)
+			},
+		})
+		.done(function(data) {
+			console.log(data);
+			$('#ee2').empty();
+			$('#ee2').append('<div class="alert alert-danger" id="er1" role="alert">Email không được trùng</div>');
+		})
+		.fail(function() {
+			$('#ee2').empty();
+			$('#ee2').append('<div class="alert alert-success" role="alert">Có thể thêm</div>');
+			console.log("Không tồn tại");
+		})
+	});
+	$(document).on('change', '#soDienThoai', function(event){
+		event.preventDefault();
+		var formCheckNV = $('#checknv').serializeArray();
+		json = {};
+		$.each(formCheckNV, function(index, val) {
+			json[val.name] = val.value;
+		});
+		$.ajax({
+			url: "/assignment/api/cknhanvientheosdt",
+			type: "POST",
+			dataType: 'json',
+			data: {
+				dataJson: JSON.stringify(json)
+			},
+		})
+		.done(function(data) {
+			console.log(data);
+			$('#ee3').empty();
+			$('#ee3').append('<div class="alert alert-danger" id="er2" role="alert">Số điện thoại không được trùng</div>');
+		})
+		.fail(function() {
+			$('#ee3').empty();
+			$('#ee3').append('<div class="alert alert-success" role="alert">Có thể thêm</div>');
+			console.log("Không tồn tại");
+		})
+	});
+	$(document).on('change', '#cmnd', function(event){
+		event.preventDefault();
+		var formCheckNV = $('#checknv').serializeArray();
+		json = {};
+		$.each(formCheckNV, function(index, val) {
+			json[val.name] = val.value;
+		});
+		$.ajax({
+			url: "/assignment/api/cknhanvientheocmnd",
+			type: "POST",
+			dataType: 'json',
+			data: {
+				dataJson: JSON.stringify(json)
+			},
+		})
+		.done(function(data) {
+			console.log(data);
+			$('#ee5').empty();
+			$('#ee5').append('<div class="alert alert-danger" id="er3" role="alert">Chứng minh nhân dân không được trùng</div>');
+		})
+		.fail(function() {
+			$('#ee5').empty();
+			$('#ee5').append('<div class="alert alert-success" role="alert">Có thể thêm</div>');
+			console.log("Không tồn tại");
+		})
+	});
 	$('form').submit(function () {	
 	    // Get the Login Name value and trim it
 	    var tenNhanVien = $.trim($('#tenNhanVien').val());
@@ -198,32 +279,13 @@
 	    }else if(matKhau ===''){
 	    	$('#e6').append('<div class="alert alert-danger" role="alert">Không được để trống mật khẩu</div>');
 	    	check = false;
-	    }else{
-	    	$.ajax({
-				url : '/assignment/api/checkNV',
-				type : 'GET',
-			}).done(function(data) {
-				console.log(data);
-				$.each(data, function(index, val) {
-					if(email ==val.email){
-				    	$('#e2').append('<div class="alert alert-danger" role="alert">Email không được trùng</div>');
-				    	check = false;
-				    	break;
-				    }else if(soDienThoai==val.soDienThoai){
-				    	$('#e3').append('<div class="alert alert-danger" role="alert">Số điện thoại không được trùng</div>');
-				    	check = false;
-				    	break;
-				    }else if(cmnd ==val.cmnd){
-				    	$('#e5').append('<div class="alert alert-danger" role="alert">Chứng minh nhân dân không được trùng</div>');
-				    	check = false;
-				    	break;
-				    }
-				});
-			}).fail(function() {
-			}).always(function() {
-			});;
+	    }else if($('#er1') ===""){
+	    	check = false;
+	    }else if($('#er2') ===""){
+	    	check = false;
+	    }else if($('#er3') ===""){
+	    	check = false;
 	    }
-	    check = false;
 	    return check;
 	});
 	</script>
