@@ -60,7 +60,7 @@ function traDonHang(maHoaDon){
 				+ '</p>'
 				+ '<p>SĐT: '
 				+ '<b id="sdtNN">'
-				+ data[0].donHang.sdtNguoiNhan
+				+ anSDT(data[0].donHang.sdtNguoiNhan)
 				+ '</b>'
 				+ '</p>'
 				+ '<p>Địa chỉ: '
@@ -77,7 +77,7 @@ function traDonHang(maHoaDon){
 				+ '</p>'
 				+ '<p>SĐT: '
 				+ '<b id="sdtNG">'
-				+ data[0].donHang.diaChiKhachHang.khachHang.soDienThoai
+				+ anSDT(data[0].donHang.diaChiKhachHang.khachHang.soDienThoai)
 				+ '</b>'
 				+ '</p>'
 				+ '<p>Địa chỉ: '
@@ -89,12 +89,12 @@ function traDonHang(maHoaDon){
 				+ '<p>Tên mặt hàng: <b id="mdhKH">'+data[0].donHang.tenMatHang+'</b></p>'
 				+ '<p>Tiền thu hộ: '
 				+ '<b id="tienThuHo">'
-				+ data[0].donHang.tienThuHo
+				+ formatNumber(data[0].donHang.tienThuHo,'.',',')
 				+ ' VNĐ</b>'
 				+ '</p>'
 				+ '<p>Phí ship: '
 				+ '<b id="phiShip">'
-				+ data[0].donHang.phiVanChuyen
+				+ formatNumber(data[0].donHang.phiVanChuyen,'.',',')
 				+ ' VNĐ</b>'
 				+ '</p>'
 				+ '<p>Trả ship: '
@@ -102,7 +102,7 @@ function traDonHang(maHoaDon){
 				+ '</p></td></tr>'
 				+ '<tr><td>Trạng thái đơn hàng</td>'
 				+ '<td id="trangThaiDH">'
-				+ data[0].trangThai.trangThai
+				+ data[data.length-1].trangThai.trangThai
 				+ '</td>'
 				+ '</tr>'
 				+ '</tbody>');
@@ -176,11 +176,11 @@ function loadInfoCustomer(maKH){
 					'" class="btn btn-danger btn-danger-format" id="delete-diachikh"'+
 					' style="margin-left: 3px;"><i class="fas fa-trash-alt"></i></button>'+
 					'</td>'+
-					'</tr>'		
+					'</tr>'
 				);
 			});
 			$('#name-kh').html(data[0].khachHang.tenKhachHang);
-			$('#customer-avartar').attr('src', '/resoures/images/customer/'+data[0].khachHang.anhDaiDien);
+			$('#customer-avartar').attr('src', 'resources/images/customer/'+data[0].khachHang.anhDaiDien);
 			$('.col-sdt-kh').html(data[0].khachHang.soDienThoai);
 			$('.col-email-kh').html(data[0].khachHang.email);
 			$('.col-sdt-kh').attr('rowspan', data.length+1);
@@ -218,4 +218,22 @@ function xoaDiaChiKH(maDiaChi, maKH) {
 			swal("Thông Báo!", "Server đang nghẽn, xin vui lòng thực hiện lại sau giây lát", "error");
 		});
 	});
+}
+
+function formatNumber(nStr, decSeperate, groupSeperate) {
+    nStr += '';
+    x = nStr.split(decSeperate);
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+    }
+    return x1 + x2;
+}
+
+function anSDT(sdt){
+	var anSoDienThoai = sdt.slice(6, sdt.length-1);
+	var moi = '******' + anSoDienThoai;
+	return moi;
 }

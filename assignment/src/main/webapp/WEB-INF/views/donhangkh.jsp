@@ -20,6 +20,8 @@
 </head>
 <body>
 	<jsp:include page="include/headerkh.jsp" />
+	
+	<jsp:include page="include/tracuuvandon.jsp" />
 
 	<!-- Main -->
 	<main id="main" class="site-main" style="min-height: 500px;"> <section
@@ -90,13 +92,39 @@
 	<script
 		src="<c:url value="resources/js/lib/datatables/datatables.min.js" />"></script>
 	<script type="text/javascript"
+		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+	<script type="text/javascript"
 		src="<c:url value="resources/js/lib/bootstrap/js/popper.min.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
-		<script type="text/javascript"
 		src="<c:url value="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="resources/js/custom.js" />"></script>
 	<!-- End Script -->
 	<script>
+	
+		//Nhấp vào menu link được active
+		$(document).ready(function() {
+			activeLinkNav();
+		});
+		
+		//Reset trang tra cứu đơn hàng
+		$(document).on('click', '#traCuuDH', function(event) {
+			resetTraCuuDonHang();
+		});
+		
+		//Tra cứu đơn hàng
+		$(document).on('click', '#timHoaDon', function(event) {
+			var maHoaDon = $('#maHoaDon').val();
+			if(maHoaDon != null && maHoaDon != undefined && maHoaDon != ''){
+				traDonHang(maHoaDon);
+			}else{
+				$('.daPho').empty();
+				$('.tt-kh').empty();
+				$('.daPho').append(
+					'<div class="alert alert-danger" role="alert"> Mã hóa đơn không tồn tại</div>'
+				);
+			}
+		});
 		
 		var datafortable;
 		// When the user scrolls down 20px from the top of the document, show the button
@@ -183,8 +211,6 @@
 		
 		//Datatables
 		function testdata(){
-			console.log("abcakjsbhkjwg");
-			console.log(datafortable);
 			$('#example23').DataTable({
 			});
 		}
