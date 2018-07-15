@@ -214,6 +214,10 @@
 			$('#example23').DataTable({
 			});
 		}
+		
+		function myFunction() {
+		    confirm("Bạn có muốn hủy đơn hàng!");
+		}
 	</script>
 	
 </body>

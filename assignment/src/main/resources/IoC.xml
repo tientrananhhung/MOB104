@@ -26,9 +26,9 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12243152?characterEncoding=UTF-8" />
-		<property name="username" value="sql12243152" />
-		<property name="password" value="vUsq8qf6gM" />
+			value="jdbc:mysql://localhost:3306/mob104?characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -48,11 +48,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<!-- 		upload image -->
+	<!-- 		upload image 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000" />
 	</bean>
+	-->
+	
 <!-- 		end upload image -->
 <!-- Using socket -->
 	<tx:annotation-driven
