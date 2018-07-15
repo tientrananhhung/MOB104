@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-9 col-md-9">
-					<h3>Bắt đầu với GHTK?</h3>
+					<h3>Bắt đầu với GHC?</h3>
 					Giao hàng trong ngày 23 tiếng | Phí thu tiền rẻ | Giao hàng nhiều
 					lần | Đối soát nhanh | <a style="color: white;" href=""
 						target="_blank" rel="noopener">Chính sách vận chuyển</a>

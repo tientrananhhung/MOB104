@@ -109,7 +109,7 @@ a:hover{
     flex: 1;
 }
 
-.shortcode-ghtkpo .default-title .col-right span{
+.shortcode-ghtkpo .default-title .col-left .text-before, .text-after{
 	font-size: 28px;
 }
 
@@ -506,4 +506,16 @@ ul, ol{
     border-radius: .25rem;
     padding: .375rem .75rem;
     font-weight: 400;
+}
+
+@media only screen and (max-width: 992px){
+	.do-you-know ul li strong{
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.do-you-know ul li strong{
+		font-size: 14px;
+	}
 }
