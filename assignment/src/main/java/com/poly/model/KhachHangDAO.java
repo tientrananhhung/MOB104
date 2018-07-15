@@ -78,4 +78,15 @@ public class KhachHangDAO implements KhachHangImpl {
 			return null;
 		}
 	}
+
+	@Override
+	public boolean suaThongTinKhachHang(KhachHang khachHang) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.update(khachHang);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
