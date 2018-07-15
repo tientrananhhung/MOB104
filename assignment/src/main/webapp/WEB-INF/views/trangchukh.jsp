@@ -10,7 +10,7 @@
 <title>Giao Hang Chậm - Chậm Mà Chắc</title>
 <base href="${pageContext.servletContext.contextPath}/" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/lib/bootstrap/bootstrap.min.css" />">
+	href="<c:url value="/resources/css/lib/bootstrap4/bootstrap.min.css" />">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/lib/font-awesome/fontawesome-all.css" />">
 <link rel="stylesheet" type="text/css"
@@ -100,14 +100,12 @@
 					src="<c:url value="/resources/images/list-post-offices.jpg" />"
 					alt="map-office-img">
 			</div>
-			<div class="search-post-offices">
+			<div class="search-post-offices col-sm-7 col-md-6">
 				<div class="default-title" style="visibility: visible;">
-					<div class="col-left">
-						<span class="big-text">500++</span>
-					</div>
-					<div class="col-right">
-						<span class="text-before">điểm gửi hàng...</span> <span
-							class="text-after">...trên toàn quốc!!!</span>
+					<div class="col-left col-lg-12">
+						<span class="big-text">500++</span><br>
+						<span class="text-before">điểm gửi hàng...</span><br>
+						<span class="text-after">...trên toàn quốc!!!</span>
 					</div>
 				</div>
 			</div>
@@ -122,13 +120,13 @@
 			<div class="container">
 				<ul class="row">
 					<li class="active-1"><strong>Tiếp nhận đơn hàng</strong> Shop
-						đăng nhập và đăng đơn hàng cho trung tâm điều vận GHTK qua hệ
+						đăng nhập và đăng đơn hàng cho trung tâm điều vận GHC qua hệ
 						thống quản lý riêng.</li>
-					<li class="active-2"><strong>Lấy hàng</strong> Nhân viên GHTK
+					<li class="active-2"><strong>Lấy hàng</strong> Nhân viên GHC
 						qua địa chỉ shop để lấy hàng tận nơi</li>
-					<li class="active-3"><strong>Giao hàng</strong> GHTK giao hàng
+					<li class="active-3"><strong>Giao hàng</strong> GHC giao hàng
 						cho khách hàng và thu hộ tiền trực tiếp (Cash on Delivery)</li>
-					<li class="active-4"><strong>Đối soát</strong> GHTK đối soát
+					<li class="active-4"><strong>Đối soát</strong> GHC đối soát
 						trả tiền cho shop (3 lần/tuần) qua tài khoản ngân hàng. Đồng thời
 						gửi biên bản đối soát định kì vào email.</li>
 					<li class="active-5"><strong>Kết thúc</strong> Giao dịch hoàn
@@ -141,17 +139,15 @@
 	<div class="textwidget">
 		<div class="container do-you-know">
 			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-sm-6 col-md-4 col-md-offset-2 col-md-pull-1">
+				<div class="col-sm-6 col-md-6 col-md-offset-2 col-md-pull-1">
 					<h3 class="section-title">
 						Bạn có biết?<br> <em>Dịch vụ chúng tôi cung cấp đã phù
 							hợp với </em><br> <strong>5 khách hàng</strong>
 					</h3>
-					<p>
-						<a class="btn btn-primary btn-100" href="dangky">Đăng ký ngay</a>
+					<p style="text-align: center;">
+						<a class="btn btn-primary btn-100" href="dangky" style="width: 70%;">Đăng ký ngay</a>
 					</p>
 				</div>
-				<div class="col-md-1"></div>
 				<div class="col-sm-6 col-md-6">
 					<ul>
 						<li><img
@@ -199,7 +195,9 @@
 	<!-- Script -->
 	<script src="<c:url value="/resources/js/lib/jquery/jquery.min.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/lib/bootstrap/js/bootstrap.min.js" />"></script>
+		src="<c:url value="/resources/js/lib/bootstrap4/bootstrap.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/lib/bootstrap4/bootstrap.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/custom.js" />"></script>
 	<!-- End Script -->

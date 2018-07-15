@@ -23,6 +23,7 @@
 	
 	<jsp:include page="include/tracuuvandon.jsp" />
 	
+	<jsp:include page="include/suathongtin.jsp" />
 	
 	<!-- Modal Save -->
 	<div class="modal fade" id="Modal-ThemDiaChi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -115,7 +116,7 @@
 								<h3 id="name-kh"></h3>
 								<div class="contacts">
 									<button type="button" class="btn btn-success btn-success-format" id="save-diachikh" data-toggle="modal" data-target="#Modal-ThemDiaChi"><i class="fas fa-plus-circle"></i></button>
-									<button type="button" class="btn btn-warning btn-warning-format" style="color: white;"><i class="fas fa-user-edit"></i></button>
+									<button type="button" class="btn btn-warning btn-warning-format" id="edit-suathongtin" style="color: white;" data-toggle="modal" data-target="#Modal-suathongtin"><i class="fas fa-user-edit"></i></button>
 									<div class="clear"></div>
 								</div>
 							</div>
