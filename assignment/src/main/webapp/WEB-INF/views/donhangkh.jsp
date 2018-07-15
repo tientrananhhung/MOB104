@@ -214,14 +214,6 @@
 			$('#example23').DataTable({
 			});
 		}
-		
-		function myFunction() {
-			  var x = confirm("Bạn có muốn hủy đơn ?");
-			  if (x)
-			      return true;
-			  else
-			    return false;
-		}
 	</script>
 	
 </body>
