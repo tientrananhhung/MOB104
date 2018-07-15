@@ -171,7 +171,7 @@
 		    			if(trangthai1 == 'Đang Vận Chuyển' || trangthai1 == 'Đã Hủy' || trangthai1 == 'Đang Giao Hàng' || trangthai1 == 'Delay Giao Hàng'){
 		    				c = '';
 		    			}else{
-		    				c = '<center> <a href="suadonhang/'+val1.maDonHang+'" class="btn btn-warning m-b-10 m-l-5"><i class="fa fa-cog" style="color:white;"></i></a> <a href="huydonhang/'+val1.maDonHang+'" class="btn btn-danger m-b-10 m-l-5"><i class="fa fa-trash"></i></a></center>';
+		    				c = '<center> <a href="suadonhang/'+val1.maDonHang+'" class="btn btn-warning m-b-10 m-l-5"><i class="fa fa-cog" style="color:white;"></i></a> <a href="huydonhang/'+val1.maDonHang+'" onclick="myFunction()" class="btn btn-danger m-b-10 m-l-5"><i class="fa fa-trash"></i></a></center>';
 		    			}
 		    			  $('tbody').append(
 		    			  	'<tr>'+
@@ -213,6 +213,10 @@
 		function testdata(){
 			$('#example23').DataTable({
 			});
+		}
+		
+		function myFunction() {
+		    confirm("Bạn có muốn hủy đơn hàng!");
 		}
 	</script>
 	
