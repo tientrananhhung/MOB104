@@ -225,4 +225,25 @@ public class API {
 		List<String> list = testService.search(maKH);
 		return list;
 	}
+	
+	@PostMapping("suathongtinkh")
+	@ResponseBody
+	public void suaThongTinKH(@RequestParam String dataJson) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode;
+		try {
+			jsonNode = objectMapper.readTree(dataJson);
+			int maKhachHang = jsonNode.get("maKhachHang").asInt();
+			String tenKhachHang = jsonNode.get("tenKhachHang").asText();
+			String anhDaiDien = jsonNode.get("anhDaiDien").asText();
+			String soDienThoai = jsonNode.get("soDienThoai").asText();
+			String email = jsonNode.get("email").asText();
+			String matKhau = jsonNode.get("matKhau").asText();
+			KhachHang kh = new KhachHang(maKhachHang, tenKhachHang, anhDaiDien, soDienThoai, email, matKhau);
+			boolean ck = khachHangService.suaThongTinKhachHang(kh);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

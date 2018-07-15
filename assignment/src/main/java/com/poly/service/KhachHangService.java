@@ -51,4 +51,10 @@ public class KhachHangService implements KhachHangImpl {
 		return lst;
 	}
 
+	@Override
+	public boolean suaThongTinKhachHang(KhachHang khachHang) {
+		boolean ck = khDao.suaThongTinKhachHang(khachHang);
+		return ck;
+	}
+
 }

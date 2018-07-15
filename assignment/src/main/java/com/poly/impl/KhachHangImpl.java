@@ -16,4 +16,6 @@ public interface KhachHangImpl {
 	public KhachHang layKhachHang(int id);
 	
 	public List<KhachHang> layDSKhachHang();
+	
+	public boolean suaThongTinKhachHang(KhachHang khachHang);
 }
